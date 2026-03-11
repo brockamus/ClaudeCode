@@ -74,7 +74,24 @@ resize();
 const keys = {};
 const mouse = { x: W / 2, y: H / 2, down: false };
 
-window.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; e.preventDefault(); });
+let paused = false;
+let muted = false;
+
+window.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  if (k === 'escape' && state === 'playing') {
+    paused = !paused;
+    e.preventDefault();
+    return;
+  }
+  if (k === 'm') {
+    muted = !muted;
+    e.preventDefault();
+    return;
+  }
+  keys[k] = true;
+  e.preventDefault();
+});
 window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 
 canvas.addEventListener('mousemove', e => {
@@ -82,7 +99,18 @@ canvas.addEventListener('mousemove', e => {
   mouse.x = (e.clientX - rect.left) / rect.width * W;
   mouse.y = (e.clientY - rect.top) / rect.height * H;
 });
-canvas.addEventListener('mousedown', e => { if (e.button === 0) mouse.down = true; });
+canvas.addEventListener('mousedown', e => {
+  if (e.button === 0) {
+    // Check mute button click (top-right corner, 30x30)
+    const muteX = W - 40, muteY = 40;
+    if (mouse.x >= muteX - 15 && mouse.x <= muteX + 15 &&
+        mouse.y >= muteY - 15 && mouse.y <= muteY + 15) {
+      muted = !muted;
+      return;
+    }
+    mouse.down = true;
+  }
+});
 canvas.addEventListener('mouseup', e => { if (e.button === 0) mouse.down = false; });
 canvas.addEventListener('contextmenu', e => e.preventDefault());
 
@@ -93,6 +121,7 @@ function ensureAudio() {
 }
 
 function playSound(type) {
+  if (muted) return;
   ensureAudio();
   const ac = audioCtx;
   const now = ac.currentTime;
@@ -824,6 +853,67 @@ function drawHUD() {
   }
 }
 
+function drawMuteButton() {
+  const bx = W - 40, by = 40;
+  const hover = mouse.x >= bx - 15 && mouse.x <= bx + 15 &&
+                mouse.y >= by - 15 && mouse.y <= by + 15;
+  ctx.save();
+  ctx.translate(bx, by);
+  ctx.globalAlpha = hover ? 1 : 0.5;
+  ctx.strokeStyle = '#fff';
+  ctx.fillStyle = '#fff';
+  ctx.lineWidth = 2;
+  // Speaker body
+  ctx.fillRect(-8, -5, 6, 10);
+  ctx.beginPath();
+  ctx.moveTo(-2, -5);
+  ctx.lineTo(5, -10);
+  ctx.lineTo(5, 10);
+  ctx.lineTo(-2, 5);
+  ctx.closePath();
+  ctx.fill();
+  if (muted) {
+    // X through speaker
+    ctx.strokeStyle = '#ff3333';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(8, -7);
+    ctx.lineTo(15, 7);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(15, -7);
+    ctx.lineTo(8, 7);
+    ctx.stroke();
+  } else {
+    // Sound waves
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(5, 0, 7, -0.6, 0.6);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(5, 0, 12, -0.5, 0.5);
+    ctx.stroke();
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawPauseOverlay() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.font = 'bold 48px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#00ffff';
+  ctx.fillText('PAUSED', W / 2, H / 2 - 20);
+
+  ctx.font = '16px monospace';
+  ctx.fillStyle = '#888';
+  ctx.fillText('Press ESC to resume', W / 2, H / 2 + 20);
+  ctx.fillText('Press M to ' + (muted ? 'unmute' : 'mute'), W / 2, H / 2 + 50);
+}
+
 function drawMenu() {
   // Background
   ctx.fillStyle = '#0a0a1a';
@@ -1138,10 +1228,11 @@ function gameLoop(timestamp) {
   if (state === 'menu') {
     updateStarfield(dt);
     drawMenu();
+    drawMuteButton();
     return;
   }
 
-  if (state === 'playing') {
+  if (state === 'playing' && !paused) {
     updatePlaying(dt);
   }
 
@@ -1191,6 +1282,10 @@ function gameLoop(timestamp) {
   drawHUD();
   drawWaveAnnouncement();
 
+  if (state === 'playing' && paused) {
+    drawPauseOverlay();
+  }
+
   if (state === 'enterInitials') {
     updateParticles(dt);
     updateEnterInitials(dt);
@@ -1204,6 +1299,8 @@ function gameLoop(timestamp) {
     updateParticles(dt);
     drawGameOver();
   }
+
+  drawMuteButton();
 }
 
 requestAnimationFrame(gameLoop);
