@@ -290,8 +290,39 @@ function drawStarfield() {
   ctx.globalAlpha = 1;
 }
 
+// ---- Leaderboard (localStorage) ----
+const LB_KEY = 'neonSurvivorHighScores';
+function loadHighScores() {
+  try { return JSON.parse(localStorage.getItem(LB_KEY)) || []; }
+  catch { return []; }
+}
+function saveHighScores(scores) {
+  localStorage.setItem(LB_KEY, JSON.stringify(scores));
+}
+function addHighScore(initials, sc, wv) {
+  const scores = loadHighScores();
+  scores.push({ initials, score: sc, wave: wv });
+  scores.sort((a, b) => b.score - a.score);
+  if (scores.length > 10) scores.length = 10;
+  saveHighScores(scores);
+  return scores;
+}
+function isHighScore(sc) {
+  const scores = loadHighScores();
+  return scores.length < 10 || sc > (scores[scores.length - 1]?.score || 0);
+}
+
+// ---- Initials Entry State ----
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let initials = [0, 0, 0]; // indices into ALPHABET
+let initialsCursor = 0;    // which letter (0-2) is selected
+let initialsBlinkTimer = 0;
+let initialsConfirmed = false;
+let leaderboardScores = [];
+let inputCooldown = 0; // prevent rapid key repeat
+
 // ---- Game State ----
-let state = 'menu'; // menu, playing, gameover
+let state = 'menu'; // menu, playing, gameover, enterInitials, leaderboard
 let score = 0;
 let wave = 0;
 let waveState = 'announcing'; // announcing, active, cooldown
@@ -582,9 +613,17 @@ function updatePlaying(dt) {
   // Player death
   if (player.hp <= 0) {
     player.hp = 0;
-    state = 'gameover';
     spawnParticles(player.x, player.y, '#00ffff', 30, 200, 0.6);
     playSound('gameOver');
+    if (isHighScore(score)) {
+      state = 'enterInitials';
+      initials = [0, 0, 0];
+      initialsCursor = 0;
+      initialsConfirmed = false;
+      inputCooldown = 0.3;
+    } else {
+      state = 'gameover';
+    }
     return;
   }
 
@@ -828,16 +867,193 @@ function drawMenu() {
   }
 
   // Controls
-  ctx.font = '13px monospace';
+  ctx.font = '12px monospace';
   ctx.fillStyle = '#888';
-  ctx.fillText('WASD / Arrow Keys — Move', W / 2, 390);
-  ctx.fillText('Mouse — Aim', W / 2, 412);
-  ctx.fillText('Left Click — Shoot', W / 2, 434);
-  ctx.fillText('Survive the waves!', W / 2, 470);
+  ctx.fillText('WASD / Arrows = Move  |  Mouse = Aim  |  Click = Shoot', W / 2, 380);
+
+  // Leaderboard on menu
+  const scores = loadHighScores();
+  if (scores.length > 0) {
+    drawLeaderboard(W / 2 - 150, 410, 300, 'TOP SCORES', false);
+  } else {
+    ctx.font = '13px monospace';
+    ctx.fillStyle = '#555';
+    ctx.fillText('Survive the waves!', W / 2, 440);
+  }
 
   ctx.font = '10px monospace';
   ctx.fillStyle = '#444';
   ctx.fillText('v1.0', W / 2, H - 20);
+}
+
+function updateEnterInitials(dt) {
+  inputCooldown -= dt;
+  initialsBlinkTimer += dt;
+
+  if (inputCooldown > 0) return;
+
+  // Up/Down to change letter
+  if (keys['arrowup'] || keys['w']) {
+    initials[initialsCursor] = (initials[initialsCursor] + 1) % 26;
+    inputCooldown = 0.12;
+    playSound('enemyHit');
+  }
+  if (keys['arrowdown'] || keys['s']) {
+    initials[initialsCursor] = (initials[initialsCursor] + 25) % 26;
+    inputCooldown = 0.12;
+    playSound('enemyHit');
+  }
+  // Left/Right to move cursor
+  if (keys['arrowleft'] || keys['a']) {
+    initialsCursor = Math.max(0, initialsCursor - 1);
+    inputCooldown = 0.15;
+  }
+  if (keys['arrowright'] || keys['d']) {
+    initialsCursor = Math.min(2, initialsCursor + 1);
+    inputCooldown = 0.15;
+  }
+  // Enter to confirm
+  if (keys['enter'] || keys[' ']) {
+    if (initialsCursor < 2) {
+      initialsCursor++;
+      inputCooldown = 0.15;
+    } else {
+      const name = initials.map(i => ALPHABET[i]).join('');
+      leaderboardScores = addHighScore(name, score, wave);
+      state = 'leaderboard';
+      inputCooldown = 0.5;
+      playSound('waveAnnounce');
+    }
+  }
+}
+
+function drawEnterInitials() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.font = 'bold 36px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#ffff66';
+  ctx.fillText('NEW HIGH SCORE!', W / 2, 140);
+
+  ctx.font = '20px monospace';
+  ctx.fillStyle = '#ff33ff';
+  ctx.fillText('SCORE: ' + score + '  WAVE: ' + wave, W / 2, 180);
+
+  ctx.font = '16px monospace';
+  ctx.fillStyle = '#888';
+  ctx.fillText('ENTER YOUR INITIALS', W / 2, 230);
+
+  // Draw 3 letter slots
+  const slotW = 50, slotH = 60, gap = 16;
+  const startX = W / 2 - (slotW * 3 + gap * 2) / 2;
+  const slotY = 260;
+
+  for (let i = 0; i < 3; i++) {
+    const sx = startX + i * (slotW + gap);
+    const active = i === initialsCursor;
+
+    // Slot background
+    ctx.fillStyle = active ? '#1a1a4a' : '#111';
+    ctx.fillRect(sx, slotY, slotW, slotH);
+    ctx.strokeStyle = active ? '#00ffff' : '#333';
+    ctx.lineWidth = active ? 2 : 1;
+    ctx.strokeRect(sx, slotY, slotW, slotH);
+
+    // Up arrow
+    if (active) {
+      ctx.fillStyle = '#00ffff';
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('\u25B2', sx + slotW / 2, slotY - 6);
+      ctx.fillText('\u25BC', sx + slotW / 2, slotY + slotH + 16);
+    }
+
+    // Letter
+    const blink = active && Math.floor(initialsBlinkTimer * 3) % 2 === 0;
+    ctx.font = 'bold 36px monospace';
+    ctx.fillStyle = blink ? '#00ffff' : '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.fillText(ALPHABET[initials[i]], sx + slotW / 2, slotY + 43);
+  }
+
+  // Instructions
+  ctx.font = '12px monospace';
+  ctx.fillStyle = '#666';
+  ctx.textAlign = 'center';
+  ctx.fillText('UP/DOWN = Change Letter    LEFT/RIGHT = Move    ENTER = Confirm', W / 2, slotY + slotH + 50);
+}
+
+function drawLeaderboard(x, y, w, title, highlight) {
+  const scores = highlight ? leaderboardScores : loadHighScores();
+
+  ctx.font = 'bold 20px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#00ffff';
+  ctx.fillText(title || 'HIGH SCORES', x + w / 2, y);
+
+  if (scores.length === 0) {
+    ctx.font = '14px monospace';
+    ctx.fillStyle = '#555';
+    ctx.fillText('NO SCORES YET', x + w / 2, y + 40);
+    return y + 60;
+  }
+
+  const rowH = 24;
+  ctx.font = '14px monospace';
+  for (let i = 0; i < scores.length; i++) {
+    const s = scores[i];
+    const ry = y + 25 + i * rowH;
+    const isNew = highlight && s.initials === initials.map(j => ALPHABET[j]).join('') && s.score === score;
+
+    // Rank
+    ctx.textAlign = 'left';
+    ctx.fillStyle = isNew ? '#ffff66' : (i < 3 ? '#ffaa00' : '#888');
+    const rank = (i + 1) + '.';
+    ctx.fillText(rank.padStart(3), x + 10, ry);
+
+    // Initials
+    ctx.fillStyle = isNew ? '#00ffff' : '#fff';
+    ctx.fillText(s.initials, x + 55, ry);
+
+    // Score
+    ctx.textAlign = 'right';
+    ctx.fillStyle = isNew ? '#ffff66' : '#ffff66';
+    ctx.fillText(String(s.score).padStart(7), x + w - 80, ry);
+
+    // Wave
+    ctx.fillStyle = isNew ? '#aaaaff' : '#aaaaff';
+    ctx.fillText('W' + s.wave, x + w - 10, ry);
+  }
+
+  return y + 25 + scores.length * rowH + 10;
+}
+
+function drawLeaderboardScreen() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+  ctx.fillRect(0, 0, W, H);
+
+  const bottomY = drawLeaderboard(W / 2 - 180, 80, 360, 'HIGH SCORES', true);
+
+  // Play again button
+  const btnW = 220, btnH = 50;
+  const btnX = W / 2 - btnW / 2, btnY = Math.max(bottomY + 20, 420);
+  const hover = mouse.x >= btnX && mouse.x <= btnX + btnW &&
+                mouse.y >= btnY && mouse.y <= btnY + btnH;
+  ctx.fillStyle = hover ? '#00ffff' : '#006666';
+  ctx.fillRect(btnX, btnY, btnW, btnH);
+  ctx.strokeStyle = '#00ffff';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(btnX, btnY, btnW, btnH);
+  ctx.fillStyle = hover ? '#000' : '#00ffff';
+  ctx.font = 'bold 20px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('PLAY AGAIN', W / 2, btnY + 32);
+
+  if (hover && mouse.down) {
+    mouse.down = false;
+    startGame();
+  }
 }
 
 function drawGameOver() {
@@ -848,17 +1064,20 @@ function drawGameOver() {
   ctx.font = 'bold 48px monospace';
   ctx.textAlign = 'center';
   ctx.fillStyle = '#ff3333';
-  ctx.fillText('GAME OVER', W / 2, 200);
+  ctx.fillText('GAME OVER', W / 2, 160);
 
   ctx.font = '20px monospace';
   ctx.fillStyle = '#ffff66';
-  ctx.fillText('SCORE: ' + score, W / 2, 260);
+  ctx.fillText('SCORE: ' + score, W / 2, 210);
   ctx.fillStyle = '#aaaaff';
-  ctx.fillText('WAVE: ' + wave, W / 2, 295);
+  ctx.fillText('WAVE: ' + wave, W / 2, 240);
+
+  // Show leaderboard inline
+  drawLeaderboard(W / 2 - 160, 275, 320, 'HIGH SCORES', false);
 
   // Play again button
   const btnW = 220, btnH = 50;
-  const btnX = W / 2 - btnW / 2, btnY = 340;
+  const btnX = W / 2 - btnW / 2, btnY = 510;
   const hover = mouse.x >= btnX && mouse.x <= btnX + btnW &&
                 mouse.y >= btnY && mouse.y <= btnY + btnH;
   ctx.fillStyle = hover ? '#00ffff' : '#006666';
@@ -972,7 +1191,16 @@ function gameLoop(timestamp) {
   drawHUD();
   drawWaveAnnouncement();
 
-  if (state === 'gameover') {
+  if (state === 'enterInitials') {
+    updateParticles(dt);
+    updateEnterInitials(dt);
+    drawEnterInitials();
+  }
+  else if (state === 'leaderboard') {
+    updateParticles(dt);
+    drawLeaderboardScreen();
+  }
+  else if (state === 'gameover') {
     updateParticles(dt);
     drawGameOver();
   }
