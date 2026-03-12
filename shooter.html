@@ -416,8 +416,14 @@ function spawnPowerup(x, y) {
 function activatePowerup(type) {
   const def = POWERUP_DEFS[type];
   if (type === 'health') {
-    player.hp = Math.min(player.maxHp, player.hp + 30);
-    spawnParticles(player.x, player.y, '#33ff33', 10, 80, 0.4);
+    if (player.hp >= player.maxHp) {
+      score += 500;
+      spawnParticles(player.x, player.y, '#ffff66', 12, 100, 0.4);
+      powerupFlashMsg = '+500 BONUS';
+    } else {
+      player.hp = Math.min(player.maxHp, player.hp + 30);
+      spawnParticles(player.x, player.y, '#33ff33', 10, 80, 0.4);
+    }
   } else {
     activePowerups[type] = def.duration;
     spawnParticles(player.x, player.y, def.color, 12, 100, 0.3);
