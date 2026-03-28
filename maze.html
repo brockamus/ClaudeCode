@@ -17,12 +17,13 @@
     }
     #game-wrapper {
         position: relative;
-        border: 2px solid #0ff;
-        box-shadow: 0 0 20px #0ff4, 0 0 60px #0ff2;
+        width: 100vw;
+        height: 100vh;
     }
     canvas {
         display: block;
-        image-rendering: pixelated;
+        width: 100%;
+        height: 100%;
     }
     /* CRT scanline overlay */
     #game-wrapper::after {
@@ -121,7 +122,7 @@
 </head>
 <body>
 <div id="game-wrapper">
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <canvas id="canvas"></canvas>
     <div id="hud">
         <span id="hud-level">Level: 1</span>
         <span id="hud-moves">Moves: 0</span>
@@ -150,6 +151,25 @@ const hudLevel = document.getElementById('hud-level');
 const hudMoves = document.getElementById('hud-moves');
 const hudTime = document.getElementById('hud-time');
 const hudBest = document.getElementById('hud-best');
+
+let W, H;
+function resizeCanvas() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+    if (maze) recalcCellSize();
+}
+function recalcCellSize() {
+    cellW = Math.floor((W - 40) / cols);
+    cellH = Math.floor((H - 60) / rows);
+    // Keep cells square-ish but fit the screen
+    const cellSize = Math.min(cellW, cellH);
+    cellW = cellSize;
+    cellH = cellSize;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 // --- Audio ---
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -270,8 +290,7 @@ function initGame() {
     const s = SIZES[currentSize];
     cols = s.cols;
     rows = s.rows;
-    cellW = Math.floor(800 / cols);
-    cellH = Math.floor((600 - 30) / rows); // reserve top for HUD
+    recalcCellSize();
     maze = generateMaze(cols, rows);
     player = { x: 0, y: 0 };
     exitPos = { x: cols - 1, y: rows - 1 };
@@ -443,15 +462,17 @@ document.addEventListener('keydown', e => {
 document.addEventListener('keyup', e => { keys[e.key] = false; });
 
 // --- Rendering ---
-const offsetY = 30; // HUD space
+const hudHeight = 40;
 
 function drawMaze() {
     // Background
     ctx.fillStyle = '#0a0a0a';
-    ctx.fillRect(0, 0, 800, 600);
+    ctx.fillRect(0, 0, W, H);
 
-    const ox = Math.floor((800 - cols * cellW) / 2);
-    const oy = offsetY + Math.floor((570 - rows * cellH) / 2);
+    if (!maze) return;
+
+    const ox = Math.floor((W - cols * cellW) / 2);
+    const oy = hudHeight + Math.floor((H - hudHeight - rows * cellH) / 2);
 
     // Draw trail
     if (trail.length > 1) {
