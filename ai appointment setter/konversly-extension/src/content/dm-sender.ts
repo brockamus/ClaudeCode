@@ -18,7 +18,7 @@ async function sendDM(username: string, message: string): Promise<boolean> {
     }
 
     // Focus the input
-    textarea.focus();
+    (textarea as HTMLElement).focus();
 
     // Type the message with human-like delays
     if (textarea.tagName === 'TEXTAREA') {

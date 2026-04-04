@@ -1,0 +1,593 @@
+{
+  "name": "Advanced Langchain Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-agent-webhook",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        288,
+        96
+      ],
+      "id": "2e04b9b2-59ab-4af8-b3d4-01720a652e7c",
+      "name": "AI Agent Webhook",
+      "webhookId": "ai-agent-main"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract incoming data and prepare for agent\nconst incomingData = $input.first().json;\n\n// Handle different webhook formats\nlet contactId, phoneNumber, message, contactName, sessionId;\n\nif (incomingData.contact_id || incomingData.contactId) {\n  contactId = incomingData.contact_id || incomingData.contactId;\n  phoneNumber = incomingData.phone || incomingData.from;\n  message = incomingData.message || incomingData.body;\n  contactName = incomingData.contact_name || incomingData.name;\n} else if (incomingData.From && incomingData.Body) {\n  phoneNumber = incomingData.From;\n  message = incomingData.Body;\n  contactId = phoneNumber.replace(/\\+|\\s|-/g, '');\n  contactName = incomingData.ProfileName || 'Unknown';\n}\n\n// Create consistent session ID for the agent\nsessionId = contactId || phoneNumber.replace(/\\+|\\s|-/g, '');\n\nreturn {\n  contactId,\n  phoneNumber, \n  message,\n  contactName,\n  sessionId,\n  timestamp: new Date().toISOString(),\n  // Format for LangChain agent\n  input: message,\n  chat_input: message\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        512,
+        96
+      ],
+      "id": "cc20e636-9983-440d-8683-f5aae3b15214",
+      "name": "Prepare Agent Input"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        512,
+        288
+      ],
+      "id": "6f87cc64-b83b-4df9-932d-0036e5aa68fd",
+      "name": "Get Conversation History",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Fb9Vsa7erfk9aEpO",
+          "name": "AI SupaBase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        512,
+        464
+      ],
+      "id": "6f254181-7e13-4c71-96eb-1309d756fb2e",
+      "name": "Get Contact Context"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        512,
+        640
+      ],
+      "id": "12c22966-910c-454c-b95b-b04b27dedec3",
+      "name": "Get Dynamic Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build enhanced context for the AI agent\nconst agentInput = $('Prepare Agent Input').first().json;\nconst conversationHistory = $('Get Conversation History').first().json || [];\nconst contactContext = $('Get Contact Context').first().json || [];\nconst dynamicPrompt = $('Get Dynamic Prompt').first().json || [];\n\n// Build conversation history for context\nlet historyContext = \"\";\nif (conversationHistory.length > 0) {\n  historyContext = \"\\n\\nPREVIOUS CONVERSATION:\\n\" + conversationHistory.map((conv, index) => {\n    return `${index + 1}. Human: ${conv.user_message}\\n   AI: ${conv.ai_response} [Stage: ${conv.conversation_stage}, Score: ${conv.engagement_score}]`;\n  }).reverse().join('\\n');\n}\n\n// Extract contact information\nlet contactInfo = \"New contact - no previous data\";\nif (contactContext.length > 0) {\n  const ctx = contactContext[0];\n  contactInfo = `CONTACT PROFILE:\n- Name: ${ctx.name || agentInput.contactName}\n- Business: ${ctx.business_type || 'Unknown'}\n- Current Stage: ${ctx.current_stage || 'discovery'}\n- Lead Score: ${ctx.lead_score || 5}/10\n- Total Messages: ${ctx.total_messages || 0}\n- Pain Points: ${ctx.pain_points || 'Not identified yet'}`;\n}\n\n// Get the best performing prompt for current stage\nlet systemPrompt = '';\nif (dynamicPrompt.length > 0) {\n  systemPrompt = dynamicPrompt[0].prompt_content;\n} else {\n  // Fallback to default Konversly prompt\n  systemPrompt = `# Konversly AI Setter – Advanced SMS Agent\n\n## CORE MISSION\nYou are an AI sales setter for Konversly. Your job is to warm leads and book qualified prospects for sales calls. You're having a TEXT CONVERSATION, so keep responses casual and under 1000 characters.\n\n## CONVERSATION STAGES & OBJECTIVES\n\n### DISCOVERY STAGE\n- Identify what kind of business they run\n- Uncover their biggest lead generation challenges\n- Build rapport through active listening\n- Echo their pain points to show understanding\n\n### EDUCATION STAGE  \n- Present Konversly as the solution to their specific problem\n- Share relevant results and social proof\n- Create urgency around their pain point\n- Bridge to booking request\n\n### BOOKING STAGE\n- Make direct ask for Zoom call\n- Handle objections with NEPQ methodology\n- Send booking link: konversly.com/book\n- Create urgency with limited availability\n\n## RESPONSE RULES\n- Always echo part of their answer before moving forward\n- Ask ONE question at a time\n- No corporate speak - be conversational\n- If they ask \"is that what you do?\" answer directly then bridge to next stage\n- Never jump stages until current objectives are complete`;\n}\n\n// Combine everything into enhanced system message\nconst enhancedSystemMessage = `${systemPrompt}\n\n${contactInfo}\n${historyContext}\n\n## CURRENT MESSAGE TO RESPOND TO\nHuman: ${agentInput.message}\n\n## INSTRUCTIONS\nRespond naturally according to your stage objectives. Keep under 1000 characters. Remember the conversation context above.`;\n\nreturn {\n  ...agentInput,\n  enhancedSystemMessage,\n  hasHistory: conversationHistory.length > 0,\n  currentStage: contactContext.length > 0 ? contactContext[0].current_stage : 'discovery',\n  leadScore: contactContext.length > 0 ? contactContext[0].lead_score : 5\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        736,
+        96
+      ],
+      "id": "b507d72d-2747-403f-9edd-bc68cfc47d90",
+      "name": "Build Enhanced Context"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "={{ $json.enhancedSystemMessage }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        960,
+        96
+      ],
+      "id": "9f6ebdd2-a48b-45de-a971-6e49f2a2f011",
+      "name": "Enhanced AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "grok-4-0709",
+        "options": {
+          "maxTokens": 250,
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatXAiGrok",
+      "typeVersion": 1,
+      "position": [
+        752,
+        288
+      ],
+      "id": "f2fa60e2-d59e-4ab2-a92b-c1272519ab3a",
+      "name": "Grok Model",
+      "credentials": {
+        "xAiApi": {
+          "id": "uWnEJDTiyfS36hQy",
+          "name": "xAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Build Enhanced Context').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        960,
+        288
+      ],
+      "id": "61b8dcc8-4d64-4a60-b2d0-e2ed9a9d7e1f",
+      "name": "Session Memory"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Analyze the AI agent's response\nconst agentResponse = $json.response || $json.text || $json.output;\nconst contextData = $('Build Enhanced Context').first().json;\n\n// Determine conversation stage based on response content\nlet nextStage = contextData.currentStage;\nlet responseType = 'continue';\n\n// Stage progression logic\nif (agentResponse.toLowerCase().includes('what kind of business')) {\n  responseType = 'business_question';\n  nextStage = 'discovery';\n} else if (agentResponse.toLowerCase().includes('biggest challenge')) {\n  responseType = 'challenge_question'; \n  nextStage = 'discovery';\n} else if (agentResponse.toLowerCase().includes('we help') || agentResponse.toLowerCase().includes('konversly')) {\n  responseType = 'pitch';\n  nextStage = 'education';\n} else if (agentResponse.toLowerCase().includes('open to a quick zoom') || agentResponse.toLowerCase().includes('book')) {\n  responseType = 'booking_request';\n  nextStage = 'booking';\n} else if (agentResponse.toLowerCase().includes('konversly.com/book')) {\n  responseType = 'booking_link_sent';\n  nextStage = 'booking';\n}\n\n// Calculate engagement score\nlet engagementScore = 5;\nif (agentResponse.includes('?')) engagementScore += 1;\nif (agentResponse.length > 200 && agentResponse.length < 800) engagementScore += 1;\nif (agentResponse.toLowerCase().includes('got it') || agentResponse.toLowerCase().includes('makes sense')) engagementScore += 1;\nif (agentResponse.includes('konversly.com')) engagementScore += 2;\nif (agentResponse.length > 1000) engagementScore -= 2; // Too long\n\n// Detect objection handling\nlet hasObjectionHandling = false;\nif (agentResponse.toLowerCase().includes('totally fair') || \n    agentResponse.toLowerCase().includes('makes sense') ||\n    agentResponse.toLowerCase().includes('i understand')) {\n  hasObjectionHandling = true;\n  engagementScore += 1;\n}\n\nreturn {\n  aiResponse: agentResponse,\n  nextStage,\n  responseType,\n  engagementScore,\n  characterCount: agentResponse.length,\n  hasQuestion: agentResponse.includes('?'),\n  hasBookingLink: agentResponse.includes('konversly.com'),\n  hasObjectionHandling,\n  timestamp: new Date().toISOString()\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1264,
+        96
+      ],
+      "id": "769bea94-05cb-415d-83a3-f23e3cb5d0a8",
+      "name": "Analyze Agent Response"
+    },
+    {
+      "parameters": {
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1392,
+        96
+      ],
+      "id": "4e853c0f-d5d1-42b0-9ab0-ac09c7a4676f",
+      "name": "Send SMS Response",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4wUUxhiPnmDyCHnq",
+          "name": "Header Auth Wave Speed"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        96
+      ],
+      "id": "80e7f515-791b-4ab6-b2d6-52845f6f668e",
+      "name": "Save Conversation"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        288
+      ],
+      "id": "d3a7c233-e35c-4f76-a6d1-fa59273ae743",
+      "name": "Upsert Contact Context"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \n  \"status\": \"success\", \n  \"response\": $('Analyze Agent Response').item.json.aiResponse, \n  \"stage\": $('Analyze Agent Response').item.json.nextStage,\n  \"engagement_score\": $('Analyze Agent Response').item.json.engagementScore,\n  \"conversation_id\": $('Save Conversation').item.json[0].id,\n  \"agent_type\": \"langchain\"\n} }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        96
+      ],
+      "id": "7d8dd9df-c0de-4691-be57-00bd7be7ade9",
+      "name": "Webhook Response"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent-feedback",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        288,
+        608
+      ],
+      "id": "699384cd-e8b7-48df-b4c4-84acd636aca5",
+      "name": "Feedback Webhook",
+      "webhookId": "agent-feedback"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        496,
+        816
+      ],
+      "id": "4d8f270a-02cc-4066-a380-28ec4d6e48cc",
+      "name": "Update Feedback"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ parseInt($json.rating) >= 8 || parseInt($json.rating) <= 2 }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        736,
+        608
+      ],
+      "id": "8cf1a72d-be17-4bb8-8b6e-09dbefa5f043",
+      "name": "Should Learn from This?"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        496
+      ],
+      "id": "9c8a429b-25b7-4d62-b7a7-b428a2072b37",
+      "name": "Get Successful Conversations"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        496
+      ],
+      "id": "837c963a-3222-425b-b9ec-bc4288477dd1",
+      "name": "Generate Improved Prompt",
+      "credentials": {
+        "openAiApi": {
+          "id": "6XbpOZoM2GrKqGCN",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        496
+      ],
+      "id": "8ad2695c-1f59-48e3-9edc-008f8048faad",
+      "name": "Save Improved Prompt"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"status\": \"feedback_processed\", \"learning_triggered\": $('Should Learn from This?').item.json, \"new_prompt_created\": !!$('Save Improved Prompt').item.json?.[0]?.id } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        608
+      ],
+      "id": "65e4c4d2-175b-40af-9813-fc859cd22b17",
+      "name": "Feedback Response"
+    },
+    {
+      "parameters": {
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        640
+      ],
+      "id": "5a49213c-9f47-4937-8410-bb0fbaf898c2",
+      "name": "Create or update a contact",
+      "credentials": {
+        "highLevelOAuth2Api": {
+          "id": "w6u74WQZHmmKTJn5",
+          "name": "HighLevel account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "AI Agent Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare Agent Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Agent Input": {
+      "main": [
+        [
+          {
+            "node": "Get Conversation History",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Contact Context",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Dynamic Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Conversation History": {
+      "main": [
+        [
+          {
+            "node": "Build Enhanced Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contact Context": {
+      "main": [
+        [
+          {
+            "node": "Build Enhanced Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Dynamic Prompt": {
+      "main": [
+        [
+          {
+            "node": "Build Enhanced Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Enhanced Context": {
+      "main": [
+        [
+          {
+            "node": "Enhanced AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enhanced AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Analyze Agent Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grok Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Enhanced AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Session Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Enhanced AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Agent Response": {
+      "main": [
+        [
+          {
+            "node": "Send SMS Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send SMS Response": {
+      "main": [
+        [
+          {
+            "node": "Save Conversation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Upsert Contact Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Conversation": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Feedback Webhook": {
+      "main": [
+        [
+          {
+            "node": "Update Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Feedback": {
+      "main": [
+        [
+          {
+            "node": "Should Learn from This?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Should Learn from This?": {
+      "main": [
+        [
+          {
+            "node": "Get Successful Conversations",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Feedback Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Successful Conversations": {
+      "main": [
+        [
+          {
+            "node": "Generate Improved Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Improved Prompt": {
+      "main": [
+        [
+          {
+            "node": "Save Improved Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Improved Prompt": {
+      "main": [
+        [
+          {
+            "node": "Feedback Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ca100169-5421-4c71-9fcc-a666a188d71f",
+  "meta": {
+    "instanceId": "b869d30866c1ff94b0053ab5f6577303b39e5644208ac5b5b18dad18c826f126"
+  },
+  "id": "jvZs1BYytxiRysev",
+  "tags": [
+    {
+      "updatedAt": "2025-08-26T23:00:33.124Z",
+      "createdAt": "2025-08-26T23:00:33.124Z",
+      "id": "gHXE1Vh6rNGovMjp",
+      "name": "Enhanced LangChain Agent"
+    }
+  ]
+}
