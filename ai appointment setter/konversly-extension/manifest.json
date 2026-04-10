@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.instagram.com/*", "https://instagram.com/*"],
-      "js": ["src/content/scraper.ts", "src/content/profile-enricher.ts", "src/content/dm-sender.ts"],
+      "js": ["src/content/scraper.ts", "src/content/profile-enricher.ts", "src/content/dm-sender.ts", "src/content/warmup.ts"],
       "run_at": "document_idle"
     }
   ],

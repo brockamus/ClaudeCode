@@ -1,5 +1,5 @@
 import { getConnection } from './storage';
-import { Lead } from './types';
+import { Lead, Campaign } from './types';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const conn = await getConnection();
@@ -41,10 +41,23 @@ export const api = {
     profile_photo_url: string;
     channel_type: string;
     first_dm_content: string;
+    variant_name?: string | null;
   }) => request<{ status: string; contact_id: string }>('/outbound/contacts', {
     method: 'POST',
     body: JSON.stringify(data),
   }),
+
+  getContactedHandles: (accountId: string) =>
+    request<{ handles: string[] }>(`/outbound/contacted/${accountId}`),
+
+  getReplies: (accountId: string) =>
+    request<{ replied_handles: string[]; total_contacted: number; total_replies: number; reply_rate: string }>(`/outbound/replies/${accountId}`),
+
+  getVariantStats: (campaignId: string) =>
+    request<{ variant_stats: Array<{ variant_name: string; sent: number; replies: number; reply_rate: string }> }>(`/outbound/campaigns/${campaignId}/variant-stats`),
+
+  getScheduledCampaigns: (accountId: string) =>
+    request<{ campaigns: Campaign[] }>(`/outbound/scheduled/${accountId}`),
 
   getCampaigns: (accountId: string) =>
     request<{ campaigns: unknown[] }>(`/outbound/campaigns/${accountId}`),

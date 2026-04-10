@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Campaign } from '../shared/types';
-import { getConnection, getDmsToday, getLeadQueue } from '../shared/storage';
+import { getConnection, getDmsToday, getLeadQueue, getAccountHealth, AccountHealth } from '../shared/storage';
 
 function Popup() {
   const [connected, setConnected] = useState(false);
@@ -10,6 +10,7 @@ function Popup() {
   const [dmsToday, setDmsToday] = useState(0);
   const [queueSize, setQueueSize] = useState(0);
   const [pendingCount, setPendingCount] = useState(0);
+  const [health, setHealth] = useState<AccountHealth | null>(null);
 
   useEffect(() => {
     loadStatus();
@@ -27,6 +28,9 @@ function Popup() {
     const queue = await getLeadQueue();
     setQueueSize(queue.length);
     setPendingCount(queue.filter(l => l.status === 'pending').length);
+
+    const h = await getAccountHealth();
+    setHealth(h);
 
     chrome.runtime.sendMessage({ type: 'GET_STATUS' }, (response) => {
       if (response) {
@@ -111,6 +115,18 @@ function Popup() {
             <span className="stat-label">Pending Review</span>
             <span className="stat-value">{pendingCount}</span>
           </div>
+
+          {health && (
+            <div className="stat-row">
+              <span className="stat-label">Account Health</span>
+              <span className="stat-value" style={{
+                color: health.status === 'healthy' ? '#16a34a' : health.status === 'warning' ? '#f59e0b' : '#dc2626',
+              }}>
+                {health.status === 'healthy' ? 'Healthy' : health.status === 'warning' ? 'Warning' : 'Blocked'}
+                {health.total_failures_today > 0 && ` (${health.total_failures_today} fails)`}
+              </span>
+            </div>
+          )}
 
           <div style={{ marginTop: 16 }}>
             {isRunning ? (

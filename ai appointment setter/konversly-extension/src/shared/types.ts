@@ -30,6 +30,12 @@ export interface RateLimits {
   quiet_hours_end: number;
 }
 
+export interface MessageVariant {
+  name: string;
+  prompt_instruction: string;
+  weight: number;
+}
+
 export interface Campaign {
   id: string;
   account_id: string;
@@ -40,7 +46,23 @@ export interface Campaign {
   send_mode: 'review' | 'autopilot';
   autopilot_threshold: number;
   rate_limits: RateLimits;
-  status: 'draft' | 'scraping' | 'running' | 'paused' | 'completed';
+  // Message variants
+  variants: MessageVariant[];
+  // Working hours + pacing
+  working_hours_start: number;
+  working_hours_end: number;
+  pacing_enabled: boolean;
+  // Daily limits (randomized between min/max each day)
+  daily_limit_min: number;
+  daily_limit_max: number;
+  // Engagement warmup
+  warmup_follow: boolean;
+  warmup_like_post: boolean;
+  warmup_like_story: boolean;
+  // Scheduling
+  scheduled_at?: string;
+  // Stats
+  status: 'draft' | 'scheduled' | 'scraping' | 'running' | 'paused' | 'completed';
   leads_scraped: number;
   leads_filtered: number;
   dms_sent: number;
@@ -50,6 +72,7 @@ export interface Campaign {
 
 export interface LeadWithMessage extends Lead {
   generated_message: string;
+  variant_name?: string;
   status: 'pending' | 'approved' | 'sent' | 'skipped' | 'failed';
   campaign_id: string;
 }
@@ -73,6 +96,14 @@ export type MessageType =
   | { type: 'PAUSE_CAMPAIGN' }
   | { type: 'GET_STATUS' }
   | { type: 'START_CAMPAIGN'; campaign: Campaign }
-  | { type: 'APPROVE_LEAD'; index: number }
-  | { type: 'SKIP_LEAD'; index: number }
-  | { type: 'REGENERATE_DM'; index: number };
+  | { type: 'APPROVE_LEAD'; handle: string }
+  | { type: 'SKIP_LEAD'; handle: string }
+  | { type: 'REGENERATE_DM'; handle: string }
+  | { type: 'FOLLOW_USER'; username: string }
+  | { type: 'FOLLOW_RESULT'; username: string; success: boolean }
+  | { type: 'LIKE_POST'; username: string }
+  | { type: 'LIKE_RESULT'; username: string; success: boolean }
+  | { type: 'LIKE_STORY'; username: string }
+  | { type: 'STORY_RESULT'; username: string; success: boolean }
+  | { type: 'SCHEDULE_CAMPAIGN'; campaign: Campaign; scheduled_at: string }
+  | { type: 'GET_HEALTH' };

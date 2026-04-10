@@ -1,12 +1,76 @@
-import { Campaign, Lead, LeadWithMessage, CampaignFilters } from '../shared/types';
-import { getConnection, getActiveCampaign, setActiveCampaign, getLeadQueue, setLeadQueue, incrementDmsToday } from '../shared/storage';
+import { Campaign, Lead, LeadWithMessage, CampaignFilters, MessageVariant } from '../shared/types';
+import { getConnection, getActiveCampaign, setActiveCampaign, getLeadQueue, setLeadQueue, incrementDmsToday, getCampaignPhase, setCampaignPhase, getAccountHealth, recordAction, getCampaignQueue, removeFromCampaignQueue, addToCampaignQueue } from '../shared/storage';
 import { sendToContentScript } from '../shared/messaging';
 import { api } from '../shared/api';
 import { canSendDM, getDelayMs, shouldTakeBreak, getBreakDurationMs } from './rate-limiter';
 import { humanDelay } from '../lib/human-delay';
+import { getNextSendDelay } from '../lib/pacing';
 
 let isRunning = false;
 let currentTabId: number | null = null;
+
+// Resume incomplete campaigns on service worker startup
+resumeCampaignIfNeeded();
+
+async function resumeCampaignIfNeeded(): Promise<void> {
+  const campaign = await getActiveCampaign();
+  const progress = await getCampaignPhase();
+
+  if (!campaign || !progress || !progress.phase) return;
+  if (progress.phase === 'completed') return;
+
+  console.log(`[Konversly] Resuming campaign "${campaign.name}" from phase: ${progress.phase}`);
+
+  // For sending phase: we have a lead queue with pending items — just resume autopilot
+  if (progress.phase === 'sending') {
+    const queue = await getLeadQueue();
+    const hasPending = queue.some(l => l.status === 'pending');
+    if (!hasPending) {
+      await setCampaignPhase({ phase: 'completed' });
+      return;
+    }
+
+    isRunning = true;
+
+    // Open a fresh Instagram tab for sending
+    const tab = await chrome.tabs.create({
+      url: 'https://www.instagram.com/',
+      active: false,
+    });
+    currentTabId = tab.id || null;
+    await humanDelay(3000, 5000);
+
+    if (campaign.send_mode === 'autopilot') {
+      await processAutopilot(campaign);
+    }
+    // In review mode, leads are already in queue — user approves via options page
+    return;
+  }
+
+  // For earlier phases (scraping/enriching/generating), restart from the beginning
+  // since we can't reliably resume DOM-dependent operations
+  console.log(`[Konversly] Phase "${progress.phase}" cannot be resumed mid-way. Restart the campaign.`);
+  await setCampaignPhase(null);
+}
+
+// Campaign scheduler: check every 5 minutes for due scheduled campaigns
+chrome.alarms.create('check-scheduled-campaigns', { periodInMinutes: 5 });
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name !== 'check-scheduled-campaigns') return;
+  if (isRunning) return; // Don't start a new campaign while one is running
+
+  const queue = await getCampaignQueue();
+  const now = Date.now();
+
+  for (const entry of queue) {
+    if (new Date(entry.scheduled_at).getTime() <= now) {
+      console.log(`[Konversly] Starting scheduled campaign: ${entry.campaign.name}`);
+      await removeFromCampaignQueue(entry.campaign.id);
+      startCampaign(entry.campaign);
+      break; // Only start one at a time
+    }
+  }
+});
 
 // Listen for messages from popup/options/content scripts
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -30,19 +94,29 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       isRunning = false;
       setActiveCampaign(null);
       setLeadQueue([]);
+      setCampaignPhase(null);
       sendResponse({ ok: true });
       return;
 
     case 'APPROVE_LEAD':
-      approveLead(message.index).then(() => sendResponse({ ok: true }));
+      approveLead(message.handle).then(() => sendResponse({ ok: true }));
       return true;
 
     case 'SKIP_LEAD':
-      skipLead(message.index).then(() => sendResponse({ ok: true }));
+      skipLead(message.handle).then(() => sendResponse({ ok: true }));
       return true;
 
     case 'REGENERATE_DM':
-      regenerateDM(message.index).then(() => sendResponse({ ok: true }));
+      regenerateDM(message.handle).then(() => sendResponse({ ok: true }));
+      return true;
+
+    case 'SCHEDULE_CAMPAIGN':
+      addToCampaignQueue({ campaign: message.campaign, scheduled_at: message.scheduled_at })
+        .then(() => sendResponse({ ok: true }));
+      return true;
+
+    case 'GET_HEALTH':
+      getAccountHealth().then(health => sendResponse(health));
       return true;
   }
 });
@@ -64,6 +138,7 @@ async function startCampaign(campaign: Campaign): Promise<void> {
   if (!currentTabId || !isRunning) return;
 
   // Step 2: Scrape followers
+  await setCampaignPhase({ phase: 'scraping' });
   await api.updateCampaign(campaign.id, { status: 'scraping' });
 
   const maxLeads = 500;
@@ -101,27 +176,49 @@ async function startCampaign(campaign: Campaign): Promise<void> {
 
   // Step 4: Filter leads
   const filteredLeads = filterLeads(enrichedLeads, campaign.filters);
-  await api.updateCampaign(campaign.id, { leads_filtered: filteredLeads.length });
 
-  // Step 5: Generate DMs for each lead
+  // Step 4b: Dedup — remove leads we've already contacted
   const conn = await getConnection();
   if (!conn) return;
 
+  let dedupedLeads = filteredLeads;
+  try {
+    const { handles: contactedHandles } = await api.getContactedHandles(conn.account_id);
+    const contactedSet = new Set(contactedHandles.map(h => h.toLowerCase()));
+    dedupedLeads = filteredLeads.filter(l => !contactedSet.has(l.instagram_handle.toLowerCase()));
+    const dupsRemoved = filteredLeads.length - dedupedLeads.length;
+    if (dupsRemoved > 0) {
+      console.log(`[Konversly] Dedup: removed ${dupsRemoved} previously contacted leads`);
+    }
+  } catch (err) {
+    console.error('[Konversly] Dedup check failed, proceeding without dedup', err);
+  }
+
+  await api.updateCampaign(campaign.id, { leads_filtered: dedupedLeads.length });
+  await setCampaignPhase({ phase: 'generating' });
+
+  // Step 5: Generate DMs for each lead
+
   const leadQueue: LeadWithMessage[] = [];
-  for (const lead of filteredLeads) {
+  for (const lead of dedupedLeads) {
     if (!isRunning) break;
 
     try {
+      // Select variant or use campaign prompt
+      const variant = selectVariant(campaign.variants);
+      const promptInstruction = variant?.prompt_instruction || campaign.prompt_instruction;
+
       const result = await api.generateDM(
         conn.account_id,
         campaign.id,
         lead,
-        campaign.prompt_instruction
+        promptInstruction
       );
 
       leadQueue.push({
         ...lead,
         generated_message: result.message,
+        variant_name: variant?.name,
         status: 'pending',
         campaign_id: campaign.id,
       });
@@ -131,6 +228,7 @@ async function startCampaign(campaign: Campaign): Promise<void> {
   }
 
   await setLeadQueue(leadQueue);
+  await setCampaignPhase({ phase: 'sending' });
   await api.updateCampaign(campaign.id, { status: 'running' });
 
   // Step 6: Process send queue
@@ -177,11 +275,11 @@ async function processAutopilot(campaign: Campaign): Promise<void> {
 
     const lead = queue[pendingIndex];
 
-    // Check rate limits
-    const rateCheck = await canSendDM(campaign.rate_limits);
+    // Check rate limits (with working hours + daily target awareness)
+    const rateCheck = await canSendDM(campaign.rate_limits, campaign);
     if (!rateCheck.allowed) {
       if (rateCheck.reason === 'daily_limit') break;
-      if (rateCheck.reason === 'quiet_hours') {
+      if (rateCheck.reason === 'quiet_hours' || rateCheck.reason === 'outside_working_hours') {
         await humanDelay(60000, 120000); // Wait 1-2 min and recheck
         continue;
       }
@@ -200,18 +298,47 @@ async function processAutopilot(campaign: Campaign): Promise<void> {
       continue;
     }
 
-    // Send the DM
-    await sendLeadDM(lead, pendingIndex, campaign);
+    // Send the DM (with warmup if enabled)
+    await sendLeadDM(lead, campaign);
     dmsSinceBreak++;
 
-    // Delay before next DM
-    const delay = getDelayMs(campaign.rate_limits);
-    await new Promise(r => setTimeout(r, delay));
+    // Use pacing algorithm if enabled, otherwise fall back to fixed delay
+    if (campaign.pacing_enabled) {
+      const pacingDelay = await getNextSendDelay(campaign);
+      if (pacingDelay === -1) break; // Daily target reached
+      await new Promise(r => setTimeout(r, pacingDelay));
+    } else {
+      const delay = getDelayMs(campaign.rate_limits);
+      await new Promise(r => setTimeout(r, delay));
+    }
   }
 }
 
-async function sendLeadDM(lead: LeadWithMessage, index: number, campaign: Campaign): Promise<void> {
+async function sendLeadDM(lead: LeadWithMessage, campaign: Campaign): Promise<void> {
   if (!currentTabId) return;
+
+  // Engagement warmup: navigate to profile first for follow/like actions
+  if (campaign.warmup_follow || campaign.warmup_like_post || campaign.warmup_like_story) {
+    await chrome.tabs.update(currentTabId, {
+      url: `https://www.instagram.com/${lead.instagram_handle}/`,
+    });
+    await humanDelay(2000, 4000);
+
+    if (campaign.warmup_follow && currentTabId) {
+      await sendToContentScript(currentTabId, { type: 'FOLLOW_USER', username: lead.instagram_handle });
+      await humanDelay(2000, 5000);
+    }
+
+    if (campaign.warmup_like_post && currentTabId) {
+      await sendToContentScript(currentTabId, { type: 'LIKE_POST', username: lead.instagram_handle });
+      await humanDelay(2000, 5000);
+    }
+
+    if (campaign.warmup_like_story && currentTabId) {
+      await sendToContentScript(currentTabId, { type: 'LIKE_STORY', username: lead.instagram_handle });
+      await humanDelay(3000, 8000);
+    }
+  }
 
   // Navigate to DM page for this user
   await chrome.tabs.update(currentTabId, {
@@ -234,10 +361,15 @@ async function sendLeadDM(lead: LeadWithMessage, index: number, campaign: Campai
     message: lead.generated_message,
   }) as { success: boolean } | undefined;
 
+  // Update queue by handle (safe against index shifts from concurrent mutations)
   const queue = await getLeadQueue();
+  const queueIdx = queue.findIndex(l => l.instagram_handle === lead.instagram_handle);
+  if (queueIdx === -1) return;
+
   if (result?.success) {
-    queue[index].status = 'sent';
+    queue[queueIdx].status = 'sent';
     await incrementDmsToday();
+    await recordAction(true);
 
     // Sync to Konversly
     const conn = await getConnection();
@@ -254,50 +386,84 @@ async function sendLeadDM(lead: LeadWithMessage, index: number, campaign: Campai
           profile_photo_url: lead.profile_pic_url,
           channel_type: 'instagram',
           first_dm_content: lead.generated_message,
+          variant_name: lead.variant_name || null,
         });
       } catch (err) {
         console.error('Failed to sync contact', err);
       }
     }
   } else {
-    queue[index].status = 'failed';
+    queue[queueIdx].status = 'failed';
+    await recordAction(false);
+
+    // Auto-pause if too many consecutive failures (likely action blocked)
+    const health = await getAccountHealth();
+    if (health.consecutive_failures >= 3) {
+      console.warn(`[Konversly] ${health.consecutive_failures} consecutive failures — auto-pausing campaign (possible action block)`);
+      isRunning = false;
+    }
   }
 
   await setLeadQueue(queue);
 }
 
-async function approveLead(index: number): Promise<void> {
+async function approveLead(handle: string): Promise<void> {
   const queue = await getLeadQueue();
+  const lead = queue.find(l => l.instagram_handle === handle);
   const campaign = await getActiveCampaign();
-  if (!queue[index] || !campaign) return;
+  if (!lead || !campaign) return;
 
-  await sendLeadDM(queue[index], index, campaign);
+  await sendLeadDM(lead, campaign);
 
-  // Update approved count
-  campaign.dms_approved++;
-  await setActiveCampaign(campaign);
-  await api.updateCampaign(campaign.id, { dms_approved: campaign.dms_approved, dms_sent: campaign.dms_sent + 1 });
+  // Re-read campaign to get fresh counts, then increment
+  const freshCampaign = await getActiveCampaign();
+  if (freshCampaign) {
+    freshCampaign.dms_approved++;
+    freshCampaign.dms_sent++;
+    await setActiveCampaign(freshCampaign);
+    await api.updateCampaign(freshCampaign.id, { dms_approved: freshCampaign.dms_approved, dms_sent: freshCampaign.dms_sent });
+  }
 }
 
-async function skipLead(index: number): Promise<void> {
+async function skipLead(handle: string): Promise<void> {
   const queue = await getLeadQueue();
-  if (queue[index]) {
-    queue[index].status = 'skipped';
+  const idx = queue.findIndex(l => l.instagram_handle === handle);
+  if (idx !== -1) {
+    queue[idx].status = 'skipped';
     await setLeadQueue(queue);
   }
 }
 
-async function regenerateDM(index: number): Promise<void> {
+async function regenerateDM(handle: string): Promise<void> {
   const queue = await getLeadQueue();
+  const idx = queue.findIndex(l => l.instagram_handle === handle);
   const campaign = await getActiveCampaign();
   const conn = await getConnection();
-  if (!queue[index] || !campaign || !conn) return;
+  if (idx === -1 || !campaign || !conn) return;
 
   try {
-    const result = await api.generateDM(conn.account_id, campaign.id, queue[index], campaign.prompt_instruction);
-    queue[index].generated_message = result.message;
+    const variant = selectVariant(campaign.variants);
+    const promptInstruction = variant?.prompt_instruction || campaign.prompt_instruction;
+    const result = await api.generateDM(conn.account_id, campaign.id, queue[idx], promptInstruction);
+    queue[idx].generated_message = result.message;
+    queue[idx].variant_name = variant?.name;
     await setLeadQueue(queue);
   } catch (err) {
     console.error('Failed to regenerate DM', err);
   }
+}
+
+// Weighted random variant selection
+function selectVariant(variants: MessageVariant[]): MessageVariant | null {
+  if (!variants || variants.length === 0) return null;
+
+  const totalWeight = variants.reduce((sum, v) => sum + v.weight, 0);
+  if (totalWeight <= 0) return variants[0];
+
+  let roll = Math.random() * totalWeight;
+  for (const variant of variants) {
+    roll -= variant.weight;
+    if (roll <= 0) return variant;
+  }
+  return variants[variants.length - 1];
 }
