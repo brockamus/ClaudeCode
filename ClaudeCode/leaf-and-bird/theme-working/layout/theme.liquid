@@ -356,6 +356,7 @@
   {%- if template contains 'search' or template contains 'customers' or template contains 'cart' -%}
     <meta name="robots" content="noindex, follow">
   {%- endif -%}
+  <link rel="stylesheet" href="{{ 'lb-product-accordion.css' | asset_url }}">
   </head>
 
   {% comment %} Body with Attributes {% endcomment %}

@@ -1,0 +1,32 @@
+/* Leaf & Bird product body accordions */
+.lb-product-accordion {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 0.75rem 0;
+}
+.lb-product-accordion:last-of-type {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.lb-product-accordion > summary {
+  cursor: pointer;
+  padding: 0.25rem 0;
+  font-size: 0.95rem;
+  list-style: none;
+}
+.lb-product-accordion > summary::-webkit-details-marker { display: none; }
+.lb-product-accordion > summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.25rem;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.lb-product-accordion[open] > summary::before { content: "−"; }
+.lb-product-accordion__body {
+  padding: 0.5rem 0 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.lb-product-accordion__body ul,
+.lb-product-accordion__body ol {
+  margin: 0.25rem 0 0.25rem 1.25rem;
+}
