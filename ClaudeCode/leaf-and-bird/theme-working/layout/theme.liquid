@@ -350,6 +350,10 @@
     </style>
     {% endif %}
   {% render 'lb-seo-schema' %}
+
+  {%- if template contains 'search' or template contains 'customers' or template contains 'cart' -%}
+    <meta name="robots" content="noindex, follow">
+  {%- endif -%}
   </head>
 
   {% comment %} Body with Attributes {% endcomment %}
