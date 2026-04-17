@@ -34,6 +34,14 @@ URLS = [
     ("article", "https://leafandbird.com/blogs/journal/pregnancy-safe-skincare-guide"),
     ("article", "https://leafandbird.com/blogs/journal/is-korean-skincare-non-toxic"),
     ("article", "https://leafandbird.com/blogs/journal/is-pdrn-vegan"),
+    # Round 2 — snail-mucin alternative cluster (A) + PDRN vs X articles (C)
+    ("collection", "https://leafandbird.com/collections/vegan-snail-mucin-alternative"),
+    ("collection", "https://leafandbird.com/collections/korean-skincare-without-snail-mucin"),
+    ("collection", "https://leafandbird.com/collections/snail-mucin-vs-pdrn"),
+    ("article", "https://leafandbird.com/blogs/journal/snail-mucin-alternatives-for-vegans"),
+    ("article", "https://leafandbird.com/blogs/journal/snail-mucin-vs-pdrn-explained"),
+    ("article", "https://leafandbird.com/blogs/journal/pdrn-vs-hyaluronic-acid"),
+    ("article", "https://leafandbird.com/blogs/journal/pdrn-vs-peptides"),
 ]
 
 
@@ -79,7 +87,7 @@ def main():
     if any_problems:
         print("\n==> Some checks failed.")
         sys.exit(1)
-    print("\n==> All 24 URLs pass sanity checks.")
+    print(f"\n==> All {len(URLS)} URLs pass sanity checks.")
 
 
 if __name__ == "__main__":
