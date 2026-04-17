@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+
+# Temporary
+/tmp/
+*.tmp
+
+# Images (too large for git; they're on Shopify CDN after publishing)
+images/products/*
+images/collections/*
+images/articles/*
+!images/**/.gitkeep
+
+# Content drafts (optional — keep or remove per preference; keeping for now)
+# content/drafts/
+
+# Theme backup (large, optional to track)
+# theme-backup/
