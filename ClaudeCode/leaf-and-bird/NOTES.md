@@ -42,7 +42,12 @@ Refer to `content/theme-audit-report.md` for the full file:line mapping when doi
 
 ## IndexNow Key
 
-(Populated by Task T6.2 — do NOT commit the key to git.)
+- **Key:** `622c1510d06699c1165b1d76e351150a`
+- **Hosted at:** `https://leafandbird.com/622c1510d06699c1165b1d76e351150a.txt` (verified 2026-04-17)
+- **Shopify Page:** `indexnow-key` (id `171576295723`), template `templates/page.indexnow.liquid`
+- **Redirect:** `/622c1510d06699c1165b1d76e351150a.txt` → `/pages/indexnow-key`
+- **Re-ping:** use `scripts/indexnow_ping.py` with env var `INDEXNOW_KEY` (script not yet parameterized — key currently hardcoded in last T6.2 run block).
+- **NOTE:** key is in source control here (NOTES.md is in the repo). This is acceptable for IndexNow (key is meant to be discoverable at the `.txt` file publicly); it's a "confirmation key" not a secret credential.
 
 ## Plan Deviations (sanctioned)
 
