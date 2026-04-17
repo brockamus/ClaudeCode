@@ -48,3 +48,8 @@ Refer to `content/theme-audit-report.md` for the full file:line mapping when doi
 
 - **T0.6:** Plan specified REST `/metafield_definitions.json` — this endpoint does not exist in Shopify Admin API 2024-10 (metafield **definitions** are GraphQL-only via `metafieldDefinitionCreate`). Implementer correctly deviated to GraphQL. All 13 definitions verified live. Metafield **values** (`/metafields.json` and `/{owner}/{id}/metafields.json`) are still REST and work as-specified in later tasks.
 - **T1.4:** No-op. The Konversly theme does NOT emit its own Product schema (audit §2 returned zero hits). Live product pages have exactly 1 JSON-LD `@graph` block — from our own `lb-seo-schema.liquid` snippet — containing Organization + WebSite + BreadcrumbList + Product. No duplicate to remove. Task skipped.
+
+## Post-build Followups (defer unless urgent)
+
+- **Homepage has no og:image** — the Konversly homepage template doesn't assign `page_image`, so the `{%- if page_image -%}` block in `snippets/meta-tags.liquid` skips emission. Product and article pages render og:image correctly. Fix: in theme customizer, set an explicit social sharing image default; or add a theme-level fallback to meta-tags.liquid. Not blocking SEO; affects social shares of the homepage only.
+- **Homepage newsletter H1** — `class="inline-richtext h1 scroll-trigger"` section on the homepage renders as `<h1>`. After T1.5 demoted the logo, this is now the only homepage H1 by default. Acceptable for now; revisit if user wants to set a distinct hero headline as the primary H1.
