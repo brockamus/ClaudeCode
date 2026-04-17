@@ -1,0 +1,1667 @@
+{
+  "sections": {
+    "m1": {
+      "type": "shop-product-details",
+      "blocks": {
+        "a1": {
+          "type": "trustpilot_rating",
+          "settings": {
+            "rating_text": "Rated",
+            "rating_score": "4.8 Stars",
+            "text_color": "#000000",
+            "star_color": "#6faf8f",
+            "show_single_star_after_text": true,
+            "font_size_desktop": 14,
+            "font_size_tablet": 14,
+            "font_size_mobile": 12,
+            "star_size_desktop": 18,
+            "star_size_tablet": 18,
+            "star_size_mobile": 16,
+            "margin_top": 10,
+            "margin_bottom": 0,
+            "enable_background": false,
+            "background_color": "#f8f8f8",
+            "enable_background_gradient": false,
+            "background_gradient_start": "#ffffff",
+            "background_gradient_end": "#f0f0f0",
+            "background_gradient_direction": "to right",
+            "border_color": "#e0e0e0",
+            "border_width": 1,
+            "border_style": "none",
+            "border_radius": 4
+          }
+        },
+        "a2": {
+          "type": "title",
+          "settings": {
+            "use_custom_title": false,
+            "custom_title": "",
+            "font_size": 48,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "title_color": "#000000",
+            "line_height": 1.2
+          }
+        },
+        "a3": {
+          "type": "price",
+          "settings": {
+            "price_color": "#000000",
+            "compare_price_color": "#999999",
+            "sale_badge_bg_color": "#f5f5f5",
+            "sale_badge_text_color": "#8e8e8e",
+            "save_badge_enable_border": false,
+            "save_badge_border_color": "#ffffff",
+            "save_badge_border_width": 1,
+            "save_badge_border_style": "solid",
+            "price_font_size": 27,
+            "compare_price_font_size": 16,
+            "save_badge_font_size": 12,
+            "price_font_weight": "600",
+            "price_margin_top": 0,
+            "price_margin_bottom": 0,
+            "show_save_icon": true,
+            "save_icon_size_ratio": 0.9,
+            "save_icon_position_y": 0,
+            "save_badge_padding_v": 3,
+            "save_badge_padding_h": 6,
+            "custom_save_text": "",
+            "save_badge_display_type": "percentage",
+            "custom_save_amount": ""
+          }
+        },
+        "a4": {
+          "type": "limited_inventory",
+          "settings": {
+            "inventory_text": "Handcrafted in small batches — limited availability",
+            "bold_first_word": true,
+            "dot_color": "#6faf8f",
+            "text_color": "#4f6f5d",
+            "show_dot": true,
+            "font_size": 13,
+            "margin_top": 10,
+            "margin_bottom": 5
+          }
+        },
+        "a5": {
+          "type": "custom_text",
+          "settings": {
+            "text": "<p>Targeted rituals for specific skin needs. Premium, single-purpose formulas designed to deliver focused results.<\/p>",
+            "show_description": false,
+            "description": "",
+            "description_font_size": 12,
+            "description_spacing": 4,
+            "description_color": "#666666",
+            "description_opacity": 0.8,
+            "show_accent_text": false,
+            "accent_text": "",
+            "accent_text_position": "before",
+            "use_accent_gradient": false,
+            "accent_text_gradient": "",
+            "accent_text_color": "#667eea",
+            "accent_text_font_size": 16,
+            "accent_text_font_weight": "semibold",
+            "accent_text_spacing": 8,
+            "show_icon": false,
+            "custom_icon": "",
+            "icon_color": "#6faf8f",
+            "icon_size": 16,
+            "icon_spacing": 8,
+            "icon_alignment": "center",
+            "icon_margin_left": 0,
+            "icon_margin_right": 8,
+            "use_image_icon": false,
+            "show_after_icon": false,
+            "after_custom_icon": "",
+            "after_icon_color": "#333333",
+            "after_icon_size": 20,
+            "after_icon_alignment": "center",
+            "after_icon_margin_left": 8,
+            "after_icon_margin_right": 0,
+            "use_image_after_icon": false,
+            "text_align": "left",
+            "font_size": 14,
+            "text_color": "#2b2b2b",
+            "link_color": "#0066cc",
+            "margin_top": 8,
+            "margin_bottom": 16,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "use_container": false,
+            "container_bg_type": "color",
+            "container_bg": "#f7f7f5",
+            "container_bg_gradient": "",
+            "container_padding_top": 10,
+            "container_padding_bottom": 10,
+            "container_padding_h": 14,
+            "container_fit_content": false,
+            "border_radius": 4,
+            "show_divider": false,
+            "divider_color": "#e0e0e0",
+            "divider_height": 1,
+            "divider_style": "solid",
+            "divider_spacing": 12
+          }
+        },
+        "a6": {
+          "type": "benefits_grid",
+          "settings": {
+            "benefit_1_text": "Targeted Formula",
+            "benefit_1_use_image": false,
+            "benefit_1_use_custom_icon": false,
+            "benefit_1_custom_icon": "",
+            "benefit_2_text": "Natural Ingredients",
+            "benefit_2_use_image": false,
+            "benefit_2_use_custom_icon": false,
+            "benefit_2_custom_icon": "",
+            "benefit_3_text": "Made in USA",
+            "benefit_3_use_image": false,
+            "benefit_3_use_custom_icon": false,
+            "benefit_3_custom_icon": "",
+            "benefit_4_text": "Dermatologist Friendly",
+            "benefit_4_use_image": false,
+            "benefit_4_use_custom_icon": false,
+            "benefit_4_custom_icon": "",
+            "icon_bg_color": "#dde8e1",
+            "enable_icon_circle_stroke": false,
+            "icon_circle_stroke_color": "#6faf8f",
+            "icon_circle_stroke_width": 2,
+            "icon_stroke_color": "#4f6f5d",
+            "text_color": "#2b2b2b",
+            "font_size": 14,
+            "icon_size": 24,
+            "icon_container_size": 36,
+            "grid_gap": 15,
+            "container_margin_top": -15,
+            "container_margin_bottom": 15
+          }
+        },
+        "a7": {
+          "type": "variant_selector",
+          "settings": {
+            "show_variant_images": true,
+            "show_compare_price": true,
+            "show_variant_description": false,
+            "description_mode": "custom",
+            "desc_var_1": "Single",
+            "desc_var_2": "Bundle",
+            "desc_var_3": "Subscribe",
+            "show_badge_1": false,
+            "badge_text_1": "POPULAR",
+            "show_badge_2": true,
+            "badge_text_2": "BEST VALUE",
+            "show_badge_3": false,
+            "badge_text_3": "SAVE",
+            "badge_position": "top-right",
+            "badge_bg_color_1": "#2b2b2b",
+            "badge_text_color_1": "#ffffff",
+            "badge_bg_color_2": "#dde8e1",
+            "badge_text_color_2": "#2b2b2b",
+            "badge_bg_color_3": "#f59e0b",
+            "badge_text_color_3": "#ffffff",
+            "card_padding": 12,
+            "border_radius": 8,
+            "image_width_desktop": "auto",
+            "image_width_mobile": "auto",
+            "image_padding_style": "with_padding",
+            "card_background": "#ffffff",
+            "card_border_color": "#e5e7eb",
+            "card_hover_border_color": "#c2c2c2",
+            "selected_card_border_color": "#6faf8f",
+            "selected_card_background": "#ffffff",
+            "card_border_width": 1,
+            "selected_card_border_width": 1,
+            "badge_font_size": 11,
+            "badge_padding_y": 4,
+            "badge_padding_x": 13,
+            "badge_border_radius": 16,
+            "badge_offset_top": 0,
+            "badge_border_color": "#9effa9",
+            "badge_border_width": 0,
+            "save_badge_below_price": false,
+            "save_badge_bg_color": "#f2f2f2",
+            "save_badge_text_color": "#9c9c9c",
+            "save_badge_font_size": 10,
+            "save_badge_border_radius": 12,
+            "save_badge_padding_y": 3,
+            "save_badge_padding_x": 6,
+            "custom_save_badge_text_1": "",
+            "custom_save_badge_text_2": "",
+            "custom_save_badge_text_3": "",
+            "title_color": "#2b2b2b",
+            "title_font_size": 17,
+            "description_color": "#a8a8a8",
+            "description_font_size": 11,
+            "current_price_color": "#25282a",
+            "current_price_font_size": 16,
+            "original_price_color": "#c2c2c2",
+            "original_price_font_size": 11,
+            "margin_top": -14,
+            "margin_bottom": -10,
+            "enable_hover_effects": true,
+            "show_sold_out_overlay": true
+          }
+        },
+        "a8": {
+          "type": "add_to_cart",
+          "settings": {
+            "use_theme_colors": false,
+            "use_global_button_styling": false,
+            "show_fast_payment": false,
+            "button_behavior": "add_to_cart",
+            "button_text_override": "Add To Cart",
+            "show_price_in_button": true,
+            "button_icon": "none",
+            "custom_icon": "",
+            "icon_size": 20,
+            "button_border_color": "#6faf8f",
+            "buy_box_button_bg_color": "#6faf8f",
+            "button_text_color": "#ffffff",
+            "buy_box_button_hover_color": "#4f6f5d",
+            "price_color": "#ffffff",
+            "custom_button_padding_y": 12,
+            "custom_button_font_size": 14,
+            "button_border_radius": 10
+          }
+        },
+        "a9": {
+          "type": "guarantee_badges",
+          "settings": {
+            "use_theme_colors": false,
+            "badge_1_show": true,
+            "badge_1_text": "30-Day Money-Back Guarantee",
+            "badge_1_icon": "checkmark",
+            "badge_1_custom_icon": "",
+            "badge_2_show": true,
+            "badge_2_text": "Free Shipping on All Orders",
+            "badge_2_icon": "checkmark",
+            "badge_2_custom_icon": "",
+            "icon_color": "#6faf8f",
+            "text_color": "#000000",
+            "container_margin_top": -10,
+            "container_margin_right": 0,
+            "container_margin_bottom": 15,
+            "container_margin_left": 0,
+            "font_size": 11,
+            "icon_size": 12,
+            "gap": 6,
+            "align_center": true,
+            "mobile_stack": false
+          }
+        },
+        "b1": {
+          "type": "payment_icons",
+          "settings": {
+            "custom_payment_icons": "mastercard, american_express, apple_pay, google_pay, shopify_pay, visa, paypal",
+            "alignment": "center",
+            "icon_height": 24,
+            "icon_spacing": 6,
+            "margin_top": -6,
+            "margin_bottom": 0
+          }
+        },
+        "b2": {
+          "type": "custom_text",
+          "settings": {
+            "text": "<p><strong>30-Day Satisfaction Guarantee<\/strong><\/p>",
+            "show_description": true,
+            "description": "<p>We stand behind every product. If you're not completely satisfied within 30 days, we'll issue a full refund — no questions asked.<\/p>",
+            "description_font_size": 12,
+            "description_spacing": 4,
+            "description_color": "#666666",
+            "description_opacity": 0.8,
+            "show_accent_text": false,
+            "accent_text": "",
+            "accent_text_position": "before",
+            "use_accent_gradient": false,
+            "accent_text_gradient": "",
+            "accent_text_color": "#667eea",
+            "accent_text_font_size": 16,
+            "accent_text_font_weight": "semibold",
+            "accent_text_spacing": 8,
+            "show_icon": false,
+            "custom_icon": "",
+            "icon_color": "#6faf8f",
+            "icon_size": 16,
+            "icon_spacing": 8,
+            "icon_alignment": "center",
+            "icon_margin_left": 0,
+            "icon_margin_right": 8,
+            "use_image_icon": false,
+            "show_after_icon": false,
+            "after_custom_icon": "",
+            "after_icon_color": "#333333",
+            "after_icon_size": 20,
+            "after_icon_alignment": "center",
+            "after_icon_margin_left": 8,
+            "after_icon_margin_right": 0,
+            "use_image_after_icon": false,
+            "text_align": "left",
+            "font_size": 14,
+            "text_color": "#2b2b2b",
+            "link_color": "#0066cc",
+            "margin_top": 8,
+            "margin_bottom": 8,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "use_container": true,
+            "container_bg_type": "color",
+            "container_bg": "#f7f7f5",
+            "container_bg_gradient": "",
+            "container_padding_top": 10,
+            "container_padding_bottom": 10,
+            "container_padding_h": 14,
+            "container_fit_content": false,
+            "border_radius": 8,
+            "show_divider": false,
+            "divider_color": "#e0e0e0",
+            "divider_height": 1,
+            "divider_style": "solid",
+            "divider_spacing": 12
+          }
+        },
+        "b3": {
+          "type": "product_faq",
+          "settings": {
+            "use_theme_colors": false,
+            "items_limit": 10,
+            "image_size": 20,
+            "image_border_radius": 4,
+            "image_fit": "cover",
+            "text_size": 16,
+            "answer_text_size": 16,
+            "item_padding": 20,
+            "question_padding": 14,
+            "margin_top": 10,
+            "margin_bottom": 10,
+            "border_radius": 10,
+            "border_color": "#dde8e1",
+            "border_style": "bottom_only",
+            "question_color": "#000000",
+            "question_bg_color": "#ffffff",
+            "answer_color": "#000000",
+            "answer_bg_color": "#ffffff",
+            "accordion_mode": true,
+            "question_1": "How often should I use this?",
+            "use_product_description_for_question_1": false,
+            "answer_1": "<p>Usage varies by product — see the application instructions in the product description above. For best results, maintain a consistent routine.<\/p>",
+            "question_2": "Can I combine this with my existing routine?",
+            "answer_2": "<p>Yes. Our specialty products are designed to complement your existing skincare routine, not replace it. Use as directed for the best results.<\/p>",
+            "question_3": "Is this safe for sensitive skin?",
+            "answer_3": "<p>Our products are formulated without harsh chemicals, synthetic fragrances, or artificial preservatives. We recommend a patch test before first use if you have known sensitivities.<\/p>",
+            "question_4": "What makes this different from similar products?",
+            "answer_4": "<p>We source premium, natural ingredients and formulate without synthetic fillers or preservatives. Every product is made in the USA with full ingredient transparency.<\/p>",
+            "question_5": "Shipping & Returns",
+            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee — if you're not satisfied, contact us for a full refund.<\/p>",
+            "question_6": "",
+            "answer_6": "",
+            "question_7": "",
+            "answer_7": "",
+            "question_8": "",
+            "answer_8": "",
+            "question_9": "",
+            "answer_9": "",
+            "question_10": "",
+            "answer_10": ""
+          }
+        },
+        "b4": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Amanda K.",
+            "review_text": "The Dead Sea Mud mask is incredible. My pores look visibly smaller after just two uses and my skin feels so clean without being stripped. This is now a weekly ritual I actually look forward to.",
+            "rating": 5,
+            "use_theme_colors": false,
+            "background_color_start": "#ffffff",
+            "background_color_end": "#ffffff",
+            "text_color": "#000000",
+            "border_color": "#dcdcdc",
+            "border_radius": 8,
+            "border_style": "solid",
+            "show_shadow": false,
+            "star_color": "#6faf8f",
+            "reviewer_name_size": 16,
+            "review_text_size": 14,
+            "star_size": 16,
+            "avatar_size_desktop": 75,
+            "avatar_size_mobile": 65,
+            "margin_top": 15,
+            "margin_right": 0,
+            "margin_bottom": 15,
+            "margin_left": 0,
+            "verified_icon_color": "#6faf8f",
+            "review_text_color": "#666666",
+            "enable_carousel": false,
+            "show_navigation": true,
+            "pagination_dot_color": "#dddddd",
+            "pagination_dot_active_color": "#333333",
+            "show_active_shadow": true
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "main_image_border_radius": 0,
+        "thumbnail_border_radius": 0,
+        "current_product": "",
+        "section_bg_color": "#ffffff",
+        "blocks_spacing": 4,
+        "text_color": "#000000",
+        "accent_color": "#6faf8f",
+        "divider_color": "#eeeeee",
+        "show_product_info": true,
+        "show_product_gallery": true,
+        "show_product_variants": false,
+        "thumbnail_border_color": "#eeeeee",
+        "thumbnail_active_border_color": "#6faf8f",
+        "thumbnails_include_section_padding": false,
+        "dots_color": "#cccccc",
+        "enable_full_width_image": false,
+        "enable_mobile_full_width_image": false,
+        "image_aspect_ratio": "1:1",
+        "hide_thumbnails": false,
+        "dot_size": 8,
+        "dot_color": "#cccccc",
+        "dot_active_color": "#000000",
+        "show_desktop_arrows": true,
+        "desktop_arrow_background": "#ffffff",
+        "desktop_arrow_border": "#e0e0e0",
+        "desktop_arrow_icon": "#000000",
+        "desktop_arrow_hover_background": "#f5f5f5",
+        "desktop_arrow_hover_border": "#d0d0d0",
+        "arrow_border_radius": 50,
+        "arrow_opacity": 90,
+        "desktop_arrow_placement": "overlaid",
+        "show_mobile_arrows": false,
+        "mobile_arrow_placement": "overlaid",
+        "mobile_thumbnails_2x2_grid": true,
+        "hide_thumbnails_mobile": false,
+        "thumbnails_left_column_desktop": false,
+        "main_image_portrait_adaptation": false
+      }
+    },
+    "s2": {
+      "type": "scrolling-features-bar",
+      "blocks": {
+        "fi0a": {
+          "type": "feature_item",
+          "settings": {
+            "text": "FREE SHIPPING",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fi1b": {
+          "type": "feature_item",
+          "settings": {
+            "text": "PREMIUM INGREDIENTS",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fi2c": {
+          "type": "feature_item",
+          "settings": {
+            "text": "MADE IN USA",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "fi0a",
+        "fi1b",
+        "fi2c"
+      ],
+      "settings": {
+        "theme_color_mode": "custom",
+        "vertical_padding": 15,
+        "item_gap": 60,
+        "mobile_item_gap": 30,
+        "font_size": 33,
+        "mobile_font_size": 39,
+        "letter_spacing": 0.5,
+        "uppercase_text": true,
+        "override_bold": false,
+        "icon_size": 36,
+        "mobile_icon_size": 16,
+        "icon_spacing": 10,
+        "slider_direction": "left",
+        "scrolling_velocity": 15,
+        "pause_on_hover": true,
+        "background_color": "#25282a",
+        "text_color": "#f6f6f6",
+        "icon_color": "#d6dbe4",
+        "use_gradient_background": false,
+        "background_gradient": "",
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e5e5e5",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e5e5e5"
+      }
+    },
+    "s3": {
+      "type": "steps",
+      "blocks": {
+        "s0m": {
+          "type": "step",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/step_1_cleanse.jpg",
+            "image_background_color": "#f5f5f5",
+            "step_title": "Prepare",
+            "step_description": "Start with clean skin, ready for treatment",
+            "content_background_color": "#ffffff",
+            "card_background_color": ""
+          }
+        },
+        "s1n": {
+          "type": "step",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/step_2_apply.jpg",
+            "image_background_color": "#f5f5f5",
+            "step_title": "Apply",
+            "step_description": "Follow product-specific instructions above",
+            "content_background_color": "#ffffff",
+            "card_background_color": ""
+          }
+        },
+        "s2o": {
+          "type": "step",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/step_3_moisturize_8e2676ae-bad6-4fa2-b492-b094bf00aaee.jpg",
+            "image_background_color": "#f5f5f5",
+            "step_title": "Reveal",
+            "step_description": "Rinse or let absorb — enjoy visibly improved skin",
+            "content_background_color": "#ffffff",
+            "card_background_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "s0m",
+        "s1n",
+        "s2o"
+      ],
+      "settings": {
+        "use_theme_colors": true,
+        "background_type": "solid",
+        "section_background_color": "#ffffff",
+        "section_background_gradient": "",
+        "background_image_size": "cover",
+        "background_image_position": "center center",
+        "background_image_repeat": "no-repeat",
+        "background_overlay_enable": false,
+        "background_overlay_color": "#000000",
+        "background_overlay_opacity": 0.5,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_horizontal": 20,
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e0e0e0",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e0e0e0",
+        "title": "Simple Steps to",
+        "title_highlight": "Better Skin",
+        "subtitle": "",
+        "content_max_width": 1200,
+        "title_color": "#25282a",
+        "highlight_color": "#25282a",
+        "subtitle_color": "#25282a",
+        "title_size_desktop": 48,
+        "title_size_mobile": 40,
+        "subtitle_size_desktop": 18,
+        "subtitle_size_mobile": 14,
+        "step_title_size_desktop": 18,
+        "step_title_size_mobile": 21,
+        "step_description_size_desktop": 12,
+        "step_description_size_mobile": 13,
+        "number_size_desktop": 20,
+        "number_size_mobile": 20,
+        "number_circle_size_desktop": 35,
+        "number_circle_size_mobile": 35,
+        "title_margin_bottom": 16,
+        "title_margin_bottom_tablet": 12,
+        "title_margin_bottom_mobile": 10,
+        "subtitle_margin_top": 0,
+        "subtitle_margin_bottom": 30,
+        "step_content_padding_vertical_desktop": 16,
+        "step_content_padding_horizontal_desktop": 12,
+        "step_content_padding_vertical_mobile": 16,
+        "step_content_padding_horizontal_mobile": 12,
+        "step_item_margin_bottom": 10,
+        "steps_layout_gap": 10,
+        "step_item_max_width_750px": 290,
+        "show_step_numbers": true,
+        "show_step_images": true,
+        "enable_mobile_carousel": true,
+        "mobile_image_layout": "wide",
+        "mobile_card_layout": "vertical",
+        "use_global_nav_buttons": true,
+        "prev_button_bg": "#ffffff",
+        "prev_button_color": "#000000",
+        "prev_button_border": "#e0e0e0",
+        "next_button_bg": "#25282a",
+        "next_button_color": "#ffffff",
+        "next_button_border": "#25282a",
+        "label_color": "#ffffff",
+        "number_border_color": "#ffffff",
+        "number_border_width": 0,
+        "number_border_style": "solid",
+        "number_background_color": "#000000",
+        "number_border_radius": 50,
+        "number_font_weight": "400",
+        "step_title_color": "#000000",
+        "description_color": "#000000",
+        "default_card_background": "#ffffff",
+        "default_image_background": "#e6e6e6",
+        "default_card_container_background": "",
+        "card_border_radius": 12,
+        "disable_image_border_radius": true,
+        "card_border_color": "#e5e5e5",
+        "card_border_style": "solid",
+        "card_border_width": 1,
+        "override_global_accent": false,
+        "use_accent_gradient": false,
+        "accent_text_gradient": "",
+        "accent_font_family": "DM Serif Text",
+        "accent_font_style": "italic",
+        "accent_font_weight": "inherit",
+        "accent_text_margin_left": 0
+      }
+    },
+    "s4": {
+      "type": "product-benefits",
+      "blocks": {
+        "b0u": {
+          "type": "benefit",
+          "settings": {
+            "title": "Premium Natural Ingredients",
+            "description": "Carefully sourced for maximum effectiveness",
+            "benefit_color": "#25282a",
+            "benefit_description_color": "",
+            "icon_size": 24,
+            "use_image": true,
+            "icon_image": "shopify:\/\/shop_images\/beauty-treatment_fixed.svg",
+            "preset_icon": "sparkle",
+            "use_custom_icon": false,
+            "custom_icon_svg": ""
+          }
+        },
+        "b1v": {
+          "type": "benefit",
+          "settings": {
+            "title": "Ritual-Based Skincare",
+            "description": "Targeted treatments designed for weekly or nightly use",
+            "benefit_color": "#25282a",
+            "benefit_description_color": "",
+            "icon_size": 24,
+            "use_image": true,
+            "icon_image": "shopify:\/\/shop_images\/skincare_fixed.svg",
+            "preset_icon": "clock",
+            "use_custom_icon": false,
+            "custom_icon_svg": ""
+          }
+        },
+        "b2w": {
+          "type": "benefit",
+          "settings": {
+            "title": "Full Ingredient Transparency",
+            "description": "Every ingredient listed, every purpose explained",
+            "benefit_color": "#25282a",
+            "benefit_description_color": "",
+            "icon_size": 24,
+            "use_image": true,
+            "icon_image": "shopify:\/\/shop_images\/serum_fixed.svg",
+            "preset_icon": "heart",
+            "use_custom_icon": false,
+            "custom_icon_svg": ""
+          }
+        },
+        "b3x": {
+          "type": "benefit",
+          "settings": {
+            "title": "Results-Focused",
+            "description": "Formulated to deliver visible improvements",
+            "benefit_color": "#25282a",
+            "benefit_description_color": "",
+            "icon_size": 24,
+            "use_image": true,
+            "icon_image": "shopify:\/\/shop_images\/cream_fixed.svg",
+            "preset_icon": "check",
+            "use_custom_icon": false,
+            "custom_icon_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "b0u",
+        "b1v",
+        "b2w",
+        "b3x"
+      ],
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 25,
+        "padding_right": 25,
+        "image_position_desktop": "right",
+        "heading_size_mobile": 40,
+        "heading_size_desktop": 48,
+        "subtitle_size_mobile": 16,
+        "subtitle_size_desktop": 20,
+        "benefit_title_size_mobile": 18,
+        "benefit_title_size_desktop": 18,
+        "benefit_description_size_mobile": 13,
+        "benefit_description_size_desktop": 16,
+        "accent_color": "#6faf8f",
+        "use_theme_colors": false,
+        "title_below_icon": false,
+        "override_global_accent": false,
+        "accent_font_family": "inherit",
+        "accent_font_style": "italic",
+        "accent_font_weight": "inherit",
+        "use_accent_gradient": false,
+        "accent_text_gradient": "",
+        "accent_text_margin_left": 0,
+        "list_background": "linear-gradient(140deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.28) 97%)",
+        "list_border_radius": 8,
+        "benefits_list_max_width": 450,
+        "border_color": "#ffffff",
+        "heading_accent": "Targeted",
+        "heading_regular": "Skin Rituals",
+        "subtitle": "",
+        "show_image": true,
+        "media_type": "image",
+        "feature_image": "shopify:\/\/shop_images\/lifestyle_mud_mask.jpg",
+        "image_alt": "Leaf & Bird specialty skincare treatment",
+        "video_autoplay": true,
+        "video_muted": true,
+        "video_loop": true,
+        "video_controls": false,
+        "mobile_image_full_width": false,
+        "hide_media_on_desktop": false,
+        "image_column_full_height": false,
+        "image_margin_top": 0,
+        "image_margin_bottom": 20,
+        "heading_color": "#25282a",
+        "subtitle_color": "#25282a",
+        "description_color": "#25282a",
+        "section_background": "linear-gradient(142deg, rgba(221, 232, 225, 1), rgba(247, 247, 245, 1) 100%)",
+        "use_background_image": false,
+        "background_image_size": "cover",
+        "background_image_position_mode": "preset",
+        "background_image_position": "center center",
+        "background_focal_point_x": 50,
+        "background_focal_point_y": 50,
+        "background_image_attachment": "scroll",
+        "background_overlay_enable": false,
+        "background_overlay_color": "#0000004d",
+        "background_overlay_opacity": 30,
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e5e5e5",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e5e5e5"
+      }
+    },
+    "s5": {
+      "type": "roadmap",
+      "blocks": {
+        "r0": {
+          "type": "roadmap_step",
+          "settings": {
+            "badge_text": "First Use",
+            "title": "Instant Difference",
+            "description": "<p>Immediate visible difference — skin feels cleaner, softer, refreshed<\/p>",
+            "custom_icon": ""
+          }
+        },
+        "r1": {
+          "type": "roadmap_step",
+          "settings": {
+            "badge_text": "Week 1",
+            "title": "Smoother Texture",
+            "description": "<p>Skin texture noticeably smoother, pores appear smaller<\/p>",
+            "custom_icon": ""
+          }
+        },
+        "r2": {
+          "type": "roadmap_step",
+          "settings": {
+            "badge_text": "Week 3",
+            "title": "Consistent Improvement",
+            "description": "<p>Consistent improvement in tone, hydration, and overall clarity<\/p>",
+            "custom_icon": ""
+          }
+        },
+        "r3": {
+          "type": "roadmap_step",
+          "settings": {
+            "badge_text": "Month 1",
+            "title": "Transformed Skin",
+            "description": "<p>Transformed skin — visibly healthier, more radiant complexion<\/p>",
+            "custom_icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "contained_section": false,
+        "max_container_width": 1400,
+        "max_section_width": 1400,
+        "enable_background_image": false,
+        "background_size_desktop": "cover",
+        "background_position_desktop": "center center",
+        "background_size_mobile": "cover",
+        "background_position_mobile": "center center",
+        "enable_background_overlay": false,
+        "background_overlay_color": "#000000",
+        "background_overlay_opacity": 50,
+        "heading": "Your Path to",
+        "subheading": "",
+        "heading_size": 48,
+        "heading_line_height": 1.3,
+        "heading_size_mobile": 40,
+        "heading_line_height_mobile": 1.3,
+        "subheading_size": 14,
+        "subheading_size_mobile": 13,
+        "step_title_size": 20,
+        "step_title_size_mobile": 21,
+        "step_description_size": 13,
+        "step_description_size_mobile": 13,
+        "accent_text": "Transformed Skin",
+        "override_global_accent": false,
+        "use_accent_gradient": false,
+        "accent_text_gradient": "",
+        "accent_color": "#6faf8f",
+        "accent_font_family": "DM Serif Text",
+        "accent_font_style": "italic",
+        "accent_font_weight": 700,
+        "desktop_image": "shopify:\/\/shop_images\/brand_ingredients.jpg",
+        "image_position": "right",
+        "image_column_width": 50,
+        "image_column_full_height": false,
+        "full_height_min_height": 600,
+        "mobile_image_above_timeline": false,
+        "text_column_width": 50,
+        "image_border_radius": 8,
+        "timeline_width": 2,
+        "timeline_border_radius": 2,
+        "timeline_max_width": 100,
+        "show_badges": true,
+        "desktop_badge_font_size": 12,
+        "badge_font_size_mobile": 11,
+        "badge_border_radius": 50,
+        "badge_border_width": 1,
+        "badge_border_style": "solid",
+        "badge_border_color": "#25282a",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "roadmap_item_spacing_desktop": 40,
+        "roadmap_item_spacing_mobile": 30,
+        "enable_spacing": true,
+        "section_spacing_top_desktop": 72,
+        "section_spacing_bottom_desktop": 72,
+        "section_spacing_left_desktop": 80,
+        "section_spacing_right_desktop": 80,
+        "section_spacing_top_mobile": 36,
+        "section_spacing_bottom_mobile": 36,
+        "section_spacing_left_mobile": 24,
+        "section_spacing_right_mobile": 24,
+        "enable_placeholder_space_desktop": false,
+        "placeholder_min_height_desktop": 600,
+        "enable_placeholder_space_mobile": false,
+        "placeholder_height_mobile": 300,
+        "section_background": "linear-gradient(199deg, rgba(255, 255, 255, 0.62) 5%, rgba(246, 248, 249, 1) 100%)",
+        "heading_color": "#25282a",
+        "subheading_color": "#25282a",
+        "step_title_color": "#25282a",
+        "step_description_color": "#25282a",
+        "timeline_color": "#efefef",
+        "active_timeline_color": "#6faf8f",
+        "circle_color": "#efefef",
+        "circle_icon_color": "#25282a",
+        "badge_background": "#25282a",
+        "badge_text_color": "#ffffff",
+        "show_button": false,
+        "button_text": "GET STARTED",
+        "button_action_type": "scroll_top",
+        "redirect_product": "",
+        "custom_url": "",
+        "use_global_button_style": true,
+        "button_border_radius": 8,
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "button_hover_background_color": "#ffffff",
+        "button_hover_text_color": "#000000"
+      }
+    },
+    "s6": {
+      "type": "statistics-column",
+      "blocks": {
+        "s0": {
+          "type": "statistic",
+          "settings": {
+            "number": "100%",
+            "title": "Natural Ingredients",
+            "description": ""
+          }
+        },
+        "s1": {
+          "type": "statistic",
+          "settings": {
+            "number": "0",
+            "title": "Synthetic Fillers",
+            "description": ""
+          }
+        },
+        "s2": {
+          "type": "statistic",
+          "settings": {
+            "number": "30 Days",
+            "title": "Money-Back Guarantee",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "override_theme_section_background": false,
+        "heading": "Quality You Can",
+        "heading_accent": "Trust",
+        "subtitle": "",
+        "heading_vertical_alignment": "center",
+        "heading_color": "#25282a",
+        "heading_size_mobile": 40,
+        "heading_size_desktop": 48,
+        "heading_text_alignment": "center",
+        "subtitle_color": "#25282a",
+        "subtitle_size_mobile": 15,
+        "subtitle_size_desktop": 15,
+        "override_global_accent": false,
+        "accent_color": "#25282a",
+        "use_accent_gradient": false,
+        "accent_text_gradient": "",
+        "accent_text_margin_left": 0,
+        "accent_font_family": "DM Serif Text",
+        "accent_font_style": "italic",
+        "accent_font_weight": "inherit",
+        "number_color": "#6faf8f",
+        "number_gradient": "linear-gradient(135deg, rgba(111,175,143,1), rgba(79,111,93,1) 100%)",
+        "number_size_mobile": 36,
+        "number_size_desktop": 48,
+        "stat_text_vertical_alignment": "flex-start",
+        "move_text_below_number": false,
+        "title_color": "#2b2b2b",
+        "title_size_mobile": 18,
+        "title_size_desktop": 22,
+        "description_color": "#666666",
+        "description_size_mobile": 14,
+        "description_size_desktop": 16,
+        "enable_two_column_layout": true,
+        "center_text_vertically": true,
+        "enable_counter_animation": true,
+        "contain_section": false,
+        "section_max_width": 1200,
+        "container_padding_top": 40,
+        "container_padding_right": 40,
+        "container_padding_bottom": 40,
+        "container_padding_left": 40,
+        "container_padding_top_mobile": 20,
+        "container_padding_right_mobile": 20,
+        "container_padding_bottom_mobile": 20,
+        "container_padding_left_mobile": 20,
+        "container_border_radius": 12,
+        "container_background": "linear-gradient(180deg, rgba(255,255,255,1), rgba(248,248,248,1) 100%)",
+        "enable_border": false,
+        "border_width": 1,
+        "border_style": "solid",
+        "border_color": "#e5e7eb",
+        "enable_shadow": false,
+        "section_padding_top_desktop": 0,
+        "section_padding_bottom_desktop": 0,
+        "section_padding_left_desktop": 15,
+        "section_padding_right_desktop": 15,
+        "section_padding_top_mobile": 0,
+        "section_padding_bottom_mobile": 0,
+        "section_padding_left_mobile": 15,
+        "section_padding_right_mobile": 15,
+        "image_border_radius": 8,
+        "image_position_desktop": "right",
+        "image_position_mobile": "above",
+        "image_column_width": 50,
+        "show_disclaimer": false,
+        "disclaimer_text": "",
+        "disclaimer_color": "#666666",
+        "disclaimer_icon_color": "#007acc",
+        "disclaimer_background_color": "#f8f8f8",
+        "disclaimer_size_mobile": 14,
+        "disclaimer_size_desktop": 16,
+        "disclaimer_line_height": 1.4,
+        "disclaimer_padding_top": 16,
+        "disclaimer_padding_bottom": 16,
+        "disclaimer_padding_left": 16,
+        "disclaimer_padding_right": 16,
+        "disclaimer_border_radius": 8,
+        "disclaimer_border_style": "none",
+        "disclaimer_border_width": 1,
+        "disclaimer_border_color": "#e0e0e0",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_color": "#e0e0e0",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_color": "#e0e0e0",
+        "section_background": "linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,1) 100%)",
+        "divider_color": "#e0e0e0"
+      }
+    },
+    "s7": {
+      "type": "testimonials",
+      "blocks": {
+        "t0": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "Weekly Must-Have",
+            "content": "<p>The Dead Sea Mud mask has become my Sunday night ritual. My skin looks refreshed and my pores are visibly smaller. Can't imagine my routine without it now.<\/p>",
+            "author_name": "Natalie S.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": ""
+          }
+        },
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "Best Sleep Cream Ever",
+            "content": "<p>The Sleep Plus Collagen Cream is amazing. I wake up with plumper, more hydrated skin every morning. It's like getting a facial while you sleep.<\/p>",
+            "author_name": "Rebecca H.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": ""
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "Incredible Results",
+            "content": "<p>I was hesitant to try specialty products but I'm so glad I did. The results speak for themselves — my skin has never looked this good.<\/p>",
+            "author_name": "Karen D.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": ""
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "section_background": "linear-gradient(180deg, rgba(221,232,225,1), rgba(247,247,245,1) 98%)",
+        "heading_color": "#25282a",
+        "subtitle_color": "#25282a",
+        "text_color": "#25282a",
+        "padding_top": 65,
+        "padding_bottom": 65,
+        "heading": "What Our Customers",
+        "heading_size": 40,
+        "heading_size_mobile": 40,
+        "heading_accent": "Are Saying...",
+        "subtitle": "",
+        "subtitle_size": 18,
+        "override_global_accent": false,
+        "accent_color": "#6faf8f",
+        "use_accent_gradient": false,
+        "accent_text_gradient": "",
+        "accent_font_family": "inherit",
+        "accent_font_style": "italic",
+        "accent_font_weight": "300",
+        "accent_text_margin_left": 0,
+        "use_trustpilot_stars": true,
+        "trustpilot_star_color": "#6faf8f",
+        "trustpilot_star_empty_color": "#e9e9e9",
+        "testimonial_title_size": 18,
+        "testimonial_title_size_mobile": 20,
+        "testimonial_content_size": 13,
+        "testimonial_content_size_mobile": 12,
+        "author_name_size": 13,
+        "author_avatar_text_size": 17,
+        "verified_badge_size": 13,
+        "verified_badge_size_mobile": 13,
+        "verified_icon_size": 14,
+        "purchase_date_size": 12,
+        "purchase_date_size_mobile": 12,
+        "card_rating_size": 16,
+        "show_rating": true,
+        "enable_mask_fade": false,
+        "rating_summary_text": "<p>Excellent <strong>4.8\/5 based<\/strong> on reviews<\/p>",
+        "rating_value": 4.8,
+        "rating_max": 5,
+        "summary_star_color": "#6faf8f",
+        "summary_star_empty_color": "#707070",
+        "rating_summary_text_color": "#25282a",
+        "star_color": "#6faf8f",
+        "star_empty_color": "#e9e9e9",
+        "rating_summary_bg_color": "#dde8e1",
+        "rating_summary_background": "linear-gradient(45deg, rgba(255,255,255,1), rgba(255,255,255,0.62) 95%)",
+        "enable_rating_summary_border": true,
+        "rating_summary_border_width": 1,
+        "rating_summary_border_style": "solid",
+        "rating_summary_border_color": "#ffffff",
+        "rating_summary_border_radius": 4,
+        "card_background": "#ffffff9e",
+        "card_text_color": "#181b1d",
+        "testimonial_title_color": "#25282a",
+        "card_border_radius": 4,
+        "card_gap": 20,
+        "card_width_mobile": 85,
+        "card_width_desktop": 320,
+        "enable_card_border": true,
+        "card_border_width": 1,
+        "card_border_style": "solid",
+        "card_border_color": "#ffffff",
+        "avatar_color": "#25282a",
+        "avatar_text_color": "#f6f8f9",
+        "verified_color": "#181b1d",
+        "verified_text": "Verified customer",
+        "author_info_bg_color": "#f8f8f8",
+        "enable_author_info_border": true,
+        "author_info_border_width": 1,
+        "author_info_border_style": "solid",
+        "author_info_border_color": "#ececec",
+        "author_info_border_radius": 4,
+        "purchase_date_prefix": "Purchased on",
+        "purchase_date_color": "#181b1d",
+        "purchase_date_icon_color": "#181b1d",
+        "show_navigation": true,
+        "show_dots": false,
+        "nav_button_bg": "#181b1d",
+        "nav_button_color": "#fdffff",
+        "nav_button_border": "#e5e5e5",
+        "nav_button_radius": 25,
+        "dot_color": "#181b1d",
+        "anchor_id": ""
+      }
+    },
+    "s8": {
+      "type": "store-faq",
+      "blocks": {
+        "f0": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How are specialty products different from daily skincare?",
+            "answer": "<p>Specialty products are targeted treatments designed for specific concerns. They complement your daily routine with concentrated formulas for deeper, more focused results.<\/p>"
+          }
+        },
+        "f1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use the Dead Sea Mud mask weekly?",
+            "answer": "<p>Yes, we recommend using the Dead Sea Mud mask 1-2 times per week for optimal results. Consistent use delivers the best improvements in pore appearance and skin clarity.<\/p>"
+          }
+        },
+        "f2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the Sleep Plus Collagen Cream suitable for nightly use?",
+            "answer": "<p>Absolutely. The Sleep Plus Collagen Cream is formulated specifically for overnight use. Apply before bed and let the collagen-boosting ingredients work while you sleep.<\/p>"
+          }
+        },
+        "f3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer bundles or subscription discounts?",
+            "answer": "<p>Yes! Check our product variants for bundle options that save you money. We also offer subscription options on select products for additional savings.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f0",
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "heading": "Frequently Asked Questions",
+        "subtitle": "",
+        "heading_color": "#25282a",
+        "subtitle_color": "#111111",
+        "section_padding": 60,
+        "container_padding_mobile": 15,
+        "container_padding_desktop": 15,
+        "section_bg_color": "#ffffff",
+        "border_radius": 10,
+        "border_color": "#e6e6e6",
+        "divider_color": "#e5e5e5",
+        "border_style": "full",
+        "question_color": "#25282a",
+        "question_bg_color": "#ffffff",
+        "answer_color": "#25282a",
+        "answer_bg_color": "#ffffff",
+        "accordion_mode": true,
+        "image_border_radius": 8,
+        "image_full_height": false,
+        "full_height_min_height": 600,
+        "use_background_image": false,
+        "background_image_size": "cover",
+        "background_image_position": "center center",
+        "background_image_attachment": "scroll",
+        "background_overlay_enable": false,
+        "background_overlay_color": "#0000004d",
+        "background_overlay_opacity": 30,
+        "center_when_no_image": true,
+        "center_max_width": 1000,
+        "two_column_desktop": true,
+        "column_gap": 10,
+        "faq_item_spacing": 0,
+        "individual_item_borders": true,
+        "question_padding_top": 20,
+        "question_padding_bottom": 15,
+        "question_padding_left": 10,
+        "question_padding_right": 10,
+        "answer_padding_top": 17,
+        "answer_padding_bottom": 15,
+        "answer_padding_left": 10,
+        "answer_padding_right": 10,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 32,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "question_font_size": 16,
+        "question_font_size_mobile": 17,
+        "answer_font_size": 14,
+        "answer_font_size_mobile": 17,
+        "enable_section_top_border": false,
+        "section_top_border_width": 1,
+        "section_top_border_style": "solid",
+        "section_top_border_color": "#e5e5e5",
+        "enable_section_bottom_border": false,
+        "section_bottom_border_width": 1,
+        "section_bottom_border_style": "solid",
+        "section_bottom_border_color": "#e5e5e5"
+      }
+    },
+    "s9": {
+      "type": "sticky-add-to-cart",
+      "settings": {
+        "satc_toggle_variant": false,
+        "select_button_behavior": "scrollup",
+        "button_text": "ADD TO CART",
+        "delivery_days": 5,
+        "title_color": "#121212",
+        "title_desktop_font_size": 16,
+        "title_letter_spacing": 0,
+        "rating_text": "Excellent 4.8 Stars",
+        "use_theme_colors": false,
+        "use_global_button_styling": false,
+        "custom_button_padding_y": 27,
+        "custom_button_font_size": 11,
+        "button_bg_color": "#6faf8f",
+        "button_hover_color": "#4f6f5d",
+        "button_text_color": "#ffffff",
+        "star_color": "#6faf8f",
+        "background_color": "#ffffff",
+        "border_radius": 6,
+        "transparent_background": true,
+        "z_index": 9900,
+        "rating_text_color": "#2b2b2b",
+        "rating_text_font_weight": "var(--font-weight-regular)",
+        "rating_text_desktop_font_size": 14,
+        "rating_text_letter_spacing": 0,
+        "delivery_text_color": "#2b2b2b",
+        "delivery_text_font_weight": "var(--font-weight-bold)",
+        "delivery_text_desktop_font_size": 14,
+        "delivery_text_mobile_font_size": 12,
+        "delivery_text_letter_spacing": 0,
+        "delivery_date_display_format": "weekday_month_day",
+        "turn_off_delivery_date": true,
+        "delivery_text_prefix": "Get It By"
+      }
+    },
+    "four_images_new": {
+      "type": "4-images",
+      "blocks": {
+        "img4_0": {
+          "type": "item",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/4img_clean_ingredients.jpg",
+            "step_title": "Clean Ingredients",
+            "step_description": "Every product is formulated with ingredients you can pronounce — sourced responsibly, full transparency."
+          }
+        },
+        "img4_1": {
+          "type": "item",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/4img_cruelty_free.jpg",
+            "step_title": "Cruelty-Free",
+            "step_description": "Never tested on animals. We believe in ethical beauty without compromise."
+          }
+        },
+        "img4_2": {
+          "type": "item",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/4img_made_usa.jpg",
+            "step_title": "Made in USA",
+            "step_description": "All Leaf & Bird products are formulated and manufactured in the United States."
+          }
+        },
+        "img4_3": {
+          "type": "item",
+          "settings": {
+            "step_image": "shopify:\/\/shop_images\/4img_no_synthetics.jpg",
+            "step_title": "No Synthetics",
+            "step_description": "Zero artificial preservatives, synthetic fragrances, or chemical fillers."
+          }
+        }
+      },
+      "block_order": [
+        "img4_0",
+        "img4_1",
+        "img4_2",
+        "img4_3"
+      ],
+      "settings": {
+        "subtitle": "Clean, effective skincare with nothing to hide.",
+        "accent_color": "#6FAF8F",
+        "image_border_radius": 4,
+        "image_focal_point": "center"
+      }
+    },
+    "before_after_new": {
+      "type": "before-after-comparison",
+      "settings": {
+        "title": "See the",
+        "title_accent": "Transformation.",
+        "accent_color": "#6FAF8F",
+        "instructions_text": "Drag the slider to see the difference",
+        "before_image": "shopify:\/\/shop_images\/before_after_skin.jpg",
+        "after_image": "shopify:\/\/shop_images\/before_after_pores.jpg",
+        "before_label": "Before",
+        "after_label": "After",
+        "image_aspect_ratio": "4\/3",
+        "image_min_height": 250,
+        "image_max_height": 500
+      }
+    },
+    "reviews_carousel_new": {
+      "type": "customer-reviews-carousel",
+      "blocks": {
+        "rev_0": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "I replaced every moisturizer in my bathroom with the tallow cream. My skin has never been this soft and hydrated — just five clean ingredients.",
+            "reviewer_name": "Sarah M."
+          }
+        },
+        "rev_1": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "The Vitamin C serum changed my skin. Dark spots from years of sun damage are finally fading and I have this glow I haven't seen in years.",
+            "reviewer_name": "Jessica R."
+          }
+        },
+        "rev_2": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "The Dead Sea Mud mask is incredible. My pores look visibly smaller after just two uses. This is now a weekly ritual I look forward to.",
+            "reviewer_name": "Amanda K."
+          }
+        },
+        "rev_3": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "I was skeptical about tallow skincare but this completely converted me. So gentle on my sensitive skin and the lavender scent is heavenly.",
+            "reviewer_name": "Rachel T."
+          }
+        },
+        "rev_4": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "The PDRN serum is lightweight and absorbs instantly. After a month my skin tone is noticeably more even. Clean ingredients that actually work.",
+            "reviewer_name": "Nicole P."
+          }
+        },
+        "rev_5": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "The Sleep Plus Collagen cream is my nighttime essential. I wake up with plumper, softer skin every morning. The lavender helps me relax too.",
+            "reviewer_name": "Karen W."
+          }
+        },
+        "rev_6": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "I love that I can read every single ingredient on the label and know exactly what I'm putting on my face. This is real clean beauty.",
+            "reviewer_name": "Lisa M."
+          }
+        },
+        "rev_7": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "Bought the Vitamin Glow serum and the tallow cream together. My skin has never looked better. Getting compliments from people I haven't seen in months.",
+            "reviewer_name": "Michelle D."
+          }
+        },
+        "rev_8": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "The Peptide Eye Gel-Cream actually reduced my under-eye puffiness. I can see the difference in photos. Lightweight and sits great under makeup.",
+            "reviewer_name": "Jennifer H."
+          }
+        },
+        "rev_9": {
+          "type": "review",
+          "settings": {
+            "review_image": "",
+            "image_position": "center center",
+            "wrap_image": false,
+            "rating": 5,
+            "review_text": "Three products, all incredible. The grass-fed tallow is a game changer — my dry winter skin is finally healed. Will be a customer for life.",
+            "reviewer_name": "Stephanie A."
+          }
+        }
+      },
+      "block_order": [
+        "rev_0",
+        "rev_1",
+        "rev_2",
+        "rev_3",
+        "rev_4",
+        "rev_5",
+        "rev_6",
+        "rev_7",
+        "rev_8",
+        "rev_9"
+      ],
+      "settings": {
+        "accent_color": "#6FAF8F",
+        "review_text_color": "#666666",
+        "verified_icon_color": "#6FAF8F"
+      }
+    },
+    "image_with_text_new": {
+      "type": "image-with-text",
+      "blocks": {
+        "iwt_h": {
+          "type": "heading",
+          "settings": {}
+        },
+        "iwt_d": {
+          "type": "divider",
+          "settings": {}
+        },
+        "iwt_p": {
+          "type": "paragraph",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "iwt_h",
+        "iwt_d",
+        "iwt_p"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_position_mobile": "top",
+        "heading": "Premium Ingredients,",
+        "heading_accent": "Purposeful Formulas",
+        "image": "shopify:\/\/shop_images\/brand_ingredients.jpg",
+        "background_color": "#ffffff",
+        "heading_color": "#2B2B2B",
+        "accent_color": "#6FAF8F",
+        "text_color": "#2B2B2B",
+        "image_max_width": 800,
+        "image_border_radius": 8,
+        "mobile_image_full_width": true
+      }
+    },
+    "four_benefits_new": {
+      "type": "4-benefits",
+      "blocks": {
+        "ben4_0": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/beauty-treatment_fixed.svg"
+          }
+        },
+        "ben4_1": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/skincare_fixed.svg"
+          }
+        },
+        "ben4_2": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/cream_fixed.svg"
+          }
+        },
+        "ben4_3": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/serum_fixed.svg"
+          }
+        }
+      },
+      "block_order": [
+        "ben4_0",
+        "ben4_1",
+        "ben4_2",
+        "ben4_3"
+      ],
+      "settings": {
+        "heading_accent": "Leaf & Bird",
+        "subtitle": "Premium natural treatments designed for real results.",
+        "background_image_size": "cover",
+        "background_image_position": "center center",
+        "background_image_attachment": "scroll",
+        "heading_color": "#2B2B2B",
+        "section_image": "shopify:\/\/shop_images\/lifestyle_mud_mask.jpg",
+        "image_display_mode": "standard",
+        "mobile_image_position": "after_header",
+        "content_max_width_no_image": 600
+      }
+    }
+  },
+  "order": [
+    "m1",
+    "s2",
+    "four_benefits_new",
+    "s3",
+    "s4",
+    "four_images_new",
+    "s5",
+    "before_after_new",
+    "s6",
+    "reviews_carousel_new",
+    "image_with_text_new",
+    "s7",
+    "s8",
+    "s9"
+  ]
+}

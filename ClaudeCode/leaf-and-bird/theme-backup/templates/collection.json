@@ -1,0 +1,530 @@
+{
+  "sections": {
+    "collection_banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true
+      }
+    },
+    "trust_bar": {
+      "type": "scrolling-features-bar",
+      "blocks": {
+        "f1": {
+          "type": "feature_item",
+          "settings": {
+            "text": "FREE SHIPPING ON ALL ORDERS",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "f2": {
+          "type": "feature_item",
+          "settings": {
+            "text": "100% CLEAN INGREDIENTS",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "f3": {
+          "type": "feature_item",
+          "settings": {
+            "text": "MADE IN THE USA",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "f4": {
+          "type": "feature_item",
+          "settings": {
+            "text": "30-DAY MONEY-BACK GUARANTEE",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "theme_color_mode": "theme_default",
+        "vertical_padding": 15,
+        "item_gap": 60,
+        "mobile_item_gap": 30,
+        "font_size": 13,
+        "mobile_font_size": 12,
+        "letter_spacing": 0.5,
+        "uppercase_text": true,
+        "override_bold": false,
+        "icon_size": 20,
+        "mobile_icon_size": 16,
+        "icon_spacing": 10,
+        "slider_direction": "left",
+        "scrolling_velocity": 15,
+        "pause_on_hover": true,
+        "background_color": "#2b2b2b",
+        "text_color": "#f6f6f6",
+        "icon_color": "#000000",
+        "use_gradient_background": false,
+        "background_gradient": "",
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e5e5e5",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e5e5e5"
+      }
+    },
+    "product_grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "seo_content": {
+      "type": "rich-text",
+      "blocks": {
+        "rt_title": {
+          "type": "title",
+          "settings": {
+            "title": "About This Collection",
+            "accent_text": ""
+          }
+        },
+        "rt_subtitle": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "<p>Every Leaf & Bird product is formulated with full ingredient transparency — real ingredients, real results, no compromises. Made in the USA without synthetic fragrances, artificial preservatives, or harsh chemicals.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "rt_title",
+        "rt_subtitle"
+      ],
+      "settings": {
+        "use_theme_colors": true,
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "padding_horizontal": 20,
+        "title_font_size": 36,
+        "title_font_size_mobile": 28,
+        "title_line_height": 1.3,
+        "title_margin_bottom": 20,
+        "title_color": "#000000",
+        "use_accent_gradient": false,
+        "accent_color": "#6faf8f",
+        "accent_gradient_start": "#6faf8f",
+        "accent_gradient_end": "#ff6b35",
+        "accent_gradient_angle": 45,
+        "subtitle_font_size": 18,
+        "subtitle_font_size_mobile": 16,
+        "subtitle_line_height": 1.6,
+        "subtitle_margin_bottom": 32,
+        "subtitle_max_width": 700,
+        "subtitle_color": "#666666",
+        "use_global_button_styling": true,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "button_padding_vertical": 14,
+        "button_padding_horizontal": 28,
+        "button_border_radius": 4,
+        "button_border_width": 0,
+        "button_margin_top": 24,
+        "button_bg_color": "#000000",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#000000",
+        "button_hover_bg_color": "#333333",
+        "button_hover_text_color": "#ffffff",
+        "section_bg_color": "#ffffff",
+        "section_border_radius": 0,
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e0e0e0",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e0e0e0"
+      }
+    },
+    "faq": {
+      "type": "store-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes Leaf & Bird different?",
+            "answer": "<p>Every product is formulated with full ingredient transparency. We use clean, natural ingredients — no synthetic fragrances, no artificial preservatives, no harsh chemicals. All products are made in the USA and come with a 30-day money-back guarantee.<\/p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Yes! All orders ship free within the United States. Orders are processed within 1-2 business days and typically arrive within 5-7 business days.<\/p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a 30-day money-back guarantee on all products. If you're not completely satisfied, contact our support team and we'll issue a full refund — no questions asked.<\/p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products safe for sensitive skin?",
+            "answer": "<p>Our products are formulated without harsh chemicals, synthetic fragrances, or artificial preservatives. We recommend a patch test before first use if you have known sensitivities. Our grass-fed tallow products are especially gentle.<\/p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I choose the right products?",
+            "answer": "<p><strong>For hydration & dry skin:<\/strong> Start with our Tallow Body Care collection. <strong>For brightening & anti-aging:<\/strong> Try our Vitamin C or Vitamin Glow serums. <strong>For deep pore cleansing:<\/strong> The Dead Sea Mud mask. <strong>For overnight repair:<\/strong> Sleep Plus Collagen Cream.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "use_theme_colors": true,
+        "heading": "Frequently Asked Questions",
+        "subtitle": "<p>Find answers to common questions about our products, shipping, returns, and more.<\/p>",
+        "heading_color": "#2b2b2b",
+        "subtitle_color": "#a8a8a8",
+        "section_padding": 60,
+        "container_padding_mobile": 15,
+        "container_padding_desktop": 15,
+        "section_bg_color": "#ffffff",
+        "border_radius": 8,
+        "border_color": "#e5e5e5",
+        "divider_color": "#e5e5e5",
+        "border_style": "full",
+        "question_color": "#000000",
+        "question_bg_color": "#ffffff",
+        "answer_color": "#000000",
+        "answer_bg_color": "#ffffff",
+        "accordion_mode": true,
+        "image_border_radius": 8,
+        "image_full_height": false,
+        "full_height_min_height": 600,
+        "use_background_image": false,
+        "background_image_size": "cover",
+        "background_image_position": "center center",
+        "background_image_attachment": "scroll",
+        "background_overlay_enable": false,
+        "background_overlay_color": "#0000004d",
+        "background_overlay_opacity": 30,
+        "center_when_no_image": true,
+        "center_max_width": 600,
+        "two_column_desktop": false,
+        "column_gap": 30,
+        "faq_item_spacing": 0,
+        "individual_item_borders": false,
+        "question_padding_top": 15,
+        "question_padding_bottom": 15,
+        "question_padding_left": 20,
+        "question_padding_right": 20,
+        "answer_padding_top": 15,
+        "answer_padding_bottom": 15,
+        "answer_padding_left": 20,
+        "answer_padding_right": 20,
+        "heading_font_size": 36,
+        "heading_font_size_mobile": 30,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "question_font_size": 16,
+        "question_font_size_mobile": 14,
+        "answer_font_size": 14,
+        "answer_font_size_mobile": 13,
+        "enable_section_top_border": false,
+        "section_top_border_width": 1,
+        "section_top_border_style": "solid",
+        "section_top_border_color": "#e5e5e5",
+        "enable_section_bottom_border": false,
+        "section_bottom_border_width": 1,
+        "section_bottom_border_style": "solid",
+        "section_bottom_border_color": "#e5e5e5"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "Clean Beauty That Works",
+            "content": "<p>I've been shopping with this brand for over a year now and the quality never disappoints. Every purchase has exceeded my expectations and their customer service is exceptional.<\/p>",
+            "author_name": "Sarah M.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": "March 14th, 2024"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "My Whole Routine in One Brand",
+            "content": "<p>I've been shopping with this brand for over a year now and the quality never disappoints. Every purchase has exceeded my expectations and their customer service is exceptional.<\/p>",
+            "author_name": "Jessica R.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": "March 14th, 2024"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "show_stars": true,
+            "title": "Finally, Transparent Ingredients",
+            "content": "<p>I've been shopping with this brand for over a year now and the quality never disappoints. Every purchase has exceeded my expectations and their customer service is exceptional.<\/p>",
+            "author_name": "Amanda K.",
+            "rating": 5,
+            "verified": true,
+            "show_purchase_date": false,
+            "purchase_date": "March 14th, 2024"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "use_theme_colors": true,
+        "section_background": "linear-gradient(180deg, #1a1a1a, #2a2a2a)",
+        "heading_color": "#2b2b2b",
+        "subtitle_color": "#cccccc",
+        "text_color": "#2b2b2b",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "heading": "What Our Customers",
+        "heading_size": 42,
+        "heading_size_mobile": 28,
+        "heading_accent": "Are Saying",
+        "subtitle": "Real experiences from real customers who love our products and service.",
+        "subtitle_size": 18,
+        "override_global_accent": false,
+        "accent_color": "#6faf8f",
+        "use_accent_gradient": false,
+        "accent_text_gradient": "linear-gradient(45deg, #6FAF8F, #FF6B9D)",
+        "accent_font_family": "inherit",
+        "accent_font_style": "italic",
+        "accent_font_weight": "300",
+        "accent_text_margin_left": 0,
+        "use_trustpilot_stars": false,
+        "trustpilot_star_color": "#00b67a",
+        "trustpilot_star_empty_color": "#dcdce6",
+        "testimonial_title_size": 18,
+        "testimonial_title_size_mobile": 16,
+        "testimonial_content_size": 14,
+        "testimonial_content_size_mobile": 13,
+        "author_name_size": 12,
+        "author_avatar_text_size": 16,
+        "verified_badge_size": 12,
+        "verified_badge_size_mobile": 11,
+        "verified_icon_size": 10,
+        "purchase_date_size": 12,
+        "purchase_date_size_mobile": 11,
+        "card_rating_size": 16,
+        "show_rating": true,
+        "enable_mask_fade": true,
+        "rating_summary_text": "<p>Excellent <strong>4.8\/5<\/strong> based on reviews<\/p>",
+        "rating_value": 4.8,
+        "rating_max": 5,
+        "summary_star_color": "#ffd700",
+        "summary_star_empty_color": "#e5e5e5",
+        "rating_summary_text_color": "#2b2b2b",
+        "star_color": "#6faf8f",
+        "star_empty_color": "#e5e5e5",
+        "rating_summary_bg_color": "#f8f8f8",
+        "rating_summary_background": "linear-gradient(45deg, #f8f8f8, #e8e8e8)",
+        "enable_rating_summary_border": true,
+        "rating_summary_border_width": 1,
+        "rating_summary_border_style": "solid",
+        "rating_summary_border_color": "#e5e5e5",
+        "rating_summary_border_radius": 25,
+        "card_background": "#2a2a2a",
+        "card_text_color": "#2b2b2b",
+        "testimonial_title_color": "#2b2b2b",
+        "card_border_radius": 12,
+        "card_gap": 20,
+        "card_width_mobile": 85,
+        "card_width_desktop": 320,
+        "enable_card_border": true,
+        "card_border_width": 1,
+        "card_border_style": "solid",
+        "card_border_color": "#e5e5e5",
+        "avatar_color": "#9acd32",
+        "avatar_text_color": "#000000",
+        "verified_color": "#4caf50",
+        "verified_text": "Verified customer",
+        "author_info_bg_color": "#f8f8f8",
+        "enable_author_info_border": false,
+        "author_info_border_width": 1,
+        "author_info_border_style": "solid",
+        "author_info_border_color": "#e5e5e5",
+        "author_info_border_radius": 50,
+        "purchase_date_prefix": "Purchased on",
+        "purchase_date_color": "#666666",
+        "purchase_date_icon_color": "#666666",
+        "show_navigation": true,
+        "show_dots": true,
+        "nav_button_bg": "#ffffff",
+        "nav_button_color": "#000000",
+        "nav_button_border": "#e5e5e5",
+        "nav_button_radius": 25,
+        "dot_color": "#ffffff",
+        "anchor_id": ""
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "nl_h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the Leaf & Bird Community",
+            "heading_size": "h1"
+          }
+        },
+        "nl_p": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get 10% off your first order plus clean beauty tips delivered to your inbox. We respect your privacy — unsubscribe anytime.<\/p>"
+          }
+        },
+        "nl_f": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "nl_h",
+        "nl_p",
+        "nl_f"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "trust_bar_bottom": {
+      "type": "scrolling-features-bar",
+      "blocks": {
+        "fb1": {
+          "type": "feature_item",
+          "settings": {
+            "text": "FREE SHIPPING",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fb2": {
+          "type": "feature_item",
+          "settings": {
+            "text": "CLEAN INGREDIENTS",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fb3": {
+          "type": "feature_item",
+          "settings": {
+            "text": "MADE IN USA",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fb4": {
+          "type": "feature_item",
+          "settings": {
+            "text": "30-DAY GUARANTEE",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "fb1",
+        "fb2",
+        "fb3",
+        "fb4"
+      ],
+      "settings": {
+        "theme_color_mode": "theme_default",
+        "vertical_padding": 15,
+        "item_gap": 60,
+        "mobile_item_gap": 30,
+        "font_size": 12,
+        "mobile_font_size": 12,
+        "letter_spacing": 0.5,
+        "uppercase_text": true,
+        "override_bold": false,
+        "icon_size": 20,
+        "mobile_icon_size": 16,
+        "icon_spacing": 10,
+        "slider_direction": "left",
+        "scrolling_velocity": 15,
+        "pause_on_hover": true,
+        "background_color": "#f7f7f5",
+        "text_color": "#2b2b2b",
+        "icon_color": "#000000",
+        "use_gradient_background": false,
+        "background_gradient": "",
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e5e5e5",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e5e5e5"
+      }
+    }
+  },
+  "order": [
+    "collection_banner",
+    "trust_bar",
+    "product_grid",
+    "seo_content",
+    "faq",
+    "testimonials",
+    "newsletter",
+    "trust_bar_bottom"
+  ]
+}

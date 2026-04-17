@@ -1,0 +1,31 @@
+{% comment %}
+  Component: External Scripts
+
+  Description: External JavaScript libraries and modern alternatives
+
+  Features:
+  - jQuery (required for custom.js functionality)
+  - Swiper.js (modern carousel - 6KB vs 15KB Slick)
+  - Vite build system integration
+
+  Usage:
+  {% render 'external-scripts' %}
+{% endcomment %}
+
+<!-- jQuery (required for custom.js) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+
+<!-- Modern Carousel -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- Custom Scripts -->
+<script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+<!-- Vite Build System -->
+{% # theme-check-disable MissingTemplate %}
+{% liquid
+  render 'vite-tag' with 'konversly-styles.css'
+  render 'vite-tag' with 'konversly-core.ts'
+%}
+{% # theme-check-enable MissingTemplate %}

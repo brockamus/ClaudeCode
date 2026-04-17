@@ -1,0 +1,381 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "use_theme_colors": false,
+        "full_width_section": true,
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "section_background_color": "#F7F7F5",
+        "section_background_image": "shopify:\/\/shop_images\/about_hero.jpg",
+        "enable_section_overlay": true,
+        "section_overlay_color": "#000000",
+        "section_overlay_opacity": 30,
+        "min_height": 450,
+        "mobile_min_height": 350,
+        "use_banner_as_background": true,
+        "heading": "Clean Beauty, Rooted in Nature",
+        "subheading": "We believe skincare should be simple, transparent, and effective — made with ingredients you can trust.",
+        "text_alignment": "center",
+        "content_vertical_alignment_desktop": "center",
+        "content_vertical_alignment_mobile": "center",
+        "heading_size": 48,
+        "heading_size_mobile": 32,
+        "heading_weight": "600",
+        "heading_color": "#ffffff",
+        "heading_line_height": 1.2,
+        "subheading_size": 18,
+        "subheading_size_mobile": 16,
+        "subheading_color": "#ffffff",
+        "show_button": true,
+        "button_text": "Shop Our Products",
+        "button_action_type": "url",
+        "custom_url": "\/collections\/all-products",
+        "use_global_button_style": false,
+        "button_font_size": 16,
+        "button_padding_y": 14,
+        "button_padding_x": 28,
+        "button_border_radius": 8,
+        "button_background_color": "#6FAF8F",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#6FAF8F",
+        "button_hover_background_color": "#4F6F5D",
+        "button_hover_text_color": "#ffffff"
+      }
+    },
+    "mission": {
+      "type": "rich-text",
+      "blocks": {
+        "m_title": {
+          "type": "title",
+          "settings": {
+            "title": "Our Mission",
+            "accent_text": ""
+          }
+        },
+        "m_text": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "<p>Leaf & Bird exists to prove that clean beauty doesn't mean compromising on results. We formulate every product with full ingredient transparency — real ingredients that your skin recognizes, real results you can see, and nothing you can't pronounce.<\/p><p>From grass-fed tallow body care to clinical-grade serums, every product is made in the USA without synthetic fragrances, artificial preservatives, or harsh chemicals. We believe you deserve to know exactly what goes on your skin — and why.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "m_title",
+        "m_text"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "values": {
+      "type": "4-benefits",
+      "blocks": {
+        "v1": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/beauty-treatment_fixed.svg"
+          }
+        },
+        "v2": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/skincare_fixed.svg"
+          }
+        },
+        "v3": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/cream_fixed.svg"
+          }
+        },
+        "v4": {
+          "type": "benefit",
+          "settings": {
+            "icon_image": "shopify:\/\/shop_images\/serum_fixed.svg"
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "heading_accent": "Stand For",
+        "heading_color": "#2B2B2B",
+        "section_image": "shopify:\/\/shop_images\/about_nature.jpg",
+        "image_display_mode": "standard",
+        "mobile_image_position": "after_header"
+      }
+    },
+    "brand_story": {
+      "type": "image-with-text",
+      "blocks": {
+        "bs_h": {
+          "type": "heading",
+          "settings": {}
+        },
+        "bs_d": {
+          "type": "divider",
+          "settings": {}
+        },
+        "bs_p": {
+          "type": "paragraph",
+          "settings": {}
+        },
+        "bs_b": {
+          "type": "button",
+          "settings": {
+            "button_link": "\/collections\/all-products"
+          }
+        }
+      },
+      "block_order": [
+        "bs_h",
+        "bs_d",
+        "bs_p",
+        "bs_b"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_position_mobile": "top",
+        "image": "shopify:\/\/shop_images\/about_founder.jpg",
+        "image_max_width": 800,
+        "image_border_radius": 8,
+        "mobile_image_full_width": true
+      }
+    },
+    "behind_scenes": {
+      "type": "image-with-text",
+      "blocks": {
+        "bts_h": {
+          "type": "heading",
+          "settings": {}
+        },
+        "bts_d": {
+          "type": "divider",
+          "settings": {}
+        },
+        "bts_p": {
+          "type": "paragraph",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bts_h",
+        "bts_d",
+        "bts_p"
+      ],
+      "settings": {
+        "image_position": "right",
+        "image_position_mobile": "top",
+        "image": "shopify:\/\/shop_images\/about_lab.jpg",
+        "image_max_width": 800,
+        "image_border_radius": 8,
+        "mobile_image_full_width": true
+      }
+    },
+    "stats": {
+      "type": "statistics-column",
+      "blocks": {
+        "s1": {
+          "type": "statistic",
+          "settings": {}
+        },
+        "s2": {
+          "type": "statistic",
+          "settings": {}
+        },
+        "s3": {
+          "type": "statistic",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "By the",
+        "heading_accent": "Numbers",
+        "heading_color": "#2B2B2B",
+        "accent_color": "#6FAF8F",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "sourcing": {
+      "type": "image-with-text",
+      "blocks": {
+        "src_h": {
+          "type": "heading",
+          "settings": {}
+        },
+        "src_d": {
+          "type": "divider",
+          "settings": {}
+        },
+        "src_p": {
+          "type": "paragraph",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "src_h",
+        "src_d",
+        "src_p"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_position_mobile": "top",
+        "image": "shopify:\/\/shop_images\/about_ingredients_closeup.jpg",
+        "image_max_width": 800,
+        "image_border_radius": 8,
+        "mobile_image_full_width": true
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Finally, Honest Skincare",
+            "author_name": "Amanda K.",
+            "rating": 5
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "A Brand I Trust",
+            "author_name": "Lisa M.",
+            "rating": 5
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Changed My Routine",
+            "author_name": "Jessica R.",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "heading_color": "#2B2B2B",
+        "text_color": "#2B2B2B",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "heading": "What Our Customers",
+        "heading_accent": "Say About Us",
+        "accent_color": "#6FAF8F",
+        "star_color": "#6FAF8F"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "nl_h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the Leaf & Bird Community"
+          }
+        },
+        "nl_p": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get 10% off your first order, plus clean beauty tips and new product announcements. We respect your privacy — unsubscribe anytime.<\/p>"
+          }
+        },
+        "nl_f": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "nl_h",
+        "nl_p",
+        "nl_f"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "faq": {
+      "type": "store-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does 'clean beauty' mean to Leaf & Bird?",
+            "answer": "<p>For us, clean beauty means full ingredient transparency — no synthetic fragrances, no artificial preservatives, no harsh chemicals, no 'fragrance' catch-alls. Every ingredient is listed and every purpose is explained. We formulate with nature-first ingredients and clinical-grade actives, made in the USA.<\/p>"
+          }
+        },
+        "f2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why do you use tallow in skincare?",
+            "answer": "<p>Grass-fed beef tallow has been used as a moisturizer for centuries. Its fatty acid profile is nearly identical to human sebum, making it one of the most biocompatible skincare ingredients available. It absorbs deeply, delivers fat-soluble vitamins A, D, E, and K, and is naturally free of synthetic additives.<\/p>"
+          }
+        },
+        "f3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products cruelty-free?",
+            "answer": "<p>Absolutely. Leaf & Bird products are 100% cruelty-free. We never test on animals. We believe in using animal-derived ingredients responsibly and ethically, but testing on animals is something we will never do.<\/p>"
+          }
+        },
+        "f4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where are your products made?",
+            "answer": "<p>All Leaf & Bird products are formulated and manufactured in the United States. Our grass-fed tallow is sourced from US pasture-raised cattle, our essential oils are certified organic, and our clinical actives come from trusted US laboratories.<\/p>"
+          }
+        },
+        "f5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact you?",
+            "answer": "<p>We'd love to hear from you. Visit our <a href='\/pages\/contact'>Contact page<\/a> to send us a message, or email us directly. We respond to all inquiries within 24 hours.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "heading_color": "#2B2B2B"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "mission",
+    "values",
+    "brand_story",
+    "behind_scenes",
+    "stats",
+    "sourcing",
+    "testimonials",
+    "newsletter",
+    "faq"
+  ]
+}

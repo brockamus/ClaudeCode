@@ -1,0 +1,506 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "use_theme_colors": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_announcement_bar_pBUxAq": {
+      "type": "custom-announcement-bar",
+      "name": "Announcement Bar",
+      "settings": {
+        "use_theme_colors": false,
+        "text": "<p><strong>TRENDING IN HEALTH & WELLNESS<\/strong><\/p>",
+        "background_color": "#232323",
+        "text_color": "#ffffff",
+        "font_size": 16
+      }
+    },
+    "content_sidebar_JjnXKm": {
+      "type": "content-sidebar",
+      "blocks": {
+        "heading_9LrhY4": {
+          "type": "heading",
+          "settings": {
+            "tag": "h1",
+            "heading": "How I Finally Got the Body Shape I Always Wanted—Without Surgery",
+            "custom_size": true,
+            "text_size": 40,
+            "text_color": "#121212",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "text_JfDkGk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For years, I hid behind loose sweaters. I tried every “miracle” cream, spent hours in the gym, and still felt like my body didn’t match how I wanted to feel. Then I discovered Body Sculp — and everything changed.<\/p>",
+            "highlighted_texts": "Then I discovered Body Sculp — and everything changed.",
+            "hightlight_texts_color": "#fae3e3",
+            "custom_size": true,
+            "text_size": 20,
+            "text_color": "#2d2d2d",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "image_cid9Ni": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_zf8bhxzf8bhxzf8b.png",
+            "video_autoplay": false,
+            "video_loop": true,
+            "video_controls": true,
+            "image_alignment": "flex-start",
+            "image_width": "custom",
+            "custom_image_width": 100,
+            "custom_height": true,
+            "image_height": 350,
+            "image_size": "cover",
+            "image_radius": 4,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "author_icmywX": {
+          "type": "author",
+          "settings": {
+            "author_image": "shopify:\/\/shop_images\/Screenshot_2025-10-04_at_11.54.41.png",
+            "author_name": "By Dr. Cindy Lawrence",
+            "badge": true,
+            "date": "Tuesday, October 6th, 2025",
+            "text_size": 16,
+            "star_color": "#f1c40f",
+            "empty_star_color": "#e0e0e0",
+            "badge_color": "#19bdff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "rating_R4ttpt": {
+          "type": "rating",
+          "settings": {
+            "rating": 4.9,
+            "star_size": 20,
+            "star_color": "#f39c12",
+            "empty_star_color": "#e0e0e0",
+            "text": "4.9\/5 Rating | 1,422+ Reviews",
+            "custom_size": true,
+            "text_size": 15,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_ihNVpU": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>For years, I worked out, counted calories, and tried every trendy cream that promised to “tighten and tone.”<br\/><br\/>But no matter what I did, I still saw <strong>stubborn areas that just wouldn’t budge<\/strong> — especially around my stomach and thighs.<\/p><p>I didn’t want surgery, needles, or anything extreme.<br\/><br\/>And honestly, I didn’t have the time or money for endless clinic visits.<\/p><p>So when I first heard about an at-home device called <strong>Body Sculp<\/strong>, I was skeptical… but curious.<\/p>",
+            "highlighted_texts": "stubborn areas that just wouldn’t budge|Body Sculp",
+            "highlight_texts_color": "#fff3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_kV3fNY": {
+          "type": "heading",
+          "settings": {
+            "tag": "h2",
+            "heading": "The Discovery That Changed Everything",
+            "custom_size": false,
+            "text_size": 40,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_LjqQUE": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>I first heard about Body Sculp in a beauty forum where women were sharing stories about non-invasive treatments. They kept mentioning one device that combined several professional technologies into a single tool you could use yourself. I was skeptical. Could a device I use in my living room really compete with what high-end clinics do?<\/p><p>After reading dozens of reviews and noticing that the technologies inside were the same ones used by aestheticians — radio frequency for tightening, EMS for muscle toning, and infrared therapy for skin elasticity — I decided to give it a try. It promised to target the very things I was frustrated with: loose skin, lack of tone, and areas that wouldn’t respond to workouts.<\/p>",
+            "highlighted_texts": "It promised to target the very things I was frustrated with: loose skin, lack of tone, and areas that wouldn’t respond to workouts.",
+            "highlight_texts_color": "#fdf3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_fTRtwU": {
+          "type": "heading",
+          "settings": {
+            "tag": "h1",
+            "heading": "My First Impressions",
+            "custom_size": false,
+            "text_size": 50,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "image_xXUwQB": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_llrz31llrz31llrz.png",
+            "video_autoplay": false,
+            "video_loop": true,
+            "video_controls": true,
+            "image_alignment": "flex-start",
+            "image_width": "custom",
+            "custom_image_width": 100,
+            "custom_height": true,
+            "image_height": 350,
+            "image_size": "cover",
+            "image_radius": 5,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_HeTDtH": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>I was nervous the first time I held the device in my hand. Would it hurt? Would it feel strange? Would it even do anything?<\/p><p>To my surprise, it felt gentle and almost soothing. The radio frequency created a mild warmth, while the muscle stimulation felt like a light pulse — a little tingle that wasn’t painful at all. The infrared light added a comforting heat. The entire session lasted about twenty minutes while I sat on my couch and watched a show. No complicated setup. No need to leave home.<\/p><p>By the third session I realized something unexpected: I was actually enjoying this. It wasn’t a chore. It became a small, relaxing ritual.<\/p>",
+            "highlighted_texts": "it felt gentle and almost soothing.|The entire session lasted about twenty minutes",
+            "highlight_texts_color": "#fdf3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_D6JUCD": {
+          "type": "heading",
+          "settings": {
+            "tag": "h1",
+            "heading": "What happens After a Few Weeks",
+            "custom_size": false,
+            "text_size": 40,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "image_wVXq7h": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image": "shopify:\/\/shop_images\/Jane_B_A.jpg",
+            "video_autoplay": false,
+            "video_loop": true,
+            "video_controls": true,
+            "image_alignment": "flex-start",
+            "image_width": "custom",
+            "custom_image_width": 100,
+            "custom_height": true,
+            "image_height": 300,
+            "image_size": "cover",
+            "image_radius": 5,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_Yt7iN9": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>Around the two-week mark, I started to notice subtle changes. My skin felt a bit tighter when I touched it. My stomach seemed smoother in the mirror. By the fourth week, those changes were undeniable. The softness that had always bothered me felt firmer. My thighs had a little more definition. Even my posture seemed to improve because I felt better about the way I looked.<\/p><p>These weren’t dramatic overnight results — and that’s what made them feel real. They were gradual, natural changes that built over time. And unlike crash diets or intense workout programs, I didn’t feel burned out or deprived. I simply added Body Sculp into my life a few times a week and let it work.<\/p>",
+            "highlighted_texts": "Even my posture seemed to improve| I simply added Body Sculp into my life a few times a week and let it work.",
+            "highlight_texts_color": "#fdf3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_C6mQY3": {
+          "type": "heading",
+          "settings": {
+            "tag": "h1",
+            "heading": "Why Body Sculpting Works",
+            "custom_size": false,
+            "text_size": 40,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "image_cjczaE": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image": "shopify:\/\/shop_images\/graph.png",
+            "video_autoplay": false,
+            "video_loop": true,
+            "video_controls": true,
+            "image_alignment": "flex-start",
+            "image_width": "full",
+            "custom_image_width": 100,
+            "custom_height": false,
+            "image_height": 400,
+            "image_size": "cover",
+            "image_radius": 5,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_qadaVG": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>The secret is in the technology. For years, <strong>radio frequency (RF)<\/strong> has been used in professional skin-tightening treatments. It gently heats deeper layers of skin, which can encourage collagen production and improve firmness. <strong>Electrical Muscle Stimulation (EMS)<\/strong> activates muscles beneath the surface, creating subtle contractions that help tone and strengthen. And <strong>infrared therapy<\/strong> supports circulation and elasticity, giving skin a healthier, smoother appearance.<\/p><p>Clinics have been using these exact same methods for ages — but Body Sculp makes them accessible at home, without the cost or inconvenience. There’s no downtime, no recovery, and no invasive procedures.<\/p><p>Experts in aesthetics agree that consistent use is key to results. A single treatment in a clinic might help temporarily, but repeated sessions are what create lasting change. That’s what makes having a device at home so powerful: you can maintain a routine without paying hundreds of dollars every time.<\/p>",
+            "highlighted_texts": "Electrical Muscle Stimulation (EMS) |Experts in aesthetics agree that consistent use is key to results.",
+            "highlight_texts_color": "#fdf3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_TJKhe9": {
+          "type": "heading",
+          "settings": {
+            "tag": "h2",
+            "heading": "The Emotional Shift",
+            "custom_size": false,
+            "text_size": 40,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_7cypEJ": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>I didn’t expect the emotional impact this would have. For so long, I avoided certain clothes. I dreaded beach trips and pool days. I told myself confidence was about “accepting yourself,” but deep down I wished I felt better in my own skin.<\/p><p>After a month with Body Sculp, I caught myself trying on outfits I had pushed to the back of my closet. I stopped tugging at my shirt or hiding behind jackets. The difference wasn’t just physical — it was psychological. I felt proud of my body again. I felt like myself.<\/p>",
+            "highlighted_texts": "",
+            "highlight_texts_color": "#19bdff",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "heading_twDk6h": {
+          "type": "heading",
+          "settings": {
+            "tag": "h2",
+            "heading": "Real People Are Seeing Real Change",
+            "custom_size": false,
+            "text_size": 40,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "image_eY6EMq": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image": "shopify:\/\/shop_images\/Loved_by_20_000.jpg",
+            "video_autoplay": false,
+            "video_loop": true,
+            "video_controls": true,
+            "image_alignment": "flex-start",
+            "image_width": "full",
+            "custom_image_width": 100,
+            "custom_height": false,
+            "image_height": 400,
+            "image_size": "cover",
+            "image_radius": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "basic_text_XwMyhV": {
+          "type": "basic_text",
+          "settings": {
+            "content": "<p>I’m not alone. Thousands of men and women are sharing their own transformations. Some talk about regaining confidence after having children. Others mention feeling stronger and firmer after losing weight. Many say what I felt too: it’s liberating to finally have control without relying on expensive appointments or extreme solutions.<\/p><p>✓ <strong>Restored Barrier Function<\/strong> – Skin becomes more resilient and less reactive over 2-4 weeks.<\/p><p>✓ <strong>Natural Glow<\/strong> – Healthy lipid balance creates that sought-after natural radiance.<\/p><p>✓ <strong>Simplified Routine<\/strong> – Replace multiple products with one that actually works.<\/p><p>✓ <strong>Long-Term Health<\/strong> – Support your skin's natural functions instead of creating dependency.<\/p>",
+            "highlighted_texts": "Others mention feeling stronger and firmer after losing weight.",
+            "highlight_texts_color": "#fdf3cd",
+            "image_position": "above",
+            "image_width": 100,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "text_qj6zJx": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Taking the Step<\/h2><p>If you’ve ever felt frustrated by stubborn areas that don’t respond to diet or exercise, or if you’ve considered professional treatments but stopped because of the cost or fear, <strong>Body Sculp is worth exploring<\/strong>. It doesn’t require surgery. It doesn’t require recovery time. It simply uses proven science in a safe, comfortable way you can manage yourself.<\/p><p>For a limited time, the brand is offering an introductory promotion with a satisfaction guarantee. It’s a way to try it, risk-free, and see if it gives you the confidence boost you’ve been looking for.<\/p>",
+            "highlighted_texts": "If you struggle with knee pain, bone-on-bone arthritis,",
+            "hightlight_texts_color": "#19bdff",
+            "custom_size": false,
+            "text_size": 16,
+            "text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "button_74djnN": {
+          "type": "button",
+          "settings": {
+            "button_text": "CLAIM YOUR 40% DISCOUNT NOW",
+            "button_action": "url",
+            "button_url": "shopify:\/\/products\/bodysculp-deluxe",
+            "button_alignment": "center",
+            "full_width": true,
+            "use_global_button_style": true,
+            "border_radius": 10,
+            "button_icon": "",
+            "icon_position": "left",
+            "icon_size": 16,
+            "button_vertical_padding": 10,
+            "button_border_color": "#0b94cb",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "sidebar_R4d8Be": {
+          "type": "sidebar",
+          "settings": {
+            "sidebar_title": "Customer Reviews",
+            "sidebar_product": "bodysculp-deluxe",
+            "sidebar_product_btn": "Claim your 40% OFF!",
+            "five_star_bar": 88,
+            "four_star_bar": 10,
+            "three_star_bar": 2,
+            "two_star_bar": 0,
+            "one_star_bar": 0,
+            "feature_title_1": "Sculpting",
+            "feature_rating_1": 5,
+            "feature_title_2": "Pain-Free",
+            "feature_rating_2": 5,
+            "feature_title_3": "Value",
+            "feature_rating_3": 4.8,
+            "feature_title_4": "Results",
+            "feature_rating_4": 4.9,
+            "rating_star_size": 15,
+            "feature_star_size": 15,
+            "rating_star_color": "#f1c40f",
+            "rating_empty_star_color": "#e0e0e0",
+            "use_progress_gradient": false,
+            "progress_gradient_start": "#19bdff",
+            "progress_gradient_end": "#0b94cb",
+            "show_featured_product": true,
+            "show_rating_section": true,
+            "show_features": true,
+            "sidebar_background_color": "#ffffff",
+            "sidebar_text_color": "#000000",
+            "sidebar_title_color": "#000000",
+            "rating_bar_color": "#333030",
+            "rating_bar_background": "#f0f0f0",
+            "feature_star_color": "#f1c40f",
+            "feature_border_color": "#f0f0f0"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9LrhY4",
+        "text_JfDkGk",
+        "image_cid9Ni",
+        "author_icmywX",
+        "rating_R4ttpt",
+        "basic_text_ihNVpU",
+        "heading_kV3fNY",
+        "basic_text_LjqQUE",
+        "heading_fTRtwU",
+        "image_xXUwQB",
+        "basic_text_HeTDtH",
+        "heading_D6JUCD",
+        "image_wVXq7h",
+        "basic_text_Yt7iN9",
+        "heading_C6mQY3",
+        "image_cjczaE",
+        "basic_text_qadaVG",
+        "heading_TJKhe9",
+        "basic_text_7cypEJ",
+        "heading_twDk6h",
+        "image_eY6EMq",
+        "basic_text_XwMyhV",
+        "text_qj6zJx",
+        "button_74djnN",
+        "sidebar_R4d8Be"
+      ],
+      "name": "Body Sculp Advertorial",
+      "settings": {
+        "use_theme_colors": true,
+        "section_background_color": "#ffffff",
+        "global_button_color": "#19bdff",
+        "breadcrumb_color": "#b7b7b7",
+        "sidebar_background_color": "#ffffff",
+        "sidebar_title_color": "#000000",
+        "sidebar_button_bg_color": "#19bdff",
+        "sidebar_button_text_color": "#000000",
+        "rating_bar_color": "#19bdff",
+        "rating_background_color": "#ffffff",
+        "show_breadcrumb": true,
+        "breadcrumb_home_text": "Home",
+        "breadcrumb_separator": ">",
+        "breadcrumb_second_text": "Category",
+        "breadcrumb_second_url": "",
+        "breadcrumb_current_text": "Health & Wellness",
+        "sidebar_width": 30,
+        "hide_sidebar_mobile": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_announcement_bar_pBUxAq",
+    "content_sidebar_JjnXKm"
+  ]
+}

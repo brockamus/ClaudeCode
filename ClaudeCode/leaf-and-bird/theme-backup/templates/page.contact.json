@@ -1,0 +1,134 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-text",
+      "blocks": {
+        "ct_title": {
+          "type": "title",
+          "settings": {
+            "title": "Get in",
+            "accent_text": "Touch"
+          }
+        },
+        "ct_sub": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "<p>Have a question about our products, your order, or our ingredients? We're here to help and typically respond within 24 hours.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "ct_title",
+        "ct_sub"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 20
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "use_theme_colors": false,
+        "heading": "Send Us a Message",
+        "heading_size": "h2",
+        "validate_on_submit": true,
+        "show_success_message": true,
+        "background_color": "#F7F7F5",
+        "heading_color": "#2B2B2B",
+        "text_color": "#2B2B2B",
+        "field_background_color": "#ffffff",
+        "field_border_color": "#DDE8E1",
+        "field_text_color": "#2B2B2B",
+        "placeholder_color": "#A8A8A8",
+        "button_background_color": "#6FAF8F",
+        "button_text_color": "#ffffff",
+        "button_hover_background_color": "#4F6F5D",
+        "success_color": "#6FAF8F",
+        "error_color": "#e74c3c",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "info": {
+      "type": "4-benefits",
+      "blocks": {
+        "i1": {
+          "type": "benefit",
+          "settings": {}
+        },
+        "i2": {
+          "type": "benefit",
+          "settings": {}
+        },
+        "i3": {
+          "type": "benefit",
+          "settings": {}
+        },
+        "i4": {
+          "type": "benefit",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {
+        "heading_accent": "Leaf & Bird",
+        "heading_color": "#2B2B2B"
+      }
+    },
+    "faq": {
+      "type": "store-faq",
+      "blocks": {
+        "cf1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Orders are processed within 1-2 business days. Standard shipping typically arrives within 5-7 business days. You'll receive tracking information via email once your order ships.<\/p>"
+          }
+        },
+        "cf2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a 30-day money-back guarantee on all products. If you're not completely satisfied, contact us and we'll issue a full refund — no questions asked.<\/p>"
+          }
+        },
+        "cf3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I modify or cancel my order?",
+            "answer": "<p>If you need to modify or cancel your order, please contact us as soon as possible. We process orders quickly, so we may not be able to make changes once the order has shipped.<\/p>"
+          }
+        },
+        "cf4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>Currently we ship within the United States only. We're working on expanding to international shipping — sign up for our newsletter to be the first to know.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "cf1",
+        "cf2",
+        "cf3",
+        "cf4"
+      ],
+      "settings": {
+        "heading": "Common Questions",
+        "heading_color": "#2B2B2B"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "form",
+    "info",
+    "faq"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "custom_announcement_bar_mEKTij": {
+      "type": "custom-announcement-bar",
+      "name": "Announcement Bar",
+      "settings": {
+        "use_theme_colors": false,
+        "text": "<p><strong>FREE SHIPPING<\/strong> on Orders $50+ | 30-Day Money-Back Guarantee<\/p>",
+        "background_color": "#2b2b2b",
+        "text_color": "#ffffff",
+        "font_size": 14
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e0e0e0",
+        "use_theme_colors": true,
+        "use_global_gradient": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "cart_icon_type": "bag",
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "custom_announcement_bar_mEKTij",
+    "header"
+  ]
+}
