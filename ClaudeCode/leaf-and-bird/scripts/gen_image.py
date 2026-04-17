@@ -43,7 +43,9 @@ def main():
     generate_imagen(prompt, out)
     # Update draft with image_path + a default alt if missing
     if draft.exists():
-        d["image_path"] = str(out.relative_to(draft.parent.parent))
+        # project_root is draft.parent.parent.parent (content/articles/X.json → project root)
+        project_root = draft.resolve().parent.parent.parent
+        d["image_path"] = str(out.resolve().relative_to(project_root))
         if not d.get("image_alt"):
             d["image_alt"] = f"{d.get('title', args.article)} — featured image"
         draft.write_text(json.dumps(d, indent=2), encoding="utf-8")
