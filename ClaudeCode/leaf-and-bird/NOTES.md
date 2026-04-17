@@ -1,17 +1,18 @@
 # Leaf & Bird SEO Build Notes
 
-## Theme IDs
-- **LIVE:** `186309509419` — Konversly-1-5-1-skincare-2 (role: main)
-- **BACKUP (pre-SEO build, 2026-04-16):** `186951631147` — "Copy of Konversly-1-5-1-skincare-2" (role: unpublished)
-- **Local theme backup:** `theme-backup/` (636 files, pulled 2026-04-16 at commit `55cdf1b`)
+## Theme IDs (UPDATED 2026-04-16 after user published the backup copy as live)
+
+- **LIVE:** `186951631147` — "Copy of Konversly-1-5-1-skincare-2" (role: main) ← **ALL THEME EDITS TARGET THIS ID**
+- **BACKUP (frozen original, rollback target):** `186309509419` — "Konversly-1-5-1-skincare-2" (role: unpublished)
+- **Local theme backup:** `theme-backup/` (636 files, pulled 2026-04-16 at commit `55cdf1b` — content identical between the two theme IDs since they were duplicated at the same moment)
 
 ### Rollback procedure
 
 If anything goes catastrophic during P1 theme edits:
-1. Shopify Admin → Themes → find "Copy of Konversly-1-5-1-skincare-2"
+1. Shopify Admin → Themes → find "Konversly-1-5-1-skincare-2" (id 186309509419)
 2. Actions → Publish
 
-The backup will become live instantly. Then identify the break and iterate on the unpublished live copy.
+The frozen original will become live instantly. Then identify the break and iterate on the (unpublished) edited copy.
 
 ## Theme Section Naming (important — customized Konversly, NOT Dawn)
 
