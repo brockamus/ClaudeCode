@@ -47,3 +47,4 @@ Refer to `content/theme-audit-report.md` for the full file:line mapping when doi
 ## Plan Deviations (sanctioned)
 
 - **T0.6:** Plan specified REST `/metafield_definitions.json` — this endpoint does not exist in Shopify Admin API 2024-10 (metafield **definitions** are GraphQL-only via `metafieldDefinitionCreate`). Implementer correctly deviated to GraphQL. All 13 definitions verified live. Metafield **values** (`/metafields.json` and `/{owner}/{id}/metafields.json`) are still REST and work as-specified in later tasks.
+- **T1.4:** No-op. The Konversly theme does NOT emit its own Product schema (audit §2 returned zero hits). Live product pages have exactly 1 JSON-LD `@graph` block — from our own `lb-seo-schema.liquid` snippet — containing Organization + WebSite + BreadcrumbList + Product. No duplicate to remove. Task skipped.
