@@ -1,0 +1,164 @@
+{%- comment -%}
+  Leaf & Bird SEO Schema Snippet
+  Renders schema.org JSON-LD as a single @graph object per page.
+  Reads FAQ data from `seo.faq_json` metafield (Product, Collection, Article).
+  Included once from layout/theme.liquid.
+{%- endcomment -%}
+
+{%- assign page_url = canonical_url | default: request.origin | append: request.path -%}
+{%- assign site_name = shop.name -%}
+{%- assign brand_desc = 'Leaf & Bird is a clean vegan skincare brand making rare non-salmon-derived PDRN serum and whipped grass-fed tallow creams, formulated for health-conscious mothers.' -%}
+{%- assign logo_url = shop.brand.logo.image | image_url: width: 600 | default: shop.brand.square_logo.image | image_url: width: 600 -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ shop.url }}#org",
+      "name": {{ site_name | json }},
+      "url": "{{ shop.url }}",
+      "logo": {{ logo_url | json }},
+      "description": {{ brand_desc | json }},
+      "sameAs": [
+        {%- if settings.social_instagram_link != blank %}{{ settings.social_instagram_link | json }}{% endif -%}
+        {%- if settings.social_tiktok_link != blank %},{{ settings.social_tiktok_link | json }}{% endif -%}
+        {%- if settings.social_facebook_link != blank %},{{ settings.social_facebook_link | json }}{% endif -%}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ shop.url }}#site",
+      "url": "{{ shop.url }}",
+      "name": {{ site_name | json }},
+      "publisher": { "@id": "{{ shop.url }}#org" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+
+    {%- comment -%} BreadcrumbList {%- endcomment -%}
+    ,{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ shop.url }}" }
+        {%- if template contains 'collection' and collection -%}
+        ,{ "@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": "{{ shop.url }}{{ collection.url }}" }
+        {%- elsif template contains 'product' and product -%}
+        ,{ "@type": "ListItem", "position": 2, "name": {{ product.title | json }}, "item": "{{ shop.url }}{{ product.url }}" }
+        {%- elsif template contains 'article' and article -%}
+        ,{ "@type": "ListItem", "position": 2, "name": {{ blog.title | json }}, "item": "{{ shop.url }}/blogs/{{ blog.handle }}" }
+        ,{ "@type": "ListItem", "position": 3, "name": {{ article.title | json }}, "item": "{{ shop.url }}{{ article.url }}" }
+        {%- endif -%}
+      ]
+    }
+
+    {%- comment -%} CollectionPage + ItemList {%- endcomment -%}
+    {%- if template contains 'collection' and collection -%}
+    ,{
+      "@type": "CollectionPage",
+      "@id": "{{ page_url }}#page",
+      "url": "{{ page_url }}",
+      "name": {{ collection.metafields.seo.h1 | default: collection.title | json }},
+      "description": {{ collection.metafields.seo.meta_description | default: collection.description | strip_html | truncate: 300 | json }},
+      "isPartOf": { "@id": "{{ shop.url }}#site" },
+      "about": { "@id": "{{ shop.url }}#org" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {%- for p in collection.products limit: 12 -%}
+          {%- unless forloop.first %},{% endunless -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": "{{ shop.url }}{{ p.url }}",
+            "name": {{ p.title | json }},
+            "image": {{ p.featured_image | image_url: width: 800 | prepend: 'https:' | json }},
+            "offers": {
+              "@type": "Offer",
+              "price": "{{ p.price | money_without_currency | remove: ',' }}",
+              "priceCurrency": "{{ cart.currency.iso_code }}",
+              "availability": "{% if p.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+            }
+          }
+          {%- endfor -%}
+        ]
+      }
+    }
+    {%- endif -%}
+
+    {%- comment -%} Product schema {%- endcomment -%}
+    {%- if template contains 'product' and product -%}
+    ,{
+      "@type": "Product",
+      "@id": "{{ page_url }}#product",
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | truncate: 500 | json }},
+      "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      "brand": { "@id": "{{ shop.url }}#org" },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ page_url }}",
+        "price": "{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}",
+        "priceCurrency": "{{ cart.currency.iso_code }}",
+        "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+      }
+    }
+    {%- endif -%}
+
+    {%- comment -%} Article schema {%- endcomment -%}
+    {%- if template contains 'article' and article -%}
+    ,{
+      "@type": "Article",
+      "@id": "{{ page_url }}#article",
+      "headline": {{ article.title | json }},
+      "image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }},
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "author": {
+        "@type": "Person",
+        "name": {{ article.author | default: 'Leaf & Bird' | json }}
+      },
+      "publisher": { "@id": "{{ shop.url }}#org" },
+      "mainEntityOfPage": "{{ page_url }}"
+    }
+    {%- endif -%}
+
+    {%- comment -%} FAQPage — reads from metafield seo.faq_json on the current resource {%- endcomment -%}
+    {%- assign faq_source = nil -%}
+    {%- if template contains 'collection' and collection.metafields.seo.faq_json -%}
+      {%- assign faq_source = collection.metafields.seo.faq_json.value -%}
+    {%- elsif template contains 'product' and product.metafields.seo.faq_json -%}
+      {%- assign faq_source = product.metafields.seo.faq_json.value -%}
+    {%- elsif template contains 'article' and article.metafields.seo.faq_json -%}
+      {%- assign faq_source = article.metafields.seo.faq_json.value -%}
+    {%- endif -%}
+    {%- if faq_source and faq_source.size > 0 -%}
+    ,{
+      "@type": "FAQPage",
+      "@id": "{{ page_url }}#faq",
+      "mainEntity": [
+        {%- for qa in faq_source -%}
+        {%- unless forloop.first %},{% endunless -%}
+        {
+          "@type": "Question",
+          "name": {{ qa.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ qa.answer | json }}
+          }
+        }
+        {%- endfor -%}
+      ]
+    }
+    {%- endif -%}
+  ]
+}
+</script>
