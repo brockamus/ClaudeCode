@@ -24,7 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- comment -%} Canonical strips ?page=N so paginated collections self-canonical to base {%- endcomment -%}
+    {%- assign lb_canonical = canonical_url | split: '?' | first -%}
+    <link rel="canonical" href="{{ lb_canonical }}">
 
     {% comment %} Core Scripts {% endcomment %}
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
