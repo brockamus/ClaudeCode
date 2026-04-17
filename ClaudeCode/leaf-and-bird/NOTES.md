@@ -48,6 +48,7 @@ Refer to `content/theme-audit-report.md` for the full file:line mapping when doi
 
 - **T0.6:** Plan specified REST `/metafield_definitions.json` — this endpoint does not exist in Shopify Admin API 2024-10 (metafield **definitions** are GraphQL-only via `metafieldDefinitionCreate`). Implementer correctly deviated to GraphQL. All 13 definitions verified live. Metafield **values** (`/metafields.json` and `/{owner}/{id}/metafields.json`) are still REST and work as-specified in later tasks.
 - **T1.4:** No-op. The Konversly theme does NOT emit its own Product schema (audit §2 returned zero hits). Live product pages have exactly 1 JSON-LD `@graph` block — from our own `lb-seo-schema.liquid` snippet — containing Organization + WebSite + BreadcrumbList + Product. No duplicate to remove. Task skipped.
+- **T1.10:** Shopify Page handle is `llms-txt-v2` (original `llms-txt` was cache-poisoned during template development). End-user URL `/llms.txt` redirects via Shopify URL redirect to `/pages/llms-txt-v2`. Users see `/llms.txt` in the browser — the v2 handle never exposed. Content-Type is `text/html` (Shopify platform limitation — cannot emit `text/plain` from page templates) but response BODY is clean plain text. Content is hardcoded inside `theme-working/templates/page.llms-txt.liquid` because `{% layout none %}` prevents reading `page.content` — to update content, edit BOTH `content/llms-txt-content.txt` AND the template file, then re-upload.
 
 ## Post-build Followups (defer unless urgent)
 
