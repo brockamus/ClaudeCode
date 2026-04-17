@@ -24,7 +24,11 @@ Refer to `content/theme-audit-report.md` for the full file:line mapping when doi
 
 ## Review App Status
 
-(Populated by Task T0.5.)
+- **App detected:** None (Judge.me CSS selector found in defensive typography fix, but no app installed or active)
+- **Location in theme:** `theme-backup/assets/app-typography-fix.css` (lines 24-25, 48-49, 96-97) — defensive selector only, not used
+- **Native review capability:** Theme has custom "Reviews" block (sections/shop-product-details.liquid) that supports metafield-driven ratings via `custom.rating` and `custom.rating_count`
+- **AggregateRating schema:** Currently does not emit (no product metafields set, no third-party app)
+- **Decision:** Do NOT emit AggregateRating from lb-seo-schema.liquid until a review app is installed OR custom metafields are populated on products. If Judge.me or another review app is installed in future, verify it emits its own AggregateRating schema and coordinate to avoid duplication (or conditionally emit only when metafield values exist).
 
 ## IndexNow Key
 
