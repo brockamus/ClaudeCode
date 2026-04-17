@@ -42,6 +42,9 @@ URLS = [
     ("article", "https://leafandbird.com/blogs/journal/snail-mucin-vs-pdrn-explained"),
     ("article", "https://leafandbird.com/blogs/journal/pdrn-vs-hyaluronic-acid"),
     ("article", "https://leafandbird.com/blogs/journal/pdrn-vs-peptides"),
+    # Brand + info pages
+    ("page", "https://leafandbird.com/pages/leaf-and-bird-reviews"),
+    ("page", "https://leafandbird.com/pages/about"),
 ]
 
 
@@ -70,7 +73,7 @@ def checks_for(kind, url):
     collection_links = set(re.findall(r'href="(/collections/[^"#?]+)"', html))
     if len(collection_links) < 2:
         probs.append(f"only {len(collection_links)} internal collection links")
-    if not re.search(r'"@type":\s*"FAQPage"', html):
+    if kind in ("collection", "article") and not re.search(r'"@type":\s*"FAQPage"', html):
         probs.append("no FAQPage schema")
     return probs
 

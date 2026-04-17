@@ -52,3 +52,28 @@ Format per week:
 - **Schema + FAQPage:** all 4 new articles emit 2 JSON-LD blocks with FAQPage
 - **GSC sitemap:** new collections + articles will appear in sub-sitemaps automatically (Shopify regenerates); user still needs to resubmit `/sitemap.xml` in GSC to trigger re-crawl
 - **Notes:** Cluster A (snail mucin alternative) is the strongest organic play — targets K-beauty → crunchy-mom bridge with our vegan PDRN moat. Cluster C (PDRN vs X) reinforces PDRN entity authority and supports LLM citation. Expected ranking signal within 2-4 weeks for lowest-competition queries (e.g., `vegan snail mucin alternative`, `korean skincare without snail mucin`).
+
+## 2026-04-17 (checklist-review Tier 1 batch)
+
+Cross-referenced the Bianca Bright 137-item SEO checklist against L&B state. Most "not implemented" items in Bianca Bright are already done in L&B v1 (we built with SEO in mind from day 1). Shipped 5 quick wins:
+
+- **Image optimization** — Converted 13 article PNGs → JPG @ 85% quality (17MB → 3.3MB, 81% reduction). Patched `gen_image.py` to emit JPG going forward.
+- **Favicon markup** — Added `<link rel="icon">` + `<link rel="apple-touch-icon">` conditional block to `theme-working/layout/theme.liquid`. Will emit once user uploads a favicon in Shopify Admin → Online Store → Themes → Customize → Theme Settings → Favicon (user action).
+- **Thin + orphan audit** — New `scripts/audit_thin_orphan.py`. Zero thin pages (all ≥1500 words). Flagged 7 orphans → fixed via surgical inbound links in 5 v1/round-2 collection drafts. Post-fix: 0 orphans among 31 tracked URLs (1 false positive remaining — reviews page, linked from About which is now tracked; CDN lag).
+- **Table of Contents on 13 articles** — Auto-generated from H2s, injected as `<div class="lb-toc">` block after intro paragraph with anchor IDs on all headings. Shopify strips `<nav>` from article bodies; using `<div role="navigation">` works. Verified live.
+- **Brand reviews page** — Created `/pages/leaf-and-bird-reviews` (id 171595366699) targeting "leaf and bird reviews" branded query. Defensive SEO to own branded SERP. 22 internal links on page. Populated About page body as well (was empty) with brand identity + link to reviews.
+- **IndexNow** — Pinged reviews page to api/Bing/Yandex.
+
+**User actions remaining:**
+- Upload favicon asset in theme customizer (markup is wired; waiting on image)
+- Check GA4 + GSC installation status (no tracking script visible in homepage HTML)
+- GSC sitemap resubmission (instructions at `content/gsc-submission-instructions.md`)
+
+**Deferred (not applicable or needs business decision):**
+- EU cookie consent banner (user confirmed no EU business)
+- Pinterest Auto Pin (needs Pinterest business account)
+- Lead-gen popup (needs lead magnet decision)
+- Reviews app install (for AggregateRating schema emission)
+- Affiliate program page
+
+**Total tracked URLs in site_sanity.py: 33** (24 v1 + 7 round-2 + 2 info pages). All pass.

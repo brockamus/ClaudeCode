@@ -25,7 +25,15 @@ def generate_imagen(prompt, out_path):
     with urllib.request.urlopen(req) as resp:
         data = json.loads(resp.read())
     b64 = data["predictions"][0]["bytesBase64Encoded"]
-    out_path.write_bytes(base64.b64decode(b64))
+    png_path = out_path.with_suffix(".png")
+    png_path.write_bytes(base64.b64decode(b64))
+    # Convert PNG -> JPEG @ 85% for smaller file size (sips is macOS-native).
+    import subprocess
+    subprocess.run(
+        ["sips", "-s", "format", "jpeg", "-s", "formatOptions", "85", str(png_path), "--out", str(out_path)],
+        check=True, capture_output=True,
+    )
+    png_path.unlink()
     print(f"Saved {out_path}")
 
 
@@ -39,7 +47,7 @@ def main():
     draft = pathlib.Path(__file__).resolve().parent.parent / "content" / "articles" / f"{args.article}.json"
     d = json.loads(draft.read_text(encoding="utf-8")) if draft.exists() else {}
     prompt = args.prompt or f"Editorial photography for a skincare blog article titled '{d.get('title', args.article)}'. Clean-beauty aesthetic, soft natural light, muted botanical green + warm gray palette, minimalist, luxurious. No text, no typography, no brand logos. 16:9 composition."
-    out = OUT_DIR / f"{args.article}.png"
+    out = OUT_DIR / f"{args.article}.jpg"
     generate_imagen(prompt, out)
     # Update draft with image_path + a default alt if missing.
     # publish_article.py resolves image_path relative to content/ (draft.parent.parent),
