@@ -41,11 +41,13 @@ def main():
     prompt = args.prompt or f"Editorial photography for a skincare blog article titled '{d.get('title', args.article)}'. Clean-beauty aesthetic, soft natural light, muted botanical green + warm gray palette, minimalist, luxurious. No text, no typography, no brand logos. 16:9 composition."
     out = OUT_DIR / f"{args.article}.png"
     generate_imagen(prompt, out)
-    # Update draft with image_path + a default alt if missing
+    # Update draft with image_path + a default alt if missing.
+    # publish_article.py resolves image_path relative to content/ (draft.parent.parent),
+    # so write the path with a ../ prefix to walk from content/ up to project root.
     if draft.exists():
-        # project_root is draft.parent.parent.parent (content/articles/X.json → project root)
-        project_root = draft.resolve().parent.parent.parent
-        d["image_path"] = str(out.resolve().relative_to(project_root))
+        content_dir = draft.resolve().parent.parent
+        rel_from_content = os.path.relpath(out.resolve(), content_dir)
+        d["image_path"] = rel_from_content
         if not d.get("image_alt"):
             d["image_alt"] = f"{d.get('title', args.article)} — featured image"
         draft.write_text(json.dumps(d, indent=2), encoding="utf-8")
