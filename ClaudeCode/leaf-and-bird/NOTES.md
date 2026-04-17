@@ -1,5 +1,14 @@
 # Leaf & Bird SEO Build Notes
 
+## Domains (corrected 2026-04-16)
+
+- **Live custom domain:** `leafandbird.com` (NO hyphen) ← use this in all curl checks and llms.txt/llms-full.txt URLs
+- **Shopify internal:** `leaf-and-bird.myshopify.com` (with hyphen — this is only the admin/backend URL, redirects 301 → leafandbird.com)
+- **`leaf-and-bird.com` (hyphenated) does NOT resolve** — earlier plan references to it need to be ignored/corrected at task time
+
+Liquid templates using `{{ shop.url }}` auto-resolve to the correct canonical domain, so the schema snippet is fine. Only hardcoded URLs in `/llms.txt`, `/llms-full.txt`, and verification scripts need the corrected domain.
+
+
 ## Theme IDs (UPDATED 2026-04-16 after user published the backup copy as live)
 
 - **LIVE:** `186951631147` — "Copy of Konversly-1-5-1-skincare-2" (role: main) ← **ALL THEME EDITS TARGET THIS ID**
