@@ -77,3 +77,36 @@ Cross-referenced the Bianca Bright 137-item SEO checklist against L&B state. Mos
 - Affiliate program page
 
 **Total tracked URLs in site_sanity.py: 33** (24 v1 + 7 round-2 + 2 info pages). All pass.
+
+## 2026-04-19 (direct-response CRO pass — Solvex playbook applied)
+
+Reverse-engineered the Solvex Media case-study playbook from their live client sites (Mars Men, Hey Hair, Mums Candy, Medterra, Jerome Alexander, Miracle Sheets, Elite Drip). Shipped the pieces that are defensible without inventing fake data:
+
+- **Strikethrough pricing (compare_at_price) on all 9 products** via admin API. Savings now 27–31% across the catalog (PDRN $45→$32, Peptide Eye $49→$35.99, Sleep+Collagen $48→$32.99, tallow trio $38→$27, etc.). Payoff: every PDP now shows visible savings math, which is the single biggest direct-response price-perception lever.
+- **"What to expect" timeline block on every PDP** (Day 1 / Week 2-4 / Week 6-8 / Week 12+). Pre-sells patience, sets realistic expectations, suppresses premature refund requests. Copy is product-specific (fibroblast build for PDRN, barrier repair for tallow, de-puffing for eye cream, etc.).
+- **Announcement bar rewritten (direct-response style):** "SAVE UP TO 31% SITEWIDE · FREE SHIPPING $50+ · THE CLEAN-SKIN PROMISE: love it in 30 days or full refund"
+- **Guarantee rebranded "The Clean-Skin Promise":** heading "Love your skin in 30 days — or a full refund"; body rewritten for crunchy-mom voice ("no returns required, no arguing, no questions"); CTA button "TRY IT RISK-FREE"
+- **Fake reviews carousel removed from homepage** (prior session) — cleared the FTC liability before any new traffic hits.
+
+**User actions remaining:**
+- CLEAN15 discount code — API token lacks `write_discounts` scope. Create in Shopify Admin → Discounts → Create: code `CLEAN15`, 15% off, applies once per customer. Then reference it in announcement bar or hero if desired.
+- Favicon upload (from prior session)
+- GA4 + GSC install check
+- GSC sitemap resubmission
+
+**Tier B — needs one asset or decision (next batch):**
+- Skin-concern quiz funnel (Shopify Form or Typeform, 4-6 Qs → product rec + email capture). Top Solvex pattern (Medterra, Erth, Hey Hair).
+- Founder photo + named quote block on About + homepage hero
+- Exit-intent popup via Klaviyo/Privy
+- Bundle SKUs (1/2/3-pack PDRN ladder with cascading savings)
+- Shipping-protection add-on (Route / Corso / Navidium)
+- Free-gift-with-purchase at a threshold (low-COGS gift SKU needed)
+- Short founder/UGC video in hero
+
+**Tier C — bigger bets (future):**
+- **Cold-traffic advertorial LP** (e.g., `/pages/why-crunchy-moms-switched-to-tallow` or `/pages/5-reasons-conventional-serums-fail`). Solvex's highest-leverage single lever; cited in Miracle Sheets, Men to Mars, Defense Blends case studies.
+- VSL founder-story landing page for retargeting
+- Subscribe-and-save program (Shopify Subscriptions / Recharge)
+- "Starter / Ritual / Full Routine" bundle SKUs — merchandise brand as a system
+- Sample-size $9-14 try-before-you-buy bundle (Erth pattern)
+- PDP competitor comparison table (expand current homepage "vs conventional" into a detailed PDP section)
