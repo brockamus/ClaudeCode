@@ -110,3 +110,15 @@ Reverse-engineered the Solvex Media case-study playbook from their live client s
 - "Starter / Ritual / Full Routine" bundle SKUs — merchandise brand as a system
 - Sample-size $9-14 try-before-you-buy bundle (Erth pattern)
 - PDP competitor comparison table (expand current homepage "vs conventional" into a detailed PDP section)
+
+## 2026-04-20 (Tier B/C batch 1 — advertorial LP + skin quiz)
+
+- **Cold-traffic advertorial LP at `/pages/why-we-stopped-using-retinol`** (page id 171665195307) — first-person, ~2500 words, Solvex direct-response structure: hook → problem agitation → what-I-tried-that-failed → discovery of PDRN → mechanism + non-salmon moat → "What to expect" timeline → offer block with strikethrough price + Clean-Skin Promise → objection-handling FAQ → who-it's-for/who-it-isn't → closing CTA. 12 H2 sections, 2 bold CTAs, 6 product-page internal links. Best-fit traffic: paid ads targeting pregnant/postpartum, retinol-curious, clean-beauty, K-beauty crossover audiences. Solvex's single highest-leverage lever per their case-study research.
+
+- **Skin-concern quiz funnel at `/pages/skin-quiz`** (page id 171665359147) — pure HTML + inline JS (Shopify's page.body_html preserves scripts, unlike article.body_html). 4 questions: primary concern → life stage → texture pref → hero-or-starter. Routing logic bakes in pregnancy guardrails (avoids L-AA vitamin C, flags Sleep Plus melatonin), sensitive-skin branches (routes to Vitamin Glow over Vitamin C), and starter-routine upsells (pairs complementary products). Result card shows matched product with strikethrough price, savings %, Clean-Skin Promise, and a pair-it-with upsell link. Retake button for funnel flexibility.
+
+- **Inbound links wired:** `/collections/pdrn-vs-retinol` trust module now points to the advertorial; About page now points to both the quiz and the advertorial. Both new pages IndexNow-pinged to api/Bing/Yandex (all 200/200/202).
+
+- **Tracked URLs in site_sanity.py: 35** (up from 33). All pass.
+
+**Tier B/C still open:** founder photo + quote, exit-intent popup, bundle SKUs (1/2/3-pack ladder), shipping-protection add-on, GWP at threshold, founder video, VSL landing page, subscribe-and-save program, sample-size try-before-you-buy bundle, PDP competitor comparison table.

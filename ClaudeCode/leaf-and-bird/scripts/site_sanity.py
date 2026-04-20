@@ -45,6 +45,9 @@ URLS = [
     # Brand + info pages
     ("page", "https://leafandbird.com/pages/leaf-and-bird-reviews"),
     ("page", "https://leafandbird.com/pages/about"),
+    # Direct-response pages (2026-04-20)
+    ("page", "https://leafandbird.com/pages/why-we-stopped-using-retinol"),
+    ("page", "https://leafandbird.com/pages/skin-quiz"),
 ]
 
 
