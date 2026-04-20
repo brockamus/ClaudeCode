@@ -50,15 +50,25 @@
     <!-- Custom font CSS -->
     <link rel="stylesheet" href="{{ 'custom-font.css' | asset_url }}" type="text/css">
 
+    {%- comment -%} Leaf & Bird homepage SEO fallback — used only when Admin > Preferences > SEO fields are empty. Any value set in admin overrides these. {%- endcomment -%}
+    {%- assign lb_home_title = "Leaf & Bird — Vegan PDRN Serum & Grass-Fed Tallow for Clean Moms" -%}
+    {%- assign lb_home_desc = "Rare non-salmon vegan PDRN serum + whipped grass-fed tallow creams for health-conscious moms. Clean, K-beauty-grade, cruelty-free. Save up to 31% sitewide + free shipping $50+. The Clean-Skin Promise: love it in 30 days or full refund." -%}
+
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if template == 'index' and page_title == shop.name -%}
+        {{ lb_home_title }}
+      {%- else -%}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
     </title>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
+    {%- elsif template == 'index' -%}
+      <meta name="description" content="{{ lb_home_desc | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
