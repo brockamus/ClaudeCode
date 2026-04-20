@@ -7,7 +7,7 @@
       "name": "Announcement Bar",
       "settings": {
         "use_theme_colors": false,
-        "text": "<p><strong>SAVE UP TO 31% SITEWIDE</strong> \u00b7 FREE SHIPPING $50+ \u00b7 <strong>THE CLEAN-SKIN PROMISE</strong>: love it in 30 days or full refund</p>",
+        "text": "<p><strong>NEW? USE CLEAN15 FOR 15% OFF YOUR FIRST ORDER</strong> \u00b7 FREE SHIPPING $50+ \u00b7 <strong>THE CLEAN-SKIN PROMISE</strong>: 30-day refund</p>",
         "background_color": "#2b2b2b",
         "text_color": "#ffffff",
         "font_size": 14
