@@ -93,22 +93,37 @@
     }
     {%- endif -%}
 
-    {%- comment -%} Product schema {%- endcomment -%}
+    {%- comment -%} Product schema — uses brand+MPN as unique identifier pair when GTIN isn't set. GTIN auto-emits once variant.barcode is populated. {%- endcomment -%}
     {%- if template contains 'product' and product -%}
+      {%- assign lb_variant = product.selected_or_first_available_variant -%}
+      {%- assign lb_barcode = lb_variant.barcode | strip -%}
     ,{
       "@type": "Product",
       "@id": "{{ page_url }}#product",
       "name": {{ product.title | json }},
       "description": {{ product.description | strip_html | truncate: 500 | json }},
       "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
-      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      "sku": {{ lb_variant.sku | json }},
+      "mpn": {{ lb_variant.sku | json }},
+      {%- if lb_barcode != blank -%}
+        {%- assign lb_bc_len = lb_barcode | size -%}
+        {%- if lb_bc_len == 12 -%}"gtin12": {{ lb_barcode | json }},
+        {%- elsif lb_bc_len == 13 -%}"gtin13": {{ lb_barcode | json }},
+        {%- elsif lb_bc_len == 14 -%}"gtin14": {{ lb_barcode | json }},
+        {%- elsif lb_bc_len == 8 -%}"gtin8": {{ lb_barcode | json }},
+        {%- else -%}"gtin": {{ lb_barcode | json }},
+        {%- endif -%}
+      {%- endif %}
       "brand": { "@id": "{{ shop.url }}#org" },
+      "itemCondition": "https://schema.org/NewCondition",
       "offers": {
         "@type": "Offer",
         "url": "{{ page_url }}",
-        "price": "{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}",
+        "price": "{{ lb_variant.price | money_without_currency | remove: ',' }}",
         "priceCurrency": "{{ cart.currency.iso_code }}",
-        "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+        "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": { "@id": "{{ shop.url }}#org" }
       }
     }
     {%- endif -%}
