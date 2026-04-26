@@ -1,0 +1,15 @@
+{
+  "action_url": null,
+  "fallback": "Use mailto:fred@konversly.com on the form, or insert plain HTML form that posts to a placeholder action and document this gap in the deploy-result.json. Do NOT block the deploy.",
+  "discovery_notes": {
+    "scanned": [
+      "https://homesteadfanatic.com/ (homepage)",
+      "https://homesteadfanatic.com/about-2/",
+      "20 most recent posts via wp/v2/posts (content.rendered scanned)"
+    ],
+    "wp_namespaces_present": ["lc_public_api/v1", "lc_internal_api/v1"],
+    "lc_public_api_routes": ["/lc_public_api/v1/proxy (GET, POST)"],
+    "lc_internal_api_routes": ["/lc_internal_api/v1/save_custom_values (POST)"],
+    "result": "No leadconnectorhq.com URL, no data-form-id attribute, and no api/v*/forms src found anywhere on the site. The LC plugin is installed (REST namespaces exist) but no form is currently embedded on any rendered page. The lc_public_api/v1/proxy endpoint is a generic CORS proxy, not a per-form submission URL. Without a known formId, we cannot construct https://api.leadconnectorhq.com/widget/form/<formId>. Falling back to mailto per plan instructions."
+  }
+}

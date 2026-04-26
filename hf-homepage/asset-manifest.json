@@ -1,0 +1,47 @@
+{
+  "hero_photo": "https://homesteadfanatic.com/wp-content/uploads/2026/03/sarah-kate-wilder.jpg",
+  "hero_alt": "Sarah Kate Wilder, founder of Homestead Fanatic",
+  "pillar": {
+    "url": "https://homesteadfanatic.com/homesteading-skills-beginners/",
+    "title": "25 Essential Homesteading Skills Every Beginner Needs to Master",
+    "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-380-compressed.jpg"
+  },
+  "topic_tiles": [
+    {
+      "name": "Survival & Prepping",
+      "url": "https://homesteadfanatic.com/category/survival-prepping/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-611-compressed.jpg",
+      "count": 21
+    },
+    {
+      "name": "Off-Grid Living",
+      "url": "https://homesteadfanatic.com/category/off-grid-living/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-613.jpg",
+      "count": 17
+    },
+    {
+      "name": "Health & Wellness",
+      "url": "https://homesteadfanatic.com/category/health-wellness/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/natural-teeth-whitening-clean-ingredients.jpg",
+      "count": 16
+    },
+    {
+      "name": "Homesteading Tools",
+      "url": "https://homesteadfanatic.com/category/homesteading-tools/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-618.jpg",
+      "count": 12
+    },
+    {
+      "name": "Emergency Food",
+      "url": "https://homesteadfanatic.com/category/emergency-food/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-597-compressed.jpg",
+      "count": 10
+    },
+    {
+      "name": "Food Preservation",
+      "url": "https://homesteadfanatic.com/category/food-preservation/",
+      "image": "https://homesteadfanatic.com/wp-content/uploads/2026/03/homestead-fanatic-566.jpg",
+      "count": 8
+    }
+  ]
+}
