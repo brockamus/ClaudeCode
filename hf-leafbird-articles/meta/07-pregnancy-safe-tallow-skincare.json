@@ -1,0 +1,59 @@
+{
+  "title_tag": "Pregnancy-Safe Tallow Skincare: What's Actually OK (2026)",
+  "meta_desc": "Whipped tallow cream during pregnancy: which formulas are safe, which to skip, and the one I reached for postpartum. Honest, ingredient-by-ingredient.",
+  "image_alt": "Tallow cream jar on a knit baby blanket — pregnancy safe tallow skincare",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is plain unscented tallow safe in pregnancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plain rendered grass-fed tallow with no essential oils is the most ingredient-minimal option I'm aware of, and topical animal fat isn't on standard pregnancy avoidance lists. It's what I leaned on through morning sickness when fragrance was unbearable. Confirm with your OB or midwife, but single-ingredient tallow is hard to beat for label-cautious pregnancy skincare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Lemongrass & Lavender during pregnancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It's the variant I'd pick if I were pregnant today. Both oils are well-tolerated at the concentrations used in whipped tallow, and neither is a furocoumarin citrus. That said, scent sensitivities can develop mid-pregnancy. Patch-test on the inside of your forearm for 48 hours and ask your provider if you have concerns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is bergamot a problem if I'm pregnant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bergamot contains furocoumarins, which react with UV light and can cause phototoxic reactions and brown patches. Pregnancy already raises melasma risk, so daytime bergamot stacks two triggers at once. Use bergamot blends only in the evening, or skip them and pick a non-citrus variant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Postpartum and breastfeeding — same rules?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most topical essential oil cautions that apply during pregnancy continue while breastfeeding, because compounds can transfer in trace amounts and newborns are scent-sensitive. Lavender, chamomile, and lemongrass at low concentrations are widely considered fine; rosemary, sage, peppermint, and high-furocoumarin citrus get the same caution. Your provider and a lactation consultant know best."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can tallow help with stretch marks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I used tallow on my belly, hips, and chest through the back half of my last pregnancy, and I liked how my skin felt. I can't tell you it prevents stretch marks — honest research says genetics is the biggest factor and topical interventions show modest-to-no effect in controlled studies. Tallow is a good moisturizer with a short ingredient list. That's the most I'll claim."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Weird breakouts in pregnancy — is tallow making it worse?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pregnancy hormones drive breakouts that have nothing to do with what you put on your skin. Tallow is well-tolerated by most people, but very oily skin can occasionally not love it. If you started a new tallow at the same time as breakouts, pause for a week. If breakouts are widespread or painful, talk to your dermatologist or OB."
+        }
+      }
+    ]
+  }
+}

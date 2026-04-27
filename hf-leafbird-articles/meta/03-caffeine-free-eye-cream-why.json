@@ -1,0 +1,59 @@
+{
+  "title_tag": "Caffeine-Free Eye Cream: Why I Switched (2026)",
+  "meta_desc": "I used to think caffeine eye cream was the only option for tired-mom eyes. Here's what changed my mind — and what I use now.",
+  "image_alt": "Caffeine-free eye cream jar beside an empty espresso cup — caffeine free eye cream",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is caffeine eye cream actually bad for you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Topical caffeine is generally considered safe and well-tolerated. The issue isn't safety — it's that the effect is short-lived because it works through vasoconstriction rather than building anything in the skin. Fine for a quick morning depuff; not the right tool for a long-term result."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Won't a caffeine-free eye cream just leave me looking puffy in the morning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For the first few days, you'll notice you don't have that instant tight feeling. After about three weeks, my under-eye area looked better in the mornings on a peptide formula than it did on caffeine — the barrier and hydration were actually improving, so the morning puff was less dramatic to begin with."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What ingredients should I look for if I'm switching?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Peptides (Acetyl Tetrapeptide-5 specifically targets the under-eye area in the research I read), hyaluronic acid, niacinamide, and squalane or other gentle plant oils. Avoid retinol if you're pregnant or breastfeeding, and skip anything with fragrance high on the list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I notice a difference?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "About three weeks for noticeable difference and six weeks for the kind of result other people comment on. Peptides build slowly — the gain is cumulative."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use caffeine-free eye cream during pregnancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Peptide Eye Gel-Cream is fragrance-free, retinol-free, and caffeine-free, which is the checklist most pregnancy guidance points to. Peptides themselves don't appear on standard pregnancy avoid lists. Your OB knows your situation better than the internet, but this is the formula I used through breastfeeding all three of my kids."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I just love my caffeine eye cream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keep it. The point isn't that caffeine eye cream is wrong — it's that some people have hit a ceiling with it and didn't realize peptides were the next step. If yours is working, don't fix what isn't broken."
+        }
+      }
+    ]
+  }
+}

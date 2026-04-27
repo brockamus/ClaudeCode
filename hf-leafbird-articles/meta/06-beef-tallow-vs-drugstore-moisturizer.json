@@ -1,0 +1,51 @@
+{
+  "title_tag": "Tallow vs. Drugstore Moisturizer: A Homesteader's Compare (2026)",
+  "meta_desc": "Tallow cream or drugstore moisturizer? I compared ingredient lists, skin feel, cost-per-use, and when each one actually makes sense.",
+  "image_alt": "Tallow jar beside a drugstore moisturizer bottle on linen — tallow vs drugstore moisturizer",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is mineral oil bad for your skin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — cosmetic-grade mineral oil is well-studied and generally considered non-comedogenic and safe at typical lotion concentrations. The honest critique isn't safety; it's that mineral oil works by sitting on skin as an occlusive film rather than matching the skin's own lipid profile. Tallow does the latter. Both can soften dry skin — different paths."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does tallow expire faster than drugstore moisturizer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It doesn't, when stored right. Whipped tallow is anhydrous (no water), so there's nothing for bacteria to grow in. Sealed and out of direct sunlight, a jar holds quality for around 12 months. Drugstore lotions list 12–24 months because their preservative systems target that window. Different shelf strategy, not a safety gap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use tallow under sunscreen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — that's how I use it most mornings. Trick is 'use less than you think.' A barely-there smear under SPF doesn't pill. I reach for Lemongrass & Lavender under SPF and save the bergamot variant for evening because of bergamot's photosensitivity caveat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will tallow break me out?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tallow has a low-to-moderate comedogenicity profile and tends to be well-tolerated because its fatty acid mix is similar to sebum. Dry and sensitive skin generally do beautifully with it. Very oily, acne-prone skin can be hit or miss — patch-test on your jawline for a week first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to give up drugstore moisturizer entirely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — and I haven't. I keep a bottle of fragrance-free drugstore lotion in the car for full-body fast moisturizing, and I use tallow on my face, hands, and chapped spots. They're different tools. The all-or-nothing framing makes for spicier internet content but worse outcomes."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "title_tag": "Pregnancy-Safe Eye Cream: What to Look For (2026)",
+  "meta_desc": "Pregnant and need to swap your eye cream? Here's the ingredient checklist I used — what I avoided, what I kept, and the one I picked.",
+  "image_alt": "Pregnancy-safe eye cream jar with dried lavender — pregnancy safe eye cream",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it really a big deal if I used my regular eye cream once or twice before I knew I was pregnant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Almost certainly not. The known concern with topical retinoids in pregnancy is consistent ongoing use — even then, the absolute risk from a few applications is very low according to most OB and dermatology guidance. If you've stopped now, you've done the right thing. Switch the product and move on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use a peptide eye cream while breastfeeding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Peptides like Acetyl Tetrapeptide-5 don't appear on any breastfeeding-caution lists I've seen. They're large molecules that don't penetrate systemically the way small molecules like retinol do. I used my peptide eye cream through breastfeeding all three of my kids — but your OB or pediatrician knows your situation better than a homesteader on the internet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about dark circles? Aren't those usually treated with caffeine or vitamin K?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Caffeine and vitamin K are gray-zone for some pregnant women, and a lot of \"dark circle\" creams also have retinol layered in. I got better results from peptide-plus-hyaluronic-acid than from caffeine. Most under-eye darkness is hydration plus sleep plus genetics — my current cream improves it by hydrating, not vasoconstricting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are \"natural\" eye creams automatically pregnancy-safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. \"Natural\" is a marketing word, not a regulatory word. Some of the most pregnancy-questionable ingredients I've found have been in natural lines — high-dose essential oils, clary sage, rosemary oil. Always read the label, even on brands you trust."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I don't want to spend $30+ on an eye cream right now?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Totally fair. Pregnancy is expensive enough. You can absolutely use a plain hyaluronic acid serum and a clean fragrance-free face moisturizer on your under-eye area for nine months. The \"eye cream\" category is partly real (gentler formulations) and partly marketing (same actives in a smaller jar at a higher price)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How soon after birth can I go back to retinol?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most OB and dermatology guidance says retinol is generally considered fine after weaning if you're breastfeeding, and immediately postpartum if you're not. Honestly, after using a peptide eye cream for almost a year, I never went back — the changes I was originally trying to fix with retinol responded well enough to peptides plus hydration that I didn't feel the need."
+        }
+      }
+    ]
+  }
+}

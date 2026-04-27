@@ -1,0 +1,59 @@
+{
+  "title_tag": "What Is PDRN? A Homesteader's Honest Take on K-Beauty (2026)",
+  "meta_desc": "PDRN is everywhere in Korean skincare — but what is it actually? Here's a homesteader's plain-English explainer and the one thing I won't use it without.",
+  "image_alt": "Clear glass PDRN serum bottle on white marble — what is PDRN",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does PDRN stand for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Polydeoxyribonucleotide. It's a chain of fragmented DNA used as a regenerative skincare and medical active. The standard source is salmon DNA; vegan plant-fermented versions are now also available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PDRN the same as GLP-3?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PDRN is a topical skin-active — fragmented DNA for skin regeneration, brightening, and barrier repair. GLP-3 is a metabolic compound related to appetite and weight management. Different molecules, different jobs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PDRN vegan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most PDRN on the market is not — it's derived from salmon DNA. Vegan PDRN exists; it's plant-fermented and identical in topical performance. The Leaf & Bird Vegan PDRN Brightening Serum is the non-salmon version."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does PDRN take to work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slow-build active. Most people see tone improvement and post-acne mark fading around weeks four to six of consistent nightly use. For a two-week timeline, vitamin C or an AHA is a better fit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PDRN safe during pregnancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The clinical literature on topical PDRN during pregnancy is essentially nonexistent — not documented unsafe, but also not documented safe. Bring your ingredient list to your OB before adding it during pregnancy or breastfeeding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the Leaf & Bird PDRN serum contain phenoxyethanol?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Phenoxyethanol is the standard preservative for water-based skincare — safe at under-1% concentrations, allowed in EU \"natural\" certifications, and necessary to prevent bacterial growth at room temperature. I disclose it on the product page because I'd rather you know up front."
+        }
+      }
+    ]
+  }
+}

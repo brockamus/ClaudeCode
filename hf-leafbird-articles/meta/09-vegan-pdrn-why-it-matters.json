@@ -1,0 +1,51 @@
+{
+  "title_tag": "Vegan PDRN Serum: Why It's So Rare (and What to Buy)",
+  "meta_desc": "Most PDRN comes from salmon. Here's why that matters, whether vegan PDRN is even possible, and the one brand I found doing it right.",
+  "image_alt": "Vegan PDRN serum bottle on green leaves and petals — vegan pdrn serum",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is all PDRN made from salmon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The vast majority of PDRN on the skincare market is salmon-derived — specifically from rainbow trout (Oncorhynchus mykiss) or chum salmon (Oncorhynchus keta) sperm DNA. Vegan PDRN exists, derived from plant tissue culture (Panax ginseng, peony, Gynostemma) or microbial fermentation (Lactobacillus rhamnosus), but it's still rare on the open market."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is vegan PDRN as effective as salmon-derived PDRN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Per published research, yes. Panax ginseng PDRN binds the same A2A adenosine receptor and produces comparable skin cell proliferation and barrier improvements. Lactobacillus-derived PDRN has outperformed salmon PDRN on some lab measures. The bottleneck isn't efficacy — it's supply chain maturity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do most K-beauty brands still use salmon PDRN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Salmon-derived PDRN has decades of clinical data, an established supply chain, and lower per-unit cost. Non-animal sources are validated in the literature but still scaling industrially."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use vegan PDRN if I have a fish allergy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A vegan, plant-fermented or microbial-derived PDRN serum contains no fish-derived ingredients, so it sidesteps the fish-allergen question. Always check the full ingredient list and patch-test, and discuss with your allergist if you have a serious allergy history."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I tell if a PDRN serum is salmon-derived from the back of the bottle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Look at the INCI list. If you see 'polydeoxyribonucleotide' or 'sodium DNA' without a plant or microbial source called out, assume salmon-derived — that's the industry default. Brands using non-animal PDRN almost always advertise the source explicitly."
+        }
+      }
+    ]
+  }
+}

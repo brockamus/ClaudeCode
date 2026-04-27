@@ -1,0 +1,51 @@
+{
+  "title_tag": "Acetyl Tetrapeptide-5: What It Actually Does for Eyes",
+  "meta_desc": "Acetyl Tetrapeptide-5 keeps showing up on eye cream labels. Here's what it actually does, the research behind it, and whether it's pregnancy-safe.",
+  "image_alt": "Glass dropper releasing serum onto a green leaf — acetyl tetrapeptide-5 explained",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Acetyl Tetrapeptide-5 the same thing as Eyeseryl?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Eyeseryl is the trade name used by the supplier (Lipotec) for their proprietary Acetyl Tetrapeptide-5 ingredient. On an INCI label you'll see \"Acetyl Tetrapeptide-5\"; on marketing copy you may see \"Eyeseryl.\" Same molecule, two names."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I see a difference?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The published efficacy study used 60 days of twice-daily application. The typical timeline I see is around three weeks for a noticeable change in morning puffiness and six weeks for the kind of result other people might notice. It's a slow-build active — don't expect a 24-hour difference."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will it help with dark circles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depends on the cause. If your darkness is from fluid pooling and capillary leakiness (the bluish tint a lot of people see), the peptide can help indirectly by reducing the puffiness that creates the shadow. If your dark circles are pigment-based, this isn't the right tool — you'd want something brightening like niacinamide or vegan PDRN."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it safe during pregnancy and breastfeeding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It's not on standard pregnancy avoid lists, and peptides as a category don't absorb systemically at meaningful levels through intact skin. Bring your ingredient list to your OB to confirm for your specific situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work better than caffeine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Different tools, different jobs. Caffeine gives you a fast, short-lived depuff through vasoconstriction. Acetyl Tetrapeptide-5 builds a slower, more durable change in capillary integrity over weeks. Quick morning fix? Caffeine. Better under-eye area in week six than week one? The peptide."
+        }
+      }
+    ]
+  }
+}

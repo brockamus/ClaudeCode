@@ -1,0 +1,59 @@
+{
+  "title_tag": "Vegan Eye Cream Review: A Crunchy Mom's Honest Take (2026)",
+  "meta_desc": "I switched my eye cream after my third baby. Here's why I picked Leaf & Bird's vegan peptide eye gel-cream — and what 60 days actually looked like.",
+  "image_alt": "Vegan peptide eye cream jar on linen — Leaf & Bird vegan eye cream review",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this eye cream actually vegan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Peptide Eye Gel-Cream is fully vegan — no beeswax, no lanolin, no animal-derived collagen or peptides. The Acetyl Tetrapeptide-5 in it is a synthetic peptide, not animal-sourced."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use it during pregnancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I'm not your doctor, so this isn't medical advice — run any product past your OB. That said, the formula was built without retinoids, salicylic acid, or hydroquinone, which are the actives most pregnancy guidance flags. I have a separate post on which eye cream ingredients I'd avoid in pregnancy and why."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is it different from a caffeine eye cream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Caffeine eye creams constrict blood vessels for a short-term de-puffing look but don't really do anything for skin texture or fine lines long-term. This skips caffeine entirely and uses peptides, niacinamide, and squalane — aimed at hydration and supporting skin over time, not temporary cosmetic effects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will it make a noticeable difference in two weeks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Honestly, no — and I'd be skeptical of any eye cream that promises that. In my use, the first thing I noticed in week one was the absence of irritation. Visible-difference stuff started around day thirty and felt more settled at day sixty."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the active ingredient doing the work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The headlining peptide is Acetyl Tetrapeptide-5, with a research base behind it for the under-eye area. The formula also uses niacinamide for tone and squalane for hydration. No retinol, no caffeine, no fragrance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is $30.99 a fair price for an eye cream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I think so, and I built it that way on purpose. A drugstore eye cream might run $15 but be mostly water and dimethicone. A department-store one with a similar peptide profile usually starts at $60–$80. $30.99 covers real actives in a clean formula without paying for marketing or packaging."
+        }
+      }
+    ]
+  }
+}
