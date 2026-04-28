@@ -1,0 +1,51 @@
+{
+  "title_tag": "Natural Alternatives to Ozempic & GLP-1: What I Found (2026)",
+  "meta_desc": "After my doctor quoted $1,200/month for Ozempic, I researched every natural GLP-1 alternative I could find. Here's what worked, what didn't, and what I use now.",
+  "image_alt": "Green smoothie and a $1,200/month note on a homestead kitchen counter — natural alternatives to Ozempic",
+  "faq_jsonld": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is there really a \"natural Ozempic\"?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not in the literal sense. Nothing over the counter replicates semaglutide 1:1. What exists: foods and supplements that boost your own GLP-1, supplements like berberine that produce overlapping effects through different pathways, and peptide-class supplements like GLP-3 that work in the same metabolic neighborhood at lower intensity and cost. \"Natural Ozempic\" is marketing shorthand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these supplements safe to combine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most can be combined cautiously, but I wouldn't stack everything at once. Start with one and add others slowly. Berberine in particular has known interactions with prescription medications — blood thinners, diabetes drugs, blood pressure medications — so don't add it without checking with your physician or pharmacist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about during pregnancy or breastfeeding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Don't. Most of these — berberine especially — are not considered safe during pregnancy or breastfeeding. Berberine has shown developmental concerns in animal data and is broadly contraindicated. GLP-class peptides should not be used during pregnancy. If you're trying to conceive, pregnant, or breastfeeding, this is a conversation for your OB."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I see results from natural alternatives?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Longer than Ozempic. Semaglutide produces noticeable appetite changes within one to two weeks. Natural alternatives operate on a timeline of weeks to months. I noticed berberine's appetite effect in about three weeks. GLP Three's was subtler and accumulated over the first eight to twelve weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I keep using Ozempic and add a natural option?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a question for your prescribing physician, not for me. The mechanisms can overlap in ways that affect your blood sugar and appetite signals. Don't add anything to a prescription weight-loss medication without your prescriber's input."
+        }
+      }
+    ]
+  }
+}
