@@ -1,0 +1,31 @@
+{%- comment %} L&B — bundle synergy section. Reads lb_bundle.synergy_html (rich text) for the "how they work together" copy. {%- endcomment %}
+{%- assign synergy = product.metafields.lb_bundle.synergy_html -%}
+{%- if synergy != blank -%}
+<section class="lb-bundle-synergy">
+  <div class="lb-bundle-synergy__inner">
+    <span class="lb-bundle-synergy__eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2 class="lb-bundle-synergy__title">{{ section.settings.heading }}</h2>
+    <div class="lb-bundle-synergy__body">{{ synergy }}</div>
+  </div>
+</section>
+<style>
+  .lb-bundle-synergy { background: linear-gradient(180deg, #ece9e1 0%, #f7f5f0 100%); padding: 64px 16px; }
+  .lb-bundle-synergy__inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .lb-bundle-synergy__eyebrow { display: inline-block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #4f6f5d; margin-bottom: 12px; font-weight: 600; }
+  .lb-bundle-synergy__title { font-size: 34px; line-height: 1.2; margin: 0 0 24px; color: #25282a; }
+  .lb-bundle-synergy__body { font-size: 17px; line-height: 1.65; color: #25282a; }
+  .lb-bundle-synergy__body p { margin: 0 0 16px; }
+  .lb-bundle-synergy__body p:last-child { margin-bottom: 0; }
+</style>
+{%- endif -%}
+{% schema %}
+{
+  "name": "LB Bundle Synergy",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "WHY THIS COMBINATION" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How they work together" }
+  ],
+  "presets": [{ "name": "LB Bundle Synergy" }]
+}
+{% endschema %}

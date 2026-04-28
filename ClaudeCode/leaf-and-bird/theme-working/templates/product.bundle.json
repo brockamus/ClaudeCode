@@ -479,10 +479,34 @@
         "turn_off_delivery_date": true,
         "delivery_text_prefix": "Get It By"
       }
+    },
+    "lb_bundle_components_lb01": {
+      "type": "lb-bundle-components",
+      "settings": {
+        "heading": "What's in this set",
+        "subheading": "Layer-tested for the ritual."
+      }
+    },
+    "lb_bundle_synergy_lb01": {
+      "type": "lb-bundle-synergy",
+      "settings": {
+        "eyebrow": "WHY THIS COMBINATION",
+        "heading": "How they work together"
+      }
+    },
+    "lb_bundle_ritual_lb01": {
+      "type": "lb-bundle-ritual",
+      "settings": {
+        "heading": "Your ritual",
+        "subheading": "When and how to use each product."
+      }
     }
   },
   "order": [
     "m1",
+    "lb_bundle_components_lb01",
+    "lb_bundle_synergy_lb01",
+    "lb_bundle_ritual_lb01",
     "s2",
     "s8",
     "s9"
