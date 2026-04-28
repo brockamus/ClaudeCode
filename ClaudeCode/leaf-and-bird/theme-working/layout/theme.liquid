@@ -52,7 +52,7 @@
 
     {%- comment -%} Leaf & Bird homepage SEO fallback — used only when Admin > Preferences > SEO fields are empty. Any value set in admin overrides these. {%- endcomment -%}
     {%- assign lb_home_title = "Leaf & Bird — Vegan PDRN Serum & Grass-Fed Tallow, Clean-Beauty Grade" -%}
-    {%- assign lb_home_desc = "Rare non-salmon vegan PDRN serum + whipped grass-fed tallow creams for the ingredient-literate. Clean, K-beauty-grade, cruelty-free — every INCI earns its place. Save up to 31% sitewide + free shipping $50+. The Clean-Skin Promise: love it in 30 days or full refund." -%}
+    {%- assign lb_home_desc = "Rare non-salmon vegan PDRN serum + whipped grass-fed tallow creams for the ingredient-literate. Clean, K-beauty-grade, cruelty-free — every INCI earns its place. Save 15% sitewide + free shipping $50+. The Clean-Skin Promise: love it in 30 days or full refund." -%}
 
     <title>
       {%- if template == 'index' and page_title == shop.name -%}
@@ -65,13 +65,13 @@
       {%- endif -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- elsif template == 'index' -%}
+    {%- if template == 'index' -%}
       <meta name="description" content="{{ lb_home_desc | escape }}">
-    {% endif %}
+    {%- elsif page_description != blank -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', lb_home_desc_override: lb_home_desc %}
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -555,5 +555,36 @@
       })();
     </script>
     {% endif %}
+
+    {%- comment %} Style any nav link with text 'Take The Quiz' as a sage CTA button {%- endcomment %}
+    <script>
+      (function() {
+        function styleQuizLink() {
+          var links = document.querySelectorAll('a');
+          for (var i = 0; i < links.length; i++) {
+            if (links[i].textContent.trim() === 'Take The Quiz') {
+              var l = links[i];
+              Object.assign(l.style, {
+                backgroundColor: '#5fb38e',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '4px',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                display: 'inline-block',
+                transition: 'background-color 0.3s ease'
+              });
+              l.onmouseover = function() { this.style.backgroundColor = '#4a8e70'; };
+              l.onmouseout  = function() { this.style.backgroundColor = '#5fb38e'; };
+            }
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', styleQuizLink);
+        } else {
+          styleQuizLink();
+        }
+      })();
+    </script>
   </body>
 </html>

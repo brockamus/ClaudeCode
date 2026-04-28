@@ -5,9 +5,13 @@
   Included once from layout/theme.liquid.
 {%- endcomment -%}
 
-{%- assign page_url = canonical_url | default: request.origin | append: request.path -%}
+{%- if canonical_url != blank -%}
+  {%- assign page_url = canonical_url -%}
+{%- else -%}
+  {%- assign page_url = request.origin | append: request.path -%}
+{%- endif -%}
 {%- assign site_name = shop.name -%}
-{%- assign brand_desc = 'Leaf & Bird is a clean vegan skincare brand making rare non-salmon-derived PDRN serum and whipped grass-fed tallow creams, formulated for health-conscious mothers.' -%}
+{%- assign brand_desc = 'Leaf & Bird is clean and ancestral beauty — rare non-salmon-derived vegan PDRN serum and whipped grass-fed tallow creams for the ingredient-literate, clean-beauty skeptics who read every label.' -%}
 {%- assign logo_url = shop.brand.logo.image | image_url: width: 600 | default: shop.brand.square_logo.image | image_url: width: 600 -%}
 
 <script type="application/ld+json">
@@ -137,10 +141,11 @@
       "image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }},
       "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
       "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
-      "author": {
-        "@type": "Person",
-        "name": {{ article.author | default: 'Leaf & Bird' | json }}
-      },
+      "author": {%- if article.author != blank and article.author != 'Leaf & Bird' -%}
+        { "@type": "Person", "name": {{ article.author | json }} }
+      {%- else -%}
+        { "@id": "{{ shop.url }}#org" }
+      {%- endif %},
       "publisher": { "@id": "{{ shop.url }}#org" },
       "mainEntityOfPage": "{{ page_url }}"
     }
