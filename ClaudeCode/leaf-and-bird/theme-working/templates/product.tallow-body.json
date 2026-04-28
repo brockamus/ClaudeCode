@@ -33,7 +33,7 @@
           }
         },
         "judge_me_reviews_preview_badge_EJh6ch": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
         "a2": {
@@ -78,7 +78,7 @@
         "a4": {
           "type": "limited_inventory",
           "settings": {
-            "inventory_text": "Handcrafted in small batches \u2014 limited availability",
+            "inventory_text": "Handcrafted in small batches — limited availability",
             "bold_first_word": true,
             "dot_color": "#6faf8f",
             "text_color": "#4f6f5d",
@@ -91,7 +91,7 @@
         "a5": {
           "type": "custom_text",
           "settings": {
-            "text": "<p>100% grass-fed beef tallow \u2014 nature's closest match to your skin's own oils. Packed with vitamins A, D, E, and K. Zero synthetics, zero fillers.</p>",
+            "text": "<p>100% grass-fed beef tallow — nature's closest match to your skin's own oils. Packed with vitamins A, D, E, and K. Zero synthetics, zero fillers.<\/p>",
             "show_description": false,
             "description": "",
             "description_font_size": 12,
@@ -265,12 +265,12 @@
             "show_badge_1": false,
             "badge_1": "",
             "quantity_2": 2,
-            "title_2": "Bundle of 2",
+            "title_2": "Duo",
             "description_2": "",
             "show_badge_2": true,
             "badge_2": "POPULAR",
             "quantity_3": 3,
-            "title_3": "Bundle of 3",
+            "title_3": "Trio",
             "compare_price_3": 0,
             "description_3": "",
             "show_badge_3": true,
@@ -369,7 +369,7 @@
             "description_font_size_mobile": 10,
             "current_price_font_size_mobile": 14,
             "original_price_font_size_mobile": 10,
-            "per_item_price_suffix": "/each",
+            "per_item_price_suffix": "\/each",
             "per_item_price_font_size": 14,
             "per_item_price_font_size_mobile": 12,
             "per_item_price_color": "#666666",
@@ -383,8 +383,8 @@
             "margin_top": 0,
             "margin_bottom": 0,
             "compare_price_2": 0,
-            "discount_pct_2": 10,
-            "discount_pct_3": 15
+            "discount_pct_2": 15,
+            "discount_pct_3": 25
           }
         },
         "a8": {
@@ -448,9 +448,9 @@
         "b2": {
           "type": "custom_text",
           "settings": {
-            "text": "<p><strong>30-Day Satisfaction Guarantee</strong></p>",
+            "text": "<p><strong>30-Day Satisfaction Guarantee<\/strong><\/p>",
             "show_description": true,
-            "description": "<p>We stand behind every product. If you're not completely satisfied within 30 days, we'll issue a full refund \u2014 no questions asked.</p>",
+            "description": "<p>We stand behind every product. If you're not completely satisfied within 30 days, we'll issue a full refund — no questions asked.<\/p>",
             "description_font_size": 12,
             "description_spacing": 4,
             "description_color": "#666666",
@@ -529,15 +529,15 @@
             "accordion_mode": true,
             "question_1": "What makes tallow different from regular moisturizers?",
             "use_product_description_for_question_1": false,
-            "answer_1": "<p>Grass-fed beef tallow is the closest match to your skin's natural sebum. Unlike synthetic moisturizers that sit on top of skin, tallow absorbs deeply, delivering fat-soluble vitamins A, D, E, and K directly into your skin cells.</p>",
+            "answer_1": "<p>Grass-fed beef tallow is the closest match to your skin's natural sebum. Unlike synthetic moisturizers that sit on top of skin, tallow absorbs deeply, delivering fat-soluble vitamins A, D, E, and K directly into your skin cells.<\/p>",
             "question_2": "Is this safe for sensitive skin?",
-            "answer_2": "<p>Absolutely. Our tallow creams contain only 5 ingredients \u2014 all organic, all natural. No synthetic fragrances, no preservatives, no chemicals. Tallow's biocompatibility makes it one of the gentlest moisturizers available.</p>",
+            "answer_2": "<p>Absolutely. Our tallow creams contain only 5 ingredients — all organic, all natural. No synthetic fragrances, no preservatives, no chemicals. Tallow's biocompatibility makes it one of the gentlest moisturizers available.<\/p>",
             "question_3": "How is this different from the other scent varieties?",
-            "answer_3": "<p>All three varieties share the same nourishing tallow base with organic olive oil and jojoba oil. The only difference is the essential oil blend \u2014 choose the aromatherapy experience that fits your mood and routine.</p>",
+            "answer_3": "<p>All three varieties share the same nourishing tallow base with organic olive oil and jojoba oil. The only difference is the essential oil blend — choose the aromatherapy experience that fits your mood and routine.<\/p>",
             "question_4": "How should I store this product?",
-            "answer_4": "<p>Store in a cool location away from direct sunlight. Tallow melts at 85\u00b0F \u2014 if melted, oils may separate. Gently mix and refrigerate if necessary. This is normal and does not affect product quality.</p>",
+            "answer_4": "<p>Store in a cool location away from direct sunlight. Tallow melts at 85°F — if melted, oils may separate. Gently mix and refrigerate if necessary. This is normal and does not affect product quality.<\/p>",
             "question_5": "Shipping & Returns",
-            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee \u2014 if you're not satisfied, contact us for a full refund.</p>",
+            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee — if you're not satisfied, contact us for a full refund.<\/p>",
             "question_6": "",
             "answer_6": "",
             "question_7": "",
@@ -714,7 +714,7 @@
           "type": "benefit",
           "settings": {
             "title": "Bioidentical to Skin",
-            "description": "Grass-fed tallow mirrors your skin's natural sebum \u2014 your body recognizes it instantly. No competing chemistries.",
+            "description": "Grass-fed tallow mirrors your skin's natural sebum — your body recognizes it instantly. No competing chemistries.",
             "preset_icon": "check",
             "use_custom_icon": false,
             "custom_icon_svg": "",
@@ -753,7 +753,7 @@
           "type": "benefit",
           "settings": {
             "title": "Whipped, Never Greasy",
-            "description": "Body heat melts the cloud-soft balm into a fast-absorbing oil. Sinks in cleanly \u2014 no shine, no residue.",
+            "description": "Body heat melts the cloud-soft balm into a fast-absorbing oil. Sinks in cleanly — no shine, no residue.",
             "preset_icon": "check",
             "use_custom_icon": false,
             "custom_icon_svg": "",
@@ -772,7 +772,7 @@
       "settings": {
         "heading_regular": "Better with",
         "heading_accent": "Tallow Skincare",
-        "subtitle": "Nature's closest match to your skin \u2014 backed by centuries of use.",
+        "subtitle": "Nature's closest match to your skin — backed by centuries of use.",
         "desktop_layout": "grid",
         "use_theme_colors": true,
         "heading_alignment_mobile": "center",
@@ -830,7 +830,7 @@
         "enable_bottom_border": false,
         "bottom_border_color": "#e5e5e5",
         "bottom_border_width": 1,
-        "section_image": "shopify://shop_images/lifestyle_tallow_apply.jpg",
+        "section_image": "shopify:\/\/shop_images\/lifestyle_tallow_apply.jpg",
         "image_display_mode": "standard",
         "mobile_image_position": "after_header",
         "padding_top_mobile": 40,
@@ -851,7 +851,7 @@
         "s0m": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_1_cleanse.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_1_cleanse.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Cleanse",
             "step_description": "Apply a small amount to fingertips",
@@ -862,7 +862,7 @@
         "s1n": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_2_apply.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_2_apply.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Massage",
             "step_description": "Gently massage into skin in circular motions",
@@ -873,10 +873,10 @@
         "s2o": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_3_moisturize_8e2676ae-bad6-4fa2-b492-b094bf00aaee.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_3_moisturize_8e2676ae-bad6-4fa2-b492-b094bf00aaee.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Absorb",
-            "step_description": "Let it fully absorb \u2014 just a few minutes",
+            "step_description": "Let it fully absorb — just a few minutes",
             "content_background_color": "#ffffff",
             "card_background_color": ""
           }
@@ -1077,7 +1077,7 @@
         "subtitle": "",
         "show_image": true,
         "media_type": "image",
-        "feature_image": "shopify://shop_images/lifestyle_tallow_apply.jpg",
+        "feature_image": "shopify:\/\/shop_images\/lifestyle_tallow_apply.jpg",
         "image_alt": "Applying Leaf & Bird grass-fed tallow cream",
         "video_autoplay": true,
         "video_muted": true,
@@ -1119,16 +1119,16 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_clean_ingredients.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_clean_ingredients.jpg",
             "step_title": "Clean Ingredients",
-            "step_description": "Every product is formulated with ingredients you can pronounce \u2014 sourced responsibly, full transparency."
+            "step_description": "Every product is formulated with ingredients you can pronounce — sourced responsibly, full transparency."
           }
         },
         "img4_1": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_cruelty_free.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_cruelty_free.jpg",
             "step_title": "Cruelty-Free",
             "step_description": "Never tested on animals. We believe in ethical beauty without compromise."
           }
@@ -1137,7 +1137,7 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_made_usa.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_made_usa.jpg",
             "step_title": "Made in USA",
             "step_description": "All Leaf & Bird products are formulated and manufactured in the United States."
           }
@@ -1146,7 +1146,7 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_no_synthetics.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_no_synthetics.jpg",
             "step_title": "No Synthetics",
             "step_description": "Zero artificial preservatives, synthetic fragrances, or chemical fillers."
           }
@@ -1451,11 +1451,11 @@
         "accent_letter_spacing": 0,
         "accent_text_transform": "none",
         "accent_text_margin_left": 0,
-        "description": "See the stunning transformations our products deliver \u2014 real results from real customers.",
+        "description": "See the stunning transformations our products deliver — real results from real customers.",
         "additional_description": "",
         "instructions_text": "Drag the slider to see the difference",
-        "before_image": "shopify://shop_images/before_after_skin.jpg",
-        "after_image": "shopify://shop_images/before_after_hydration.jpg",
+        "before_image": "shopify:\/\/shop_images\/before_after_skin.jpg",
+        "after_image": "shopify:\/\/shop_images\/before_after_hydration.jpg",
         "before_label": "Before",
         "after_label": "After",
         "initial_position": 50,
@@ -1466,10 +1466,10 @@
         "description_font_size": 16,
         "instructions_font_size": 14,
         "label_font_size": 12,
-        "image_aspect_ratio": "4/3",
+        "image_aspect_ratio": "4\/3",
         "image_min_height": 250,
         "image_max_height": 500,
-        "mobile_aspect_ratio": "4/3",
+        "mobile_aspect_ratio": "4\/3",
         "mobile_min_height": 200,
         "mobile_max_height": 400,
         "mobile_container_width": 320,
@@ -1507,7 +1507,7 @@
           "settings": {
             "badge_text": "Day 1",
             "title": "Instant Moisture",
-            "description": "<p>Skin feels deeply moisturized and soft to the touch</p>",
+            "description": "<p>Skin feels deeply moisturized and soft to the touch<\/p>",
             "custom_icon": ""
           }
         },
@@ -1516,7 +1516,7 @@
           "settings": {
             "badge_text": "Week 1",
             "title": "Smooth & Soft",
-            "description": "<p>Dry patches begin to smooth out, skin texture improves</p>",
+            "description": "<p>Dry patches begin to smooth out, skin texture improves<\/p>",
             "custom_icon": ""
           }
         },
@@ -1525,7 +1525,7 @@
           "settings": {
             "badge_text": "Week 2",
             "title": "Calm & Even",
-            "description": "<p>Skin looks calmer, more even-toned, and naturally hydrated</p>",
+            "description": "<p>Skin looks calmer, more even-toned, and naturally hydrated<\/p>",
             "custom_icon": ""
           }
         },
@@ -1534,7 +1534,7 @@
           "settings": {
             "badge_text": "Month 1",
             "title": "Radiant Glow",
-            "description": "<p>Visibly healthier, more radiant skin with a natural glow</p>",
+            "description": "<p>Visibly healthier, more radiant skin with a natural glow<\/p>",
             "custom_icon": ""
           }
         }
@@ -1578,7 +1578,7 @@
         "accent_font_family": "DM Serif Text",
         "accent_font_style": "italic",
         "accent_font_weight": 700,
-        "desktop_image": "shopify://shop_images/brand_grassfed_source.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/brand_grassfed_source.jpg",
         "image_position": "right",
         "image_column_width": 50,
         "image_column_full_height": false,
@@ -1774,7 +1774,7 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "I replaced every moisturizer in my bathroom with the tallow cream. My skin has never been this soft and hydrated \u2014 just five clean ingredients.",
+            "review_text": "I replaced every moisturizer in my bathroom with the tallow cream. My skin has never been this soft and hydrated — just five clean ingredients.",
             "reviewer_name": "Sarah M.",
             "reviewer_age": "30",
             "show_verified_badge": true,
@@ -1954,7 +1954,7 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "Three products, all incredible. The grass-fed tallow is a game changer \u2014 my dry winter skin is finally healed. Will be a customer for life.",
+            "review_text": "Three products, all incredible. The grass-fed tallow is a game changer — my dry winter skin is finally healed. Will be a customer for life.",
             "reviewer_name": "Stephanie A.",
             "reviewer_age": "30",
             "show_verified_badge": true,
@@ -2057,7 +2057,7 @@
         "product_border_style": "solid",
         "summary_star_color": "#ffbf00",
         "summary_text_color": "#000000",
-        "rating_summary_text": "<p>Rated 4.8/5 based on +10,839 Total Ratings</p>",
+        "rating_summary_text": "<p>Rated 4.8\/5 based on +10,839 Total Ratings<\/p>",
         "rating_summary_font_size": 13,
         "rating_summary_bg_color": "#fef6e6",
         "purchase_date_prefix": "Purchased on",
@@ -2109,7 +2109,7 @@
         "iwt_p": {
           "type": "paragraph",
           "settings": {
-            "paragraph_text": "<p>Add your paragraph text here. This can include formatting such as <strong>bold</strong> or <em>italic</em> text.</p>",
+            "paragraph_text": "<p>Add your paragraph text here. This can include formatting such as <strong>bold<\/strong> or <em>italic<\/em> text.<\/p>",
             "font_size_mobile": 1,
             "font_size_desktop": 1.1,
             "margin_top": 0,
@@ -2171,7 +2171,7 @@
         "enable_shadow": false,
         "heading": "From Pasture to",
         "heading_accent": "Your Skin",
-        "image": "shopify://shop_images/brand_grassfed_source.jpg",
+        "image": "shopify:\/\/shop_images\/brand_grassfed_source.jpg",
         "enable_image_fade_mask": false,
         "video_autoplay": true,
         "video_loop": true,
@@ -2235,7 +2235,7 @@
           "settings": {
             "show_stars": true,
             "title": "Life-Changing Moisturizer",
-            "content": "<p>I switched from expensive department store creams to this tallow cream and my skin has never looked better. It's so simple and it actually works.</p>",
+            "content": "<p>I switched from expensive department store creams to this tallow cream and my skin has never looked better. It's so simple and it actually works.<\/p>",
             "author_name": "Rachel K.",
             "rating": 5,
             "verified": true,
@@ -2248,7 +2248,7 @@
           "settings": {
             "show_stars": true,
             "title": "Finally, Clean Skincare",
-            "content": "<p>As someone with eczema, finding a moisturizer that doesn't irritate my skin was impossible until I found Leaf & Bird. The tallow cream is a game changer.</p>",
+            "content": "<p>As someone with eczema, finding a moisturizer that doesn't irritate my skin was impossible until I found Leaf & Bird. The tallow cream is a game changer.<\/p>",
             "author_name": "David M.",
             "rating": 5,
             "verified": true,
@@ -2261,7 +2261,7 @@
           "settings": {
             "show_stars": true,
             "title": "My Whole Family Uses This",
-            "content": "<p>I bought this for myself but now my husband and kids use it too. It's gentle enough for everyone and the ingredients are ones I actually trust.</p>",
+            "content": "<p>I bought this for myself but now my husband and kids use it too. It's gentle enough for everyone and the ingredients are ones I actually trust.<\/p>",
             "author_name": "Jennifer L.",
             "rating": 5,
             "verified": true,
@@ -2315,7 +2315,7 @@
         "card_rating_size": 16,
         "show_rating": true,
         "enable_mask_fade": false,
-        "rating_summary_text": "<p>Excellent <strong>4.8/5 based</strong> on reviews</p>",
+        "rating_summary_text": "<p>Excellent <strong>4.8\/5 based<\/strong> on reviews<\/p>",
         "rating_value": 4.8,
         "rating_max": 5,
         "summary_star_color": "#6faf8f",
@@ -2368,7 +2368,7 @@
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_U7GwNf": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
             "max_width": 1200,
@@ -2391,28 +2391,28 @@
           "type": "faq_item",
           "settings": {
             "question": "What is tallow and why is it good for skin?",
-            "answer": "<p>Tallow is rendered fat from grass-fed cattle. It's rich in vitamins A, D, E, and K, and its fatty acid profile closely mirrors human skin's natural oils, making it deeply nourishing and easily absorbed.</p>"
+            "answer": "<p>Tallow is rendered fat from grass-fed cattle. It's rich in vitamins A, D, E, and K, and its fatty acid profile closely mirrors human skin's natural oils, making it deeply nourishing and easily absorbed.<\/p>"
           }
         },
         "f1": {
           "type": "faq_item",
           "settings": {
             "question": "Are your products tested on animals?",
-            "answer": "<p>Never. All Leaf & Bird products are cruelty-free. We believe in clean beauty that's kind to both your skin and the planet.</p>"
+            "answer": "<p>Never. All Leaf & Bird products are cruelty-free. We believe in clean beauty that's kind to both your skin and the planet.<\/p>"
           }
         },
         "f2": {
           "type": "faq_item",
           "settings": {
             "question": "Do you offer international shipping?",
-            "answer": "<p>Currently we ship free within the United States. International shipping options are coming soon. Sign up for our newsletter to be notified.</p>"
+            "answer": "<p>Currently we ship free within the United States. International shipping options are coming soon. Sign up for our newsletter to be notified.<\/p>"
           }
         },
         "f3": {
           "type": "faq_item",
           "settings": {
             "question": "How long will one jar last?",
-            "answer": "<p>A little goes a long way. Most customers find that one jar lasts 6-8 weeks with daily use. Our tallow cream is highly concentrated, so you only need a small amount per application.</p>"
+            "answer": "<p>A little goes a long way. Most customers find that one jar lasts 6-8 weeks with daily use. Our tallow cream is highly concentrated, so you only need a small amount per application.<\/p>"
           }
         }
       },

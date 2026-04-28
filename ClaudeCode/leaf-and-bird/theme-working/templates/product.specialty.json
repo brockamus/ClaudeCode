@@ -33,7 +33,7 @@
           }
         },
         "judge_me_reviews_preview_badge_k4qK6y": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
         "a2": {
@@ -78,7 +78,7 @@
         "a4": {
           "type": "limited_inventory",
           "settings": {
-            "inventory_text": "Handcrafted in small batches \u2014 limited availability",
+            "inventory_text": "Handcrafted in small batches — limited availability",
             "bold_first_word": true,
             "dot_color": "#6faf8f",
             "text_color": "#4f6f5d",
@@ -91,7 +91,7 @@
         "a5": {
           "type": "custom_text",
           "settings": {
-            "text": "<p>Targeted rituals for specific skin needs. Premium, single-purpose formulas designed to deliver focused results.</p>",
+            "text": "<p>Targeted rituals for specific skin needs. Premium, single-purpose formulas designed to deliver focused results.<\/p>",
             "show_description": false,
             "description": "",
             "description_font_size": 12,
@@ -308,9 +308,9 @@
         "b2": {
           "type": "custom_text",
           "settings": {
-            "text": "<p><strong>30-Day Satisfaction Guarantee</strong></p>",
+            "text": "<p><strong>30-Day Satisfaction Guarantee<\/strong><\/p>",
             "show_description": true,
-            "description": "<p>We stand behind every product. If you're not completely satisfied within 30 days, we'll issue a full refund \u2014 no questions asked.</p>",
+            "description": "<p>We stand behind every product. If you're not completely satisfied within 30 days, we'll issue a full refund — no questions asked.<\/p>",
             "description_font_size": 12,
             "description_spacing": 4,
             "description_color": "#666666",
@@ -389,15 +389,15 @@
             "accordion_mode": true,
             "question_1": "How often should I use this?",
             "use_product_description_for_question_1": false,
-            "answer_1": "<p>Usage varies by product \u2014 see the application instructions in the product description above. For best results, maintain a consistent routine.</p>",
+            "answer_1": "<p>Usage varies by product — see the application instructions in the product description above. For best results, maintain a consistent routine.<\/p>",
             "question_2": "Can I combine this with my existing routine?",
-            "answer_2": "<p>Yes. Our specialty products are designed to complement your existing skincare routine, not replace it. Use as directed for the best results.</p>",
+            "answer_2": "<p>Yes. Our specialty products are designed to complement your existing skincare routine, not replace it. Use as directed for the best results.<\/p>",
             "question_3": "Is this safe for sensitive skin?",
-            "answer_3": "<p>Our products are formulated without harsh chemicals, synthetic fragrances, or artificial preservatives. We recommend a patch test before first use if you have known sensitivities.</p>",
+            "answer_3": "<p>Our products are formulated without harsh chemicals, synthetic fragrances, or artificial preservatives. We recommend a patch test before first use if you have known sensitivities.<\/p>",
             "question_4": "What makes this different from similar products?",
-            "answer_4": "<p>We source premium, natural ingredients and formulate without synthetic fillers or preservatives. Every product is made in the USA with full ingredient transparency.</p>",
+            "answer_4": "<p>We source premium, natural ingredients and formulate without synthetic fillers or preservatives. Every product is made in the USA with full ingredient transparency.<\/p>",
             "question_5": "Shipping & Returns",
-            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee \u2014 if you're not satisfied, contact us for a full refund.</p>",
+            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee — if you're not satisfied, contact us for a full refund.<\/p>",
             "question_6": "",
             "answer_6": "",
             "question_7": "",
@@ -461,16 +461,16 @@
             "show_badge_1": false,
             "badge_1": "",
             "quantity_2": 2,
-            "title_2": "Bundle of 2",
+            "title_2": "Duo",
             "compare_price_2": 0,
-            "discount_pct_2": 10,
+            "discount_pct_2": 15,
             "description_2": "",
             "show_badge_2": true,
             "badge_2": "POPULAR",
             "quantity_3": 3,
-            "title_3": "Bundle of 3",
+            "title_3": "Trio",
             "compare_price_3": 0,
-            "discount_pct_3": 15,
+            "discount_pct_3": 25,
             "description_3": "",
             "show_badge_3": true,
             "badge_3": "BEST VALUE",
@@ -568,7 +568,7 @@
             "description_font_size_mobile": 10,
             "current_price_font_size_mobile": 14,
             "original_price_font_size_mobile": 10,
-            "per_item_price_suffix": "/each",
+            "per_item_price_suffix": "\/each",
             "per_item_price_font_size": 14,
             "per_item_price_font_size_mobile": 12,
             "per_item_price_color": "#666666",
@@ -713,7 +713,7 @@
           "type": "benefit",
           "settings": {
             "title": "Real Actives, Real Concentrations",
-            "description": "Evidence-based ingredients at effective doses \u2014 not trace amounts of a hero ingredient for marketing.",
+            "description": "Evidence-based ingredients at effective doses — not trace amounts of a hero ingredient for marketing.",
             "preset_icon": "check",
             "use_custom_icon": false,
             "custom_icon_svg": "",
@@ -752,7 +752,7 @@
           "type": "benefit",
           "settings": {
             "title": "30-Day Risk-Free Promise",
-            "description": "Love your skin in 30 days \u2014 or a full refund. No returns, no questions asked.",
+            "description": "Love your skin in 30 days — or a full refund. No returns, no questions asked.",
             "preset_icon": "check",
             "use_custom_icon": false,
             "custom_icon_svg": "",
@@ -829,7 +829,7 @@
         "enable_bottom_border": false,
         "bottom_border_color": "#e5e5e5",
         "bottom_border_width": 1,
-        "section_image": "shopify://shop_images/lifestyle_mud_mask.jpg",
+        "section_image": "shopify:\/\/shop_images\/lifestyle_mud_mask.jpg",
         "image_display_mode": "standard",
         "mobile_image_position": "after_header",
         "padding_top_mobile": 40,
@@ -850,7 +850,7 @@
         "s0m": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_1_cleanse.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_1_cleanse.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Prepare",
             "step_description": "Start with clean skin, ready for treatment",
@@ -861,7 +861,7 @@
         "s1n": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_2_apply.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_2_apply.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Apply",
             "step_description": "Follow product-specific instructions above",
@@ -872,10 +872,10 @@
         "s2o": {
           "type": "step",
           "settings": {
-            "step_image": "shopify://shop_images/step_3_moisturize_8e2676ae-bad6-4fa2-b492-b094bf00aaee.jpg",
+            "step_image": "shopify:\/\/shop_images\/step_3_moisturize_8e2676ae-bad6-4fa2-b492-b094bf00aaee.jpg",
             "image_background_color": "#f5f5f5",
             "step_title": "Reveal",
-            "step_description": "Rinse or let absorb \u2014 enjoy visibly improved skin",
+            "step_description": "Rinse or let absorb — enjoy visibly improved skin",
             "content_background_color": "#ffffff",
             "card_background_color": ""
           }
@@ -1076,7 +1076,7 @@
         "subtitle": "",
         "show_image": true,
         "media_type": "image",
-        "feature_image": "shopify://shop_images/lifestyle_mud_mask.jpg",
+        "feature_image": "shopify:\/\/shop_images\/lifestyle_mud_mask.jpg",
         "image_alt": "Leaf & Bird specialty skincare treatment",
         "video_autoplay": true,
         "video_muted": true,
@@ -1118,16 +1118,16 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_clean_ingredients.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_clean_ingredients.jpg",
             "step_title": "Clean Ingredients",
-            "step_description": "Every product is formulated with ingredients you can pronounce \u2014 sourced responsibly, full transparency."
+            "step_description": "Every product is formulated with ingredients you can pronounce — sourced responsibly, full transparency."
           }
         },
         "img4_1": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_cruelty_free.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_cruelty_free.jpg",
             "step_title": "Cruelty-Free",
             "step_description": "Never tested on animals. We believe in ethical beauty without compromise."
           }
@@ -1136,7 +1136,7 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_made_usa.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_made_usa.jpg",
             "step_title": "Made in USA",
             "step_description": "All Leaf & Bird products are formulated and manufactured in the United States."
           }
@@ -1145,7 +1145,7 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "step_image": "shopify://shop_images/4img_no_synthetics.jpg",
+            "step_image": "shopify:\/\/shop_images\/4img_no_synthetics.jpg",
             "step_title": "No Synthetics",
             "step_description": "Zero artificial preservatives, synthetic fragrances, or chemical fillers."
           }
@@ -1227,7 +1227,7 @@
           "settings": {
             "badge_text": "First Use",
             "title": "Instant Difference",
-            "description": "<p>Immediate visible difference \u2014 skin feels cleaner, softer, refreshed</p>",
+            "description": "<p>Immediate visible difference — skin feels cleaner, softer, refreshed<\/p>",
             "custom_icon": ""
           }
         },
@@ -1236,7 +1236,7 @@
           "settings": {
             "badge_text": "Week 1",
             "title": "Smoother Texture",
-            "description": "<p>Skin texture noticeably smoother, pores appear smaller</p>",
+            "description": "<p>Skin texture noticeably smoother, pores appear smaller<\/p>",
             "custom_icon": ""
           }
         },
@@ -1245,7 +1245,7 @@
           "settings": {
             "badge_text": "Week 3",
             "title": "Consistent Improvement",
-            "description": "<p>Consistent improvement in tone, hydration, and overall clarity</p>",
+            "description": "<p>Consistent improvement in tone, hydration, and overall clarity<\/p>",
             "custom_icon": ""
           }
         },
@@ -1254,7 +1254,7 @@
           "settings": {
             "badge_text": "Month 1",
             "title": "Transformed Skin",
-            "description": "<p>Transformed skin \u2014 visibly healthier, more radiant complexion</p>",
+            "description": "<p>Transformed skin — visibly healthier, more radiant complexion<\/p>",
             "custom_icon": ""
           }
         }
@@ -1298,7 +1298,7 @@
         "accent_font_family": "DM Serif Text",
         "accent_font_style": "italic",
         "accent_font_weight": 700,
-        "desktop_image": "shopify://shop_images/brand_ingredients.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/brand_ingredients.jpg",
         "image_position": "right",
         "image_column_width": 50,
         "image_column_full_height": false,
@@ -1384,11 +1384,11 @@
         "accent_letter_spacing": 0,
         "accent_text_transform": "none",
         "accent_text_margin_left": 0,
-        "description": "See the stunning transformations our products deliver \u2014 real results from real customers.",
+        "description": "See the stunning transformations our products deliver — real results from real customers.",
         "additional_description": "",
         "instructions_text": "Drag the slider to see the difference",
-        "before_image": "shopify://shop_images/before_after_skin.jpg",
-        "after_image": "shopify://shop_images/before_after_pores.jpg",
+        "before_image": "shopify:\/\/shop_images\/before_after_skin.jpg",
+        "after_image": "shopify:\/\/shop_images\/before_after_pores.jpg",
         "before_label": "Before",
         "after_label": "After",
         "initial_position": 50,
@@ -1399,10 +1399,10 @@
         "description_font_size": 16,
         "instructions_font_size": 14,
         "label_font_size": 12,
-        "image_aspect_ratio": "4/3",
+        "image_aspect_ratio": "4\/3",
         "image_min_height": 250,
         "image_max_height": 500,
-        "mobile_aspect_ratio": "4/3",
+        "mobile_aspect_ratio": "4\/3",
         "mobile_min_height": 200,
         "mobile_max_height": 400,
         "mobile_container_width": 320,
@@ -1569,7 +1569,7 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "I replaced every moisturizer in my bathroom with the tallow cream. My skin has never been this soft and hydrated \u2014 just five clean ingredients.",
+            "review_text": "I replaced every moisturizer in my bathroom with the tallow cream. My skin has never been this soft and hydrated — just five clean ingredients.",
             "reviewer_name": "Sarah M.",
             "reviewer_age": "30",
             "show_verified_badge": true,
@@ -1749,7 +1749,7 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "Three products, all incredible. The grass-fed tallow is a game changer \u2014 my dry winter skin is finally healed. Will be a customer for life.",
+            "review_text": "Three products, all incredible. The grass-fed tallow is a game changer — my dry winter skin is finally healed. Will be a customer for life.",
             "reviewer_name": "Stephanie A.",
             "reviewer_age": "30",
             "show_verified_badge": true,
@@ -1852,7 +1852,7 @@
         "product_border_style": "solid",
         "summary_star_color": "#ffbf00",
         "summary_text_color": "#000000",
-        "rating_summary_text": "<p>Rated 4.8/5 based on +10,839 Total Ratings</p>",
+        "rating_summary_text": "<p>Rated 4.8\/5 based on +10,839 Total Ratings<\/p>",
         "rating_summary_font_size": 13,
         "rating_summary_bg_color": "#fef6e6",
         "purchase_date_prefix": "Purchased on",
@@ -1904,7 +1904,7 @@
         "iwt_p": {
           "type": "paragraph",
           "settings": {
-            "paragraph_text": "<p>Add your paragraph text here. This can include formatting such as <strong>bold</strong> or <em>italic</em> text.</p>",
+            "paragraph_text": "<p>Add your paragraph text here. This can include formatting such as <strong>bold<\/strong> or <em>italic<\/em> text.<\/p>",
             "font_size_mobile": 1,
             "font_size_desktop": 1.1,
             "margin_top": 0,
@@ -1965,7 +1965,7 @@
         "enable_shadow": false,
         "heading": "Premium Ingredients,",
         "heading_accent": "Purposeful Formulas",
-        "image": "shopify://shop_images/brand_ingredients.jpg",
+        "image": "shopify:\/\/shop_images\/brand_ingredients.jpg",
         "enable_image_fade_mask": false,
         "video_autoplay": true,
         "video_loop": true,
@@ -2025,7 +2025,7 @@
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_AWCxkd": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
             "max_width": 1200,
@@ -2049,7 +2049,7 @@
           "settings": {
             "show_stars": true,
             "title": "Weekly Must-Have",
-            "content": "<p>The Dead Sea Mud mask has become my Sunday night ritual. My skin looks refreshed and my pores are visibly smaller. Can't imagine my routine without it now.</p>",
+            "content": "<p>The Dead Sea Mud mask has become my Sunday night ritual. My skin looks refreshed and my pores are visibly smaller. Can't imagine my routine without it now.<\/p>",
             "author_name": "Natalie S.",
             "rating": 5,
             "verified": true,
@@ -2062,7 +2062,7 @@
           "settings": {
             "show_stars": true,
             "title": "Best Sleep Cream Ever",
-            "content": "<p>The Sleep Plus Collagen Cream is amazing. I wake up with plumper, more hydrated skin every morning. It's like getting a facial while you sleep.</p>",
+            "content": "<p>The Sleep Plus Collagen Cream is amazing. I wake up with plumper, more hydrated skin every morning. It's like getting a facial while you sleep.<\/p>",
             "author_name": "Rebecca H.",
             "rating": 5,
             "verified": true,
@@ -2075,7 +2075,7 @@
           "settings": {
             "show_stars": true,
             "title": "Incredible Results",
-            "content": "<p>I was hesitant to try specialty products but I'm so glad I did. The results speak for themselves \u2014 my skin has never looked this good.</p>",
+            "content": "<p>I was hesitant to try specialty products but I'm so glad I did. The results speak for themselves — my skin has never looked this good.<\/p>",
             "author_name": "Karen D.",
             "rating": 5,
             "verified": true,
@@ -2129,7 +2129,7 @@
         "card_rating_size": 16,
         "show_rating": true,
         "enable_mask_fade": false,
-        "rating_summary_text": "<p>Excellent <strong>4.8/5 based</strong> on reviews</p>",
+        "rating_summary_text": "<p>Excellent <strong>4.8\/5 based<\/strong> on reviews<\/p>",
         "rating_value": 4.8,
         "rating_max": 5,
         "summary_star_color": "#6faf8f",
@@ -2185,28 +2185,28 @@
           "type": "faq_item",
           "settings": {
             "question": "How are specialty products different from daily skincare?",
-            "answer": "<p>Specialty products are targeted treatments designed for specific concerns. They complement your daily routine with concentrated formulas for deeper, more focused results.</p>"
+            "answer": "<p>Specialty products are targeted treatments designed for specific concerns. They complement your daily routine with concentrated formulas for deeper, more focused results.<\/p>"
           }
         },
         "f1": {
           "type": "faq_item",
           "settings": {
             "question": "Can I use the Dead Sea Mud mask weekly?",
-            "answer": "<p>Yes, we recommend using the Dead Sea Mud mask 1-2 times per week for optimal results. Consistent use delivers the best improvements in pore appearance and skin clarity.</p>"
+            "answer": "<p>Yes, we recommend using the Dead Sea Mud mask 1-2 times per week for optimal results. Consistent use delivers the best improvements in pore appearance and skin clarity.<\/p>"
           }
         },
         "f2": {
           "type": "faq_item",
           "settings": {
             "question": "Is the Sleep Plus Collagen Cream suitable for nightly use?",
-            "answer": "<p>Absolutely. The Sleep Plus Collagen Cream is formulated specifically for overnight use. Apply before bed and let the collagen-boosting ingredients work while you sleep.</p>"
+            "answer": "<p>Absolutely. The Sleep Plus Collagen Cream is formulated specifically for overnight use. Apply before bed and let the collagen-boosting ingredients work while you sleep.<\/p>"
           }
         },
         "f3": {
           "type": "faq_item",
           "settings": {
             "question": "Do you offer bundles or subscription discounts?",
-            "answer": "<p>Yes! Check our product variants for bundle options that save you money. We also offer subscription options on select products for additional savings.</p>"
+            "answer": "<p>Yes! Check our product variants for bundle options that save you money. We also offer subscription options on select products for additional savings.<\/p>"
           }
         }
       },
