@@ -1,0 +1,490 @@
+{
+  "sections": {
+    "m1": {
+      "type": "shop-product-details",
+      "blocks": {
+        "a1": {
+          "type": "trustpilot_rating",
+          "disabled": true,
+          "settings": {
+            "rating_text": "Rated",
+            "rating_score": "4.8 Stars",
+            "text_color": "#000000",
+            "star_color": "#6faf8f",
+            "show_single_star_after_text": true,
+            "font_size_desktop": 14,
+            "font_size_tablet": 14,
+            "font_size_mobile": 12,
+            "star_size_desktop": 18,
+            "star_size_tablet": 18,
+            "star_size_mobile": 16,
+            "margin_top": 10,
+            "margin_bottom": 0,
+            "enable_background": false,
+            "background_color": "#f8f8f8",
+            "enable_background_gradient": false,
+            "background_gradient_start": "#ffffff",
+            "background_gradient_end": "#f0f0f0",
+            "background_gradient_direction": "to right",
+            "border_color": "#e0e0e0",
+            "border_width": 1,
+            "border_style": "none",
+            "border_radius": 4
+          }
+        },
+        "judge_me_reviews_preview_badge_k4qK6y": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "a2": {
+          "type": "title",
+          "settings": {
+            "use_custom_title": false,
+            "custom_title": "",
+            "font_size": 48,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "title_color": "#000000",
+            "line_height": 1.2
+          }
+        },
+        "a3": {
+          "type": "price",
+          "settings": {
+            "price_color": "#000000",
+            "compare_price_color": "#999999",
+            "sale_badge_bg_color": "#f5f5f5",
+            "sale_badge_text_color": "#8e8e8e",
+            "save_badge_enable_border": false,
+            "save_badge_border_color": "#ffffff",
+            "save_badge_border_width": 1,
+            "save_badge_border_style": "solid",
+            "price_font_size": 27,
+            "compare_price_font_size": 16,
+            "save_badge_font_size": 12,
+            "price_font_weight": "600",
+            "price_margin_top": 0,
+            "price_margin_bottom": 0,
+            "show_save_icon": true,
+            "save_icon_size_ratio": 0.9,
+            "save_icon_position_y": 0,
+            "save_badge_padding_v": 3,
+            "save_badge_padding_h": 6,
+            "custom_save_text": "",
+            "save_badge_display_type": "percentage",
+            "custom_save_amount": ""
+          }
+        },
+        "a8": {
+          "type": "add_to_cart",
+          "settings": {
+            "use_theme_colors": false,
+            "use_global_button_styling": false,
+            "show_fast_payment": false,
+            "button_behavior": "add_to_cart",
+            "button_text_override": "Add To Cart",
+            "show_price_in_button": true,
+            "button_icon": "none",
+            "custom_icon": "",
+            "icon_size": 20,
+            "button_border_color": "#ffba46",
+            "buy_box_button_bg_color": "#ffba46",
+            "button_text_color": "#ffffff",
+            "buy_box_button_hover_color": "#4f6f5d",
+            "price_color": "#ffffff",
+            "custom_button_padding_y": 12,
+            "custom_button_font_size": 14,
+            "button_border_radius": 10
+          }
+        },
+        "a9": {
+          "type": "guarantee_badges",
+          "settings": {
+            "use_theme_colors": false,
+            "badge_1_show": true,
+            "badge_1_text": "30-Day Money-Back Guarantee",
+            "badge_1_icon": "checkmark",
+            "badge_1_custom_icon": "",
+            "badge_2_show": true,
+            "badge_2_text": "Free Shipping on All Orders",
+            "badge_2_icon": "checkmark",
+            "badge_2_custom_icon": "",
+            "icon_color": "#6faf8f",
+            "text_color": "#000000",
+            "container_margin_top": -10,
+            "container_margin_right": 0,
+            "container_margin_bottom": 15,
+            "container_margin_left": 0,
+            "font_size": 11,
+            "icon_size": 12,
+            "gap": 6,
+            "align_center": true,
+            "mobile_stack": false
+          }
+        },
+        "b1": {
+          "type": "payment_icons",
+          "settings": {
+            "custom_payment_icons": "mastercard, american_express, apple_pay, google_pay, shopify_pay, visa, paypal",
+            "alignment": "center",
+            "icon_height": 24,
+            "icon_spacing": 6,
+            "margin_top": -6,
+            "margin_bottom": 0
+          }
+        },
+        "b3": {
+          "type": "product_faq",
+          "settings": {
+            "use_theme_colors": false,
+            "items_limit": 10,
+            "image_size": 20,
+            "image_border_radius": 4,
+            "image_fit": "cover",
+            "text_size": 16,
+            "answer_text_size": 16,
+            "item_padding": 20,
+            "question_padding": 14,
+            "margin_top": 10,
+            "margin_bottom": 10,
+            "border_radius": 10,
+            "border_color": "#dde8e1",
+            "border_style": "bottom_only",
+            "question_color": "#000000",
+            "question_bg_color": "#ffffff",
+            "answer_color": "#000000",
+            "answer_bg_color": "#ffffff",
+            "accordion_mode": true,
+            "question_1": "How often should I use this?",
+            "use_product_description_for_question_1": false,
+            "answer_1": "<p>Usage varies by product \u2014 see the application instructions in the product description above. For best results, maintain a consistent routine.</p>",
+            "question_2": "Can I combine this with my existing routine?",
+            "answer_2": "<p>Yes. Our specialty products are designed to complement your existing skincare routine, not replace it. Use as directed for the best results.</p>",
+            "question_3": "Is this safe for sensitive skin?",
+            "answer_3": "<p>Our products are formulated without harsh chemicals, synthetic fragrances, or artificial preservatives. We recommend a patch test before first use if you have known sensitivities.</p>",
+            "question_4": "What makes this different from similar products?",
+            "answer_4": "<p>We source premium, natural ingredients and formulate without synthetic fillers or preservatives. Every product is made in the USA with full ingredient transparency.</p>",
+            "question_5": "Shipping & Returns",
+            "answer_5": "<p>All orders ship free within the US. Orders are processed within 1-2 business days. We offer a 30-day money-back guarantee \u2014 if you're not satisfied, contact us for a full refund.</p>",
+            "question_6": "",
+            "answer_6": "",
+            "question_7": "",
+            "answer_7": "",
+            "question_8": "",
+            "answer_8": "",
+            "question_9": "",
+            "answer_9": "",
+            "question_10": "",
+            "answer_10": ""
+          }
+        },
+        "b4": {
+          "type": "customer_review",
+          "disabled": true,
+          "settings": {
+            "reviewer_name": "Amanda K.",
+            "review_text": "The Dead Sea Mud mask is incredible. My pores look visibly smaller after just two uses and my skin feels so clean without being stripped. This is now a weekly ritual I actually look forward to.",
+            "rating": 5,
+            "use_theme_colors": false,
+            "background_color_start": "#ffffff",
+            "background_color_end": "#ffffff",
+            "text_color": "#000000",
+            "border_color": "#dcdcdc",
+            "border_radius": 8,
+            "border_style": "solid",
+            "show_shadow": false,
+            "star_color": "#6faf8f",
+            "reviewer_name_size": 16,
+            "review_text_size": 14,
+            "star_size": 16,
+            "avatar_size_desktop": 75,
+            "avatar_size_mobile": 65,
+            "margin_top": 15,
+            "margin_right": 0,
+            "margin_bottom": 15,
+            "margin_left": 0,
+            "verified_icon_color": "#6faf8f",
+            "review_text_color": "#666666",
+            "enable_carousel": false,
+            "show_navigation": true,
+            "pagination_dot_color": "#dddddd",
+            "pagination_dot_active_color": "#333333",
+            "show_active_shadow": true
+          }
+        },
+        "product_description_bundle": {
+          "type": "product_description",
+          "settings": {
+            "icon_size": 28,
+            "icon_border_radius": 50,
+            "icon_show_background": true,
+            "product_name_color": "#333333",
+            "product_name_font_size": 14,
+            "serving_info_color": "#666666",
+            "serving_info_font_size": 12,
+            "margin_top": 16,
+            "margin_bottom": 16
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "judge_me_reviews_preview_badge_k4qK6y",
+        "a2",
+        "a3",
+        "a8",
+        "a9",
+        "b1",
+        "product_description_bundle",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "main_image_border_radius": 0,
+        "thumbnail_border_radius": 0,
+        "current_product": "",
+        "section_bg_color": "#ffffff",
+        "blocks_spacing": 4,
+        "text_color": "#000000",
+        "accent_color": "#6faf8f",
+        "divider_color": "#eeeeee",
+        "show_product_info": true,
+        "show_product_gallery": true,
+        "show_product_variants": false,
+        "thumbnail_border_color": "#eeeeee",
+        "thumbnail_active_border_color": "#6faf8f",
+        "thumbnails_include_section_padding": false,
+        "dots_color": "#cccccc",
+        "enable_full_width_image": false,
+        "enable_mobile_full_width_image": false,
+        "image_aspect_ratio": "1:1",
+        "hide_thumbnails": false,
+        "dot_size": 8,
+        "dot_color": "#cccccc",
+        "dot_active_color": "#000000",
+        "show_desktop_arrows": true,
+        "desktop_arrow_background": "#ffffff",
+        "desktop_arrow_border": "#e0e0e0",
+        "desktop_arrow_icon": "#000000",
+        "desktop_arrow_hover_background": "#f5f5f5",
+        "desktop_arrow_hover_border": "#d0d0d0",
+        "arrow_border_radius": 50,
+        "arrow_opacity": 90,
+        "desktop_arrow_placement": "overlaid",
+        "show_mobile_arrows": false,
+        "mobile_arrow_placement": "overlaid",
+        "mobile_thumbnails_2x2_grid": true,
+        "hide_thumbnails_mobile": false,
+        "thumbnails_left_column_desktop": false,
+        "main_image_portrait_adaptation": false
+      }
+    },
+    "s2": {
+      "type": "scrolling-features-bar",
+      "blocks": {
+        "fi0a": {
+          "type": "feature_item",
+          "settings": {
+            "text": "FREE SHIPPING",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fi1b": {
+          "type": "feature_item",
+          "settings": {
+            "text": "PREMIUM INGREDIENTS",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        },
+        "fi2c": {
+          "type": "feature_item",
+          "settings": {
+            "text": "MADE IN USA",
+            "icon_type": "svg",
+            "icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "fi0a",
+        "fi1b",
+        "fi2c"
+      ],
+      "settings": {
+        "theme_color_mode": "custom",
+        "vertical_padding": 15,
+        "item_gap": 60,
+        "mobile_item_gap": 30,
+        "font_size": 33,
+        "mobile_font_size": 39,
+        "letter_spacing": 0.5,
+        "uppercase_text": true,
+        "override_bold": false,
+        "icon_size": 36,
+        "mobile_icon_size": 16,
+        "icon_spacing": 10,
+        "slider_direction": "left",
+        "scrolling_velocity": 15,
+        "pause_on_hover": true,
+        "background_color": "#25282a",
+        "text_color": "#f6f6f6",
+        "icon_color": "#d6dbe4",
+        "use_gradient_background": false,
+        "background_gradient": "",
+        "enable_top_border": false,
+        "top_border_width": 1,
+        "top_border_style": "solid",
+        "top_border_color": "#e5e5e5",
+        "enable_bottom_border": false,
+        "bottom_border_width": 1,
+        "bottom_border_style": "solid",
+        "bottom_border_color": "#e5e5e5"
+      }
+    },
+    "s8": {
+      "type": "store-faq",
+      "blocks": {
+        "f0": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How are specialty products different from daily skincare?",
+            "answer": "<p>Specialty products are targeted treatments designed for specific concerns. They complement your daily routine with concentrated formulas for deeper, more focused results.</p>"
+          }
+        },
+        "f1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use the Dead Sea Mud mask weekly?",
+            "answer": "<p>Yes, we recommend using the Dead Sea Mud mask 1-2 times per week for optimal results. Consistent use delivers the best improvements in pore appearance and skin clarity.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the Sleep Plus Collagen Cream suitable for nightly use?",
+            "answer": "<p>Absolutely. The Sleep Plus Collagen Cream is formulated specifically for overnight use. Apply before bed and let the collagen-boosting ingredients work while you sleep.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer bundles or subscription discounts?",
+            "answer": "<p>Yes! Check our product variants for bundle options that save you money. We also offer subscription options on select products for additional savings.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f0",
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "heading": "Frequently Asked Questions",
+        "subtitle": "",
+        "heading_color": "#25282a",
+        "subtitle_color": "#111111",
+        "section_padding": 60,
+        "container_padding_mobile": 15,
+        "container_padding_desktop": 15,
+        "section_bg_color": "#ffffff",
+        "border_radius": 10,
+        "border_color": "#e6e6e6",
+        "divider_color": "#e5e5e5",
+        "border_style": "full",
+        "question_color": "#25282a",
+        "question_bg_color": "#ffffff",
+        "answer_color": "#25282a",
+        "answer_bg_color": "#ffffff",
+        "accordion_mode": true,
+        "image_border_radius": 8,
+        "image_full_height": false,
+        "full_height_min_height": 600,
+        "use_background_image": false,
+        "background_image_size": "cover",
+        "background_image_position": "center center",
+        "background_image_attachment": "scroll",
+        "background_overlay_enable": false,
+        "background_overlay_color": "#0000004d",
+        "background_overlay_opacity": 30,
+        "center_when_no_image": true,
+        "center_max_width": 1000,
+        "two_column_desktop": true,
+        "column_gap": 10,
+        "faq_item_spacing": 0,
+        "individual_item_borders": true,
+        "question_padding_top": 20,
+        "question_padding_bottom": 15,
+        "question_padding_left": 10,
+        "question_padding_right": 10,
+        "answer_padding_top": 17,
+        "answer_padding_bottom": 15,
+        "answer_padding_left": 10,
+        "answer_padding_right": 10,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 32,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "question_font_size": 16,
+        "question_font_size_mobile": 17,
+        "answer_font_size": 14,
+        "answer_font_size_mobile": 17,
+        "enable_section_top_border": false,
+        "section_top_border_width": 1,
+        "section_top_border_style": "solid",
+        "section_top_border_color": "#e5e5e5",
+        "enable_section_bottom_border": false,
+        "section_bottom_border_width": 1,
+        "section_bottom_border_style": "solid",
+        "section_bottom_border_color": "#e5e5e5"
+      }
+    },
+    "s9": {
+      "type": "sticky-add-to-cart",
+      "settings": {
+        "satc_toggle_variant": false,
+        "select_button_behavior": "scrollup",
+        "button_text": "ADD TO CART",
+        "delivery_days": 5,
+        "title_color": "#121212",
+        "title_desktop_font_size": 16,
+        "title_letter_spacing": 0,
+        "rating_text": "",
+        "use_theme_colors": false,
+        "use_global_button_styling": false,
+        "custom_button_padding_y": 27,
+        "custom_button_font_size": 11,
+        "button_bg_color": "#ffba46",
+        "button_hover_color": "#4f6f5d",
+        "button_text_color": "#ffffff",
+        "star_color": "#6faf8f",
+        "background_color": "#ffffff",
+        "border_radius": 6,
+        "transparent_background": true,
+        "z_index": 9900,
+        "rating_text_color": "#2b2b2b",
+        "rating_text_font_weight": "var(--font-weight-regular)",
+        "rating_text_desktop_font_size": 14,
+        "rating_text_letter_spacing": 0,
+        "delivery_text_color": "#2b2b2b",
+        "delivery_text_font_weight": "var(--font-weight-bold)",
+        "delivery_text_desktop_font_size": 14,
+        "delivery_text_mobile_font_size": 12,
+        "delivery_text_letter_spacing": 0,
+        "delivery_date_display_format": "weekday_month_day",
+        "turn_off_delivery_date": true,
+        "delivery_text_prefix": "Get It By"
+      }
+    }
+  },
+  "order": [
+    "m1",
+    "s2",
+    "s8",
+    "s9"
+  ]
+}
