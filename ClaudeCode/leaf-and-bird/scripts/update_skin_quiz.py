@@ -1,7 +1,8 @@
 """Update /pages/skin-quiz with current pricing + 3-tier commitment + bundle routing."""
+import os
 import json, urllib.request
 
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 PAGE_ID = 171665359147
 
 NEW_BODY = '''<style>

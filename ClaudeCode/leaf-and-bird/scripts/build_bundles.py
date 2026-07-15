@@ -1,7 +1,8 @@
 """Build out the L&B bundle catalog end-to-end via the Shopify Bundles API."""
+import os
 import json, time, urllib.request, urllib.error
 
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 SHOP = "leaf-and-bird.myshopify.com"
 GQL = f"https://{SHOP}/admin/api/2024-10/graphql.json"
 REST = f"https://{SHOP}/admin/api/2024-10"

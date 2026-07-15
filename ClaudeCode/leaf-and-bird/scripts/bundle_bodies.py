@@ -2,9 +2,10 @@
 exist (script /tmp/lb_build_bundles.py creates them). Prices are fetched live to
 avoid rounding mismatch with the API-set values.
 """
+import os
 import json, urllib.request
 
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 SHOP = "leaf-and-bird.myshopify.com"
 REST = f"https://{SHOP}/admin/api/2024-10"
 

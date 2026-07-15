@@ -2,9 +2,10 @@
 Also add them to /collections/bundles (id 526848950571) and verify components on the
 existing 2 are properly attached.
 """
+import os
 import json, urllib.request, time
 
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 SHOP = "leaf-and-bird.myshopify.com"
 GQL = f"https://{SHOP}/admin/api/2024-10/graphql.json"
 REST = f"https://{SHOP}/admin/api/2024-10"

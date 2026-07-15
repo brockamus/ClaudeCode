@@ -1,11 +1,12 @@
 """Generate hero images for all 8 bundles via Nano Banana Pro using component
 product references, then upload each to its bundle product on Shopify.
 """
+import os
 import base64, json, os, pathlib, subprocess, sys, time, urllib.request
 
-API_KEY = "GOOGLE_API_KEY_REDACTED"
+API_KEY = os.environ["GEMINI_API_KEY"]
 MODEL = "gemini-3-pro-image-preview"
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 SHOP = "leaf-and-bird.myshopify.com"
 REST = f"https://{SHOP}/admin/api/2024-10"
 

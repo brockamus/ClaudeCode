@@ -4,9 +4,10 @@
 3. Populate per-bundle data
 4. Update product.bundle.json to include the 3 new sections
 """
+import os
 import json, urllib.request, copy
 
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 SHOP = "leaf-and-bird.myshopify.com"
 GQL = f"https://{SHOP}/admin/api/2024-10/graphql.json"
 THEME_REST = f"https://{SHOP}/admin/api/2024-10/themes/186951631147/assets.json"

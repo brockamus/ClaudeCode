@@ -1,8 +1,9 @@
 """Enable cart_progress_bar block in cart drawer with amber fill + clean copy."""
+import os
 import json, urllib.request
 
 THEME_ID = 186951631147
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 URL = f"https://leaf-and-bird.myshopify.com/admin/api/2024-10/themes/{THEME_ID}/assets.json"
 
 def fetch(key: str) -> str:

@@ -1,10 +1,11 @@
 """Update bundle discount % (10/15 → 15/25) + rename to Duo/Trio across 3 templates.
 Pull each live template, modify the quantity_bundle block settings, push back.
 """
+import os
 import json, urllib.request
 
 THEME_ID = 186951631147
-TOKEN = "SHOPIFY_TOKEN_REDACTED"
+TOKEN = os.environ["SHOPIFY_TOKEN"]  # source scripts/.env first
 URL = f"https://leaf-and-bird.myshopify.com/admin/api/2024-10/themes/{THEME_ID}/assets.json"
 
 
