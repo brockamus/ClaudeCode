@@ -67,8 +67,14 @@ try {
 async function cmdIngest() {
   if (!positional.length) throw new Error("Give me one or more saved .html pages.\n\n" + USAGE);
   const courses = positional.map((path) => {
-    const course = parseCourse(readFileSync(path, "utf8"), { title: flags.title });
-    log(`${basename(path)}: ${course.modules.length} module(s)`);
+    // allowFallback: saved pages from Circle/Kajabi/Teachable have no __NEXT_DATA__,
+    // so fall back to reading the markup itself.
+    const course = parseCourse(readFileSync(path, "utf8"), {
+      title: flags.title,
+      url: `file://${path}`,
+      allowFallback: true,
+    });
+    log(`${basename(path)}: ${course.modules.length} module(s) via ${course.source}`);
     return course;
   });
   const course = courses.length === 1 ? courses[0] : mergeCourses(courses, { title: flags.title });

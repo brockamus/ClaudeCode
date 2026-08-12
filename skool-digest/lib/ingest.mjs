@@ -85,8 +85,15 @@ const firstString = (...vals) =>
 const numberOr = (v, fallback) => (typeof v === "number" && Number.isFinite(v) ? v : fallback);
 
 /** html (or a __NEXT_DATA__ dump) -> course object */
-export function parseCourse(html, { title } = {}) {
-  const data = extractNextData(html);
+export function parseCourse(html, { title, url = "file://saved-page", allowFallback = false } = {}) {
+  let data;
+  try {
+    data = extractNextData(html);
+  } catch (e) {
+    // No Next.js payload (Circle, Kajabi, Teachable, …) — read the markup itself.
+    if (!allowFallback) throw e;
+    return parseDOM(scrapeHTML(html), url);
+  }
   const modules = collectModules(data).sort((a, b) => a.order - b.order);
   const courseTitle =
     title ??
@@ -123,7 +130,7 @@ export function mergeCourses(courses, { title } = {}) {
   return {
     title: courseTitle,
     slug: slug(courseTitle),
-    source: "next-data",
+    source: [...new Set(courses.map((c) => c.source))].join("+") || "unknown",
     captured_at: new Date().toISOString(),
     modules,
   };
@@ -153,27 +160,18 @@ export async function crawl(url, { profileDir, maxPages = 200, headless = false,
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
 
-    if (!headless && /\/login/i.test(page.url())) {
-      log("\nBrowser is open. Log into Skool, navigate to the classroom, then press Enter here.");
+    // Anything behind a paywall bounces to a login/sign-in screen first.
+    if (!headless && !(await looksLoggedIn(page, url))) {
+      log("\nBrowser is open. Log in, navigate to the course, then press Enter here.");
       await waitForEnter();
       await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
     }
     await page.waitForTimeout(waitMs);
+    await autoScroll(page);
 
-    const origin = new URL(url).origin;
-    const base = new URL(url).pathname.split("/").slice(0, 3).join("/"); // /<group>/classroom -> /<group>
-
-    const links = await page.$$eval("a[href]", (as) => as.map((a) => a.getAttribute("href")));
-    const targets = [...new Set(
-      links
-        .filter(Boolean)
-        .map((h) => (h.startsWith("http") ? h : `${origin}${h}`))
-        .filter((h) => h.startsWith(origin) && h.includes("/classroom"))
-        .filter((h) => new URL(h).pathname.startsWith(base)),
-    )].slice(0, maxPages);
-
+    const targets = await discoverLessons(page, url, maxPages);
     const pages = [url, ...targets.filter((t) => t !== url)];
-    log(`Found ${pages.length} classroom page(s).`);
+    log(`Found ${pages.length} page(s) under ${new URL(url).pathname}.`);
 
     const courses = [];
     for (const [i, target] of pages.entries()) {
@@ -181,18 +179,148 @@ export async function crawl(url, { profileDir, maxPages = 200, headless = false,
         if (target !== url) {
           await page.goto(target, { waitUntil: "domcontentloaded", timeout: 60000 });
           await page.waitForTimeout(waitMs);
+          await autoScroll(page);
         }
-        const html = await page.content();
-        courses.push(parseCourse(html));
-        log(`  [${i + 1}/${pages.length}] ${target}`);
+        const course = await extractPage(page);
+        courses.push(course);
+        log(`  [${i + 1}/${pages.length}] ${course.modules.length} module(s) via ${course.source} — ${target}`);
       } catch (e) {
         log(`  [${i + 1}/${pages.length}] failed: ${target} — ${e.message}`);
       }
     }
-    return mergeCourses(courses);
+    const merged = mergeCourses(courses);
+    if (!merged.modules.length) {
+      throw new Error(
+        "No modules found. Either the crawl never got past the login screen, or this platform " +
+        "hides lessons behind interactions the crawler didn't perform. Re-run without --headless and watch it.",
+      );
+    }
+    return merged;
   } finally {
     await context.close();
   }
+}
+
+/**
+ * Extract one page: prefer the Next.js payload (richest), fall back to the
+ * rendered DOM. The DOM path is what makes this work on Circle, Kajabi,
+ * Teachable and anything else that hydrates client-side.
+ */
+async function extractPage(page) {
+  try {
+    const course = parseCourse(await page.content());
+    if (course.modules.length) return course;
+  } catch { /* no __NEXT_DATA__ — fall through to the DOM */ }
+  return parseDOM(await scrapeDOM(page), page.url());
+}
+
+/** Pull title, prose and video embeds straight out of the rendered page. */
+function scrapeDOM(page) {
+  return page.evaluate(() => {
+    const text = (el) => (el?.innerText ?? "").trim();
+    const main =
+      document.querySelector("main") ??
+      document.querySelector("[role=main]") ??
+      document.querySelector("article") ??
+      document.body;
+
+    const embeds = [...document.querySelectorAll("iframe[src], video[src], video source[src]")]
+      .map((el) => el.getAttribute("src"))
+      .filter(Boolean);
+
+    // Players often keep the real URL on a data-* attribute instead of src.
+    const dataAttrs = [...document.querySelectorAll("[data-video-url], [data-src], [data-video-id], [data-wistia-id]")]
+      .flatMap((el) => ["data-video-url", "data-src", "data-video-id", "data-wistia-id"].map((a) => el.getAttribute(a)))
+      .filter(Boolean);
+
+    return {
+      title: text(document.querySelector("h1")) || document.title || "",
+      body: text(main).slice(0, 20000),
+      embeds: [...embeds, ...dataAttrs],
+      html: main.innerHTML.slice(0, 400000),
+    };
+  });
+}
+
+/** Same shape as scrapeDOM(), derived from raw markup with no browser. */
+export function scrapeHTML(html) {
+  const body = html
+    .replace(/<(script|style|noscript|svg)[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<br\s*\/?>|<\/(p|div|li|h[1-6]|tr)>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'")
+    .replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n\s*\n\s*\n+/g, "\n\n")
+    .trim();
+
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+  const title = (h1 ?? html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "")
+    .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
+  const embeds = [...html.matchAll(/<(?:iframe|video|source)[^>]+src=["']([^"']+)["']/gi)].map((m) => m[1]);
+
+  return { title, body: body.slice(0, 20000), embeds, html };
+}
+
+export function parseDOM(scraped, pageUrl) {
+  const videos = [...new Set([
+    ...videoLinks(scraped.embeds.join(" ")),
+    ...videoLinks(scraped.html),
+    // Bare Wistia/Vimeo IDs sometimes appear only as data attributes.
+    ...scraped.embeds
+      .filter((s) => /^[a-z0-9]{8,}$/i.test(s))
+      .map((id) => `https://fast.wistia.net/embed/medias/${id}`),
+  ])];
+
+  const title = (scraped.title || new URL(pageUrl).pathname.split("/").filter(Boolean).pop() || "Untitled").trim();
+  const body = scraped.body.replace(/\n{3,}/g, "\n\n").trim();
+
+  return {
+    title,
+    slug: slug(title),
+    source: "dom",
+    captured_at: new Date().toISOString(),
+    modules: (videos.length || body.length > 200)
+      ? [{ id: pageUrl, title, body, videos, order: 0, url: pageUrl }]
+      : [],
+  };
+}
+
+/** Same-origin links sharing the course's path prefix — platform-agnostic. */
+function discoverLessons(page, url, maxPages) {
+  const { origin, pathname } = new URL(url);
+  // /c/1-page-funnel/... -> /c/1-page-funnel ; /<group>/classroom/... -> /<group>/classroom
+  const base = "/" + pathname.split("/").filter(Boolean).slice(0, 2).join("/");
+
+  return page.$$eval("a[href]", (as) => as.map((a) => a.getAttribute("href")))
+    .then((hrefs) => [...new Set(
+      hrefs
+        .filter(Boolean)
+        .map((h) => { try { return new URL(h, origin).href.split("#")[0]; } catch { return null; } })
+        .filter((h) => h && h.startsWith(origin) && new URL(h).pathname.startsWith(base)),
+    )].slice(0, maxPages));
+}
+
+/** Lazy-loaded lesson lists only render once you scroll them into view. */
+async function autoScroll(page, steps = 12) {
+  for (let i = 0; i < steps; i++) {
+    const atBottom = await page.evaluate(() => {
+      const before = window.scrollY;
+      window.scrollBy(0, window.innerHeight);
+      return window.scrollY === before;
+    });
+    if (atBottom) break;
+    await page.waitForTimeout(350);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+}
+
+async function looksLoggedIn(page, url) {
+  if (/\b(login|signin|sign-in|sign_in|auth)\b/i.test(page.url())) return false;
+  // Landed somewhere else entirely (redirected home) — treat as not signed in.
+  if (new URL(page.url()).pathname === "/" && new URL(url).pathname !== "/") return false;
+  return true;
 }
 
 function waitForEnter() {
