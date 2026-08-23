@@ -34,10 +34,14 @@ export function extractNextData(html) {
 
 /** Every video URL mentioned anywhere inside a node. */
 export function videoLinks(node) {
-  const text = typeof node === "string" ? node : JSON.stringify(node ?? "");
+  const raw = typeof node === "string" ? node : JSON.stringify(node ?? "");
+  // Unescape BEFORE matching. Skool stores video links in double-encoded JSON
+  // strings (metadata.videoLinksData), so slashes arrive as \\/ or \\u002F and the
+  // patterns below — which need a literal :// — would never match them.
+  const text = raw.replace(/\\u002f/gi, "/").replace(/\\\//g, "/");
   const found = new Set();
   for (const re of VIDEO_PATTERNS) {
-    for (const hit of text.match(re) ?? []) found.add(hit.replace(/\\u002F/gi, "/").replace(/\\\//g, "/"));
+    for (const hit of text.match(re) ?? []) found.add(hit);
   }
   return [...found];
 }
@@ -55,7 +59,7 @@ function collectModules(root) {
     const meta = node.metadata && typeof node.metadata === "object" ? node.metadata : {};
     const title = firstString(node.title, node.name, meta.title, meta.name);
     const body = firstString(meta.description, meta.content, node.description, node.content);
-    const videos = videoLinks(node);
+    const videos = videoLinks(ownContent(node));
 
     if (title && (videos.length || (body && body.length > 40))) {
       const id = String(node.id ?? node.uid ?? `${slug(title)}-${out.length}`);
@@ -78,6 +82,25 @@ function collectModules(root) {
   visit(root, 0);
   return out;
 }
+
+// A node's own content, excluding its child lessons. Without this every
+// container (course root, section) inherits the union of its descendants'
+// videos and is emitted as a phantom module alongside the real ones.
+function ownContent(node) {
+  const own = {};
+  for (const [k, v] of Object.entries(node)) {
+    if (isChildCollection(v)) continue;
+    own[k] = v;
+  }
+  return own;
+}
+
+// An array of titled objects is a list of child lessons. An array of untitled
+// ones (e.g. videoLinks: [{url}]) is this node's own data — keep it.
+const isChildCollection = (v) =>
+  Array.isArray(v) &&
+  v.some((x) => x && typeof x === "object" &&
+    (typeof x.title === "string" || typeof x.name === "string"));
 
 const firstString = (...vals) =>
   vals.find((v) => typeof v === "string" && v.trim().length > 0);

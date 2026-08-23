@@ -92,6 +92,14 @@ and newly added modules cost close to nothing.
 Brand context is read from `brands/*.md` here, or from `../copyroom/brands/`,
 so the files Copy Room already uses work unchanged.
 
+## Tests
+
+Ingest-layer regression tests — no network, no API keys, no course needed:
+
+```sh
+node test/ingest.test.mjs
+```
+
 ## Costs
 
 - Captions (YouTube, Loom, most Vimeo): free.
