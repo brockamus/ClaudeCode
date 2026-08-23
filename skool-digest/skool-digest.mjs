@@ -5,6 +5,7 @@
 //   skool-digest crawl  <classroom-url>       Playwright + your logged-in profile
 //   skool-digest run    <course.json>         transcribe -> distill -> playbook
 //   skool-digest apply  <playbook.json>       playbook -> per-business action plan
+//   skool-digest skill  <course-dir>          re-emit SKILL.md from an earlier run
 //
 // See README.md for setup.
 
@@ -13,22 +14,28 @@ import { join, basename } from "node:path";
 
 import { ROOT, OUT, loadEnv, requireKey, readJSON, writeJSON, writeText, log, slug, mapLimit } from "./lib/util.mjs";
 import { parseCourse, mergeCourses, crawl } from "./lib/ingest.mjs";
-import { transcribe, haveBinary } from "./lib/transcribe.mjs";
+import { transcribe, haveBinary, cookieArgs } from "./lib/transcribe.mjs";
 import { distill, rollup, apply } from "./lib/analyze.mjs";
 import { renderPlaybook, renderNumbers, renderAssets, renderCoverage, renderApplied } from "./lib/render.mjs";
+import { renderSkill } from "./lib/skill.mjs";
 
 const USAGE = `Usage:
   skool-digest ingest <page.html...> [--title "Course name"]
   skool-digest crawl  <classroom-url> [--headless] [--max-pages N]
   skool-digest run    <course.json> [--brand <name>] [--limit N] [--no-paid] [--concurrency N]
   skool-digest apply  <playbook.json> --brand <name>
+  skool-digest skill  <course-dir>
 
 Flags:
   --brand <name>    business to adapt the playbook for (see --list-brands)
   --limit N         only process the first N modules (useful for a trial run)
   --no-paid         captions only; never pay for speech-to-text
   --concurrency N   parallel module analyses (default 3)
-  --list-brands     show available business context files`;
+  --list-brands     show available business context files
+
+  --cookies <file>              Netscape cookie jar for gated videos
+  --cookies-from-browser <spec> e.g. chrome, firefox, "chromium:/path/to/profile"
+                                (defaults to the crawler's own logged-in profile)`;
 
 // ---------- args ----------
 const argv = process.argv.slice(2);
@@ -53,6 +60,7 @@ try {
     case "crawl": await cmdCrawl(); break;
     case "run": await cmdRun(); break;
     case "apply": await cmdApply(); break;
+    case "skill": await cmdSkill(); break;
     default:
       console.error(USAGE);
       process.exit(cmd ? 1 : 0);
@@ -110,6 +118,14 @@ async function cmdRun() {
   const allowPaid = !flags["no-paid"];
   const concurrency = Number(flags.concurrency ?? 3);
 
+  const cookies = cookieArgs({
+    cookiesFile: flags.cookies,
+    cookiesFromBrowser: flags["cookies-from-browser"],
+    profileDir: join(ROOT, ".browser-profile"),
+  });
+  if (cookies.length) log(`Using session: ${cookies.join(" ")}\n`);
+  else log("No browser session available — gated or unlisted videos will fail to fetch.\n");
+
   const course = readJSON(coursePath);
   let modules = course.modules;
   if (flags.limit) modules = modules.slice(0, Number(flags.limit));
@@ -130,7 +146,7 @@ async function cmdRun() {
     const label = `[${String(i + 1).padStart(String(modules.length).length)}/${modules.length}] ${module.title}`;
     try {
       const transcript = module.videos.length
-        ? await transcribe(module.videos[0], { openaiKey, allowPaid })
+        ? await transcribe(module.videos[0], { openaiKey, allowPaid, cookies })
         : { url: null, source: "none", segments: [], text: "" };
 
       if (!transcript.text && !module.body) {
@@ -161,15 +177,43 @@ async function cmdRun() {
   writeText(join(dir, "numbers.md"), renderNumbers(course, distilled));
   writeText(join(dir, "templates.md"), renderAssets(course, distilled));
   writeText(join(dir, "coverage.md"), renderCoverage(course, distilled));
+  writeText(join(dir, "SKILL.md"), renderSkill(course, playbook, distilled));
+
+  // A module that reached analysis with no transcript was read from its notes
+  // alone. That is the failure mode worth shouting about: the run still
+  // "succeeds" while quietly carrying far less than the course actually taught.
+  const thin = distilled.filter(({ module, transcript }) => module.videos.length && transcript.source === "none");
+  if (thin.length) {
+    log(`\nWARNING: ${thin.length} of ${distilled.length} module(s) had video but produced no transcript.`);
+    log("They were distilled from their text notes alone, so this playbook is thinner than the course:");
+    for (const t of thin) log(`  - ${t.module.title}`);
+    log("Usually a session problem — see --cookies / --cookies-from-browser.");
+  }
 
   log(`\n${playbook.playbook.length} actions · ${playbook.contradictions.length} contradictions · ${playbook.ignore.length} ignorable claims`);
   log(`  -> ${join(dir, "playbook.md")}`);
   log(`  -> ${join(dir, "numbers.md")}`);
   log(`  -> ${join(dir, "templates.md")}`);
   log(`  -> ${join(dir, "coverage.md")}`);
+  log(`  -> ${join(dir, "SKILL.md")}`);
 
   if (flags.brand) await runApply({ apiKey, course, playbook, brandName: flags.brand, dir });
   else log(`\nNext: skool-digest apply ${join(dir, "playbook.json")} --brand <name>`);
+}
+
+// Re-emit SKILL.md from a finished run, without paying for the analysis again.
+async function cmdSkill() {
+  const dir = positional[0];
+  if (!dir) throw new Error("Give me a course directory (the one holding playbook.json).\n\n" + USAGE);
+  for (const f of ["playbook.json", "distilled.json", "course.json"]) {
+    if (!existsSync(join(dir, f))) throw new Error(`${join(dir, f)} not found — run \`skool-digest run\` first.`);
+  }
+  const course = readJSON(join(dir, "course.json"));
+  const playbook = readJSON(join(dir, "playbook.json"));
+  const distilled = readJSON(join(dir, "distilled.json"));
+  const path = writeText(join(dir, "SKILL.md"), renderSkill(course, playbook, distilled, { name: flags.name }));
+  log(`  -> ${path}`);
+  log(`\nInstall: cp -r ${dir}/SKILL.md ~/.claude/skills/<name>/SKILL.md`);
 }
 
 async function cmdApply() {

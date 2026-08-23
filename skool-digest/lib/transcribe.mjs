@@ -5,13 +5,26 @@
 // only fall back to downloading audio + paying for transcription.
 
 import { spawn, spawnSync } from "node:child_process";
-import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { cached, hash, hhmmss, log } from "./util.mjs";
 
 const CHUNK_SECONDS = 900;              // 15 min per transcription chunk
 const MAX_UPLOAD_BYTES = 24 * 1024 * 1024;
+
+/**
+ * yt-dlp arguments carrying your Skool session. Course videos are typically
+ * unlisted or member-gated, so an anonymous fetch 403s and the module silently
+ * transcribes to nothing. Prefers an explicit cookie jar, else the browser
+ * profile the crawler already logged in with.
+ */
+export function cookieArgs({ cookiesFile, cookiesFromBrowser, profileDir } = {}) {
+  if (cookiesFile) return ["--cookies", cookiesFile];
+  if (cookiesFromBrowser) return ["--cookies-from-browser", cookiesFromBrowser];
+  if (profileDir && existsSync(profileDir)) return ["--cookies-from-browser", `chromium:${profileDir}`];
+  return [];
+}
 
 export function haveBinary(name) {
   try {
@@ -24,11 +37,11 @@ export function haveBinary(name) {
  * Get a transcript for a video URL.
  * Returns { url, source: "captions"|"speech"|"none", segments: [{start, text}], text }
  */
-export async function transcribe(url, { openaiKey, allowPaid = true } = {}) {
+export async function transcribe(url, { openaiKey, allowPaid = true, cookies = [] } = {}) {
   return cached("transcripts", hash(url), async () => {
     const dir = mkdtempSync(join(tmpdir(), "skool-digest-"));
     try {
-      const subs = await fetchCaptions(url, dir);
+      const subs = await fetchCaptions(url, dir, cookies);
       if (subs?.length) {
         log(`    captions: ${subs.length} segments`);
         return pack(url, "captions", subs);
@@ -40,7 +53,7 @@ export async function transcribe(url, { openaiKey, allowPaid = true } = {}) {
         return pack(url, "none", []);
       }
 
-      const audio = await fetchAudio(url, dir);
+      const audio = await fetchAudio(url, dir, cookies);
       if (!audio) return pack(url, "none", []);
       const segments = await speechToText(audio, dir, openaiKey);
       log(`    speech-to-text: ${segments.length} segments`);
@@ -65,8 +78,9 @@ function pack(url, source, segments) {
 
 // ---------- captions ----------
 
-async function fetchCaptions(url, dir) {
+async function fetchCaptions(url, dir, cookies = []) {
   const ok = await run("yt-dlp", [
+    ...cookies,
     "--skip-download",
     "--write-subs", "--write-auto-subs",
     "--sub-langs", "en.*,en",
@@ -118,8 +132,9 @@ const vttSeconds = (stamp) => {
 
 // ---------- audio + speech-to-text ----------
 
-async function fetchAudio(url, dir) {
+async function fetchAudio(url, dir, cookies = []) {
   const ok = await run("yt-dlp", [
+    ...cookies,
     "-x", "--audio-format", "mp3",
     "--postprocessor-args", "ffmpeg:-ac 1 -ar 16000 -b:a 32k",
     "--no-warnings",

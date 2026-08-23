@@ -22,7 +22,8 @@ Running against a course produces, in `out/<course>/`:
 | `numbers.md` | Every price, conversion rate, threshold and benchmark stated anywhere, with sources. |
 | `templates.md` | Scripts, post formats, DM openers and offer structures as reusable skeletons. |
 | `coverage.md` | Per-module filler ratio, and the short list of modules genuinely worth watching. |
-| `plan-<brand>.md` | The playbook rewritten for one specific business, ranked by impact vs effort. |
+| `plan-<brand>.md` | The playbook rewritten for one specific business, ranked by impact vs effort, with a four-week sequence and the plays it deliberately skipped. |
+| `SKILL.md` | The playbook as a Claude Code skill — drop it in `~/.claude/skills/` and Claude applies the method while you work. |
 
 The `.json` next to each is the structured source — the markdown is just a
 readable view of it.
@@ -80,7 +81,12 @@ right before spending money on the next step.
 Transcripts and extractions are cached in `cache/`, keyed by content — re-runs
 and newly added modules cost close to nothing.
 
-### 3. Apply it to a business
+### 3. Decide what to actually implement
+
+`playbook.md` is everything the course teaches. `plan-<brand>.md` is the part
+worth doing for one business, ranked by impact against effort, with a first
+step for each and a four-week sequence — plus the plays it skipped and why.
+That is the file that answers "what do I implement".
 
 ```sh
 ./skool-digest.mjs --list-brands
@@ -92,12 +98,28 @@ and newly added modules cost close to nothing.
 Brand context is read from `brands/*.md` here, or from `../copyroom/brands/`,
 so the files Copy Room already uses work unchanged.
 
+### 4. Turn it into a skill
+
+`run` writes `SKILL.md` alongside the rest. To install it:
+
+```sh
+mkdir -p ~/.claude/skills/<name> && cp out/<course>/SKILL.md ~/.claude/skills/<name>/
+```
+
+To re-emit it after editing the playbook by hand, without paying for the
+analysis again:
+
+```sh
+./skool-digest.mjs skill out/<course> [--name <skill-name>]
+```
+
 ## Tests
 
 Ingest-layer regression tests — no network, no API keys, no course needed:
 
 ```sh
 node test/ingest.test.mjs
+node test/skill.test.mjs
 ```
 
 ## Costs
@@ -115,6 +137,13 @@ Use `--no-paid` to stay strictly on free captions and skip anything else.
   private — don't republish the extracted material or pass the playbook on.
 - **Extract before you cancel.** Classroom access dies with the subscription, so
   run this while you still have it.
+- **Gated videos need your session.** Course videos are usually unlisted or
+  members-only, so an anonymous `yt-dlp` fetch gets a 403 and the module
+  transcribes to nothing. `run` defaults to the cookies in the crawler's own
+  browser profile; use `--cookies-from-browser chrome` or `--cookies <file>` if
+  you ingested pages by hand. The run warns and names every module that had
+  video but produced no transcript — never ignore that list, it means the
+  playbook is thinner than the course.
 - The crawler is the fragile part. Skool is a Next.js app and the tool reads the
   `__NEXT_DATA__` payload rather than the rendered page, which survives cosmetic
   redesigns — but expect to repair it occasionally when they change their data
