@@ -1,0 +1,813 @@
+<title>Nashville Ground Game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  :root {
+    --ground:      #EFF0EA;
+    --surface:     #FBFBF7;
+    --surface-alt: #E5E7DD;
+    --ink:         #171C16;
+    --ink-soft:    #4A5147;
+    --ink-faint:   #767C71;
+    --olive:       #3D4A2E;
+    --olive-soft:  #6B7A54;
+    --signal:      #B4610F;
+    --rust:        #9E3B2A;
+    --rule:        #C9CDBF;
+    --rule-faint:  #DCDFD3;
+
+    --display: "Barlow Condensed", "Arial Narrow", Helvetica, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+
+    --measure: 68ch;
+    --wide: 1120px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #12160F;
+      --surface:     #1A1F16;
+      --surface-alt: #232920;
+      --ink:         #E9EBE1;
+      --ink-soft:    #B4BAAC;
+      --ink-faint:   #8A9081;
+      --olive:       #A3B87C;
+      --olive-soft:  #8B9E68;
+      --signal:      #E0913F;
+      --rust:        #D9765F;
+      --rule:        #333A2C;
+      --rule-faint:  #262C21;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #12160F;
+    --surface:     #1A1F16;
+    --surface-alt: #232920;
+    --ink:         #E9EBE1;
+    --ink-soft:    #B4BAAC;
+    --ink-faint:   #8A9081;
+    --olive:       #A3B87C;
+    --olive-soft:  #8B9E68;
+    --signal:      #E0913F;
+    --rust:        #D9765F;
+    --rule:        #333A2C;
+    --rule-faint:  #262C21;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 0 28px 96px;
+  }
+
+  /* ---------- shared type ---------- */
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  h1, h2, h3, .stat-num {
+    font-family: var(--display);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(44px, 7vw, 76px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(28px, 3.4vw, 38px);
+    font-weight: 600;
+    line-height: 1.06;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+  }
+
+  h3 {
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  p { margin: 0; }
+  .prose { max-width: var(--measure); display: flex; flex-direction: column; gap: 18px; }
+  .prose a { color: var(--olive); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  strong { font-weight: 600; color: var(--ink); }
+
+  .lede { font-size: 20px; line-height: 1.55; color: var(--ink-soft); }
+
+  /* ---------- masthead ---------- */
+
+  header.masthead {
+    border-top: 6px solid var(--olive);
+    padding-top: 22px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .filing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 26px;
+    align-items: baseline;
+  }
+
+  .filing .unit {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-weight: 600;
+  }
+
+  .title-block { display: flex; flex-direction: column; gap: 16px; }
+
+  .subtitle {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--signal);
+  }
+
+  .particulars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px 28px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0;
+  }
+
+  .particulars div { display: flex; flex-direction: column; gap: 5px; }
+  .particulars .val { font-family: var(--mono); font-size: 13px; line-height: 1.45; color: var(--ink); }
+
+  /* ---------- sections ---------- */
+
+  section { margin-top: 68px; display: flex; flex-direction: column; gap: 26px; }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  @media (max-width: 700px) {
+    .sec-head { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .sec-head .eyebrow { padding-top: 6px; }
+
+  /* ---------- verified findings ---------- */
+
+  .findings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1px;
+    background: var(--rule-faint);
+    border: 1px solid var(--rule-faint);
+  }
+
+  .finding {
+    background: var(--surface);
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stat-num {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--olive);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .finding p { font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* ---------- gap matrix ---------- */
+
+  .scroller { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 13px;
+    min-width: 640px;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0 14px 10px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: bottom;
+  }
+
+  td {
+    padding: 13px 14px 13px 0;
+    border-bottom: 1px solid var(--rule-faint);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  td.term { color: var(--ink); font-weight: 500; }
+  td:last-child, th:last-child { padding-right: 0; }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .pill.missing { color: var(--rust); }
+  .pill.thin    { color: var(--signal); }
+  .pill.holding { color: var(--olive); }
+
+  .rank { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  /* ---------- gap list ---------- */
+
+  .gaps { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+
+  .gap {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 20px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  @media (max-width: 700px) {
+    .gap { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  .gap-body { display: flex; flex-direction: column; gap: 12px; max-width: var(--measure); }
+  .gap-body p { font-size: 16px; color: var(--ink-soft); }
+  .gap-body .fix {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink);
+    border-left: 2px solid var(--signal);
+    padding-left: 14px;
+  }
+
+  /* ---------- phases ---------- */
+
+  .phases { display: flex; flex-direction: column; gap: 2px; }
+
+  .phase {
+    background: var(--surface);
+    border-left: 3px solid var(--olive);
+    padding: 24px 26px;
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 780px) {
+    .phase { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  .phase-label { display: flex; flex-direction: column; gap: 6px; }
+  .phase-num {
+    font-family: var(--display);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 0.85;
+    color: var(--olive);
+    font-variant-numeric: tabular-nums;
+  }
+  .phase-when { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .phase-name { font-family: var(--display); font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  ul.ticks li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  ul.ticks li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 9px;
+    height: 2px;
+    background: var(--signal);
+  }
+
+  /* ---------- paid split ---------- */
+
+  .channels { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .channel {
+    border-top: 2px solid var(--olive);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .channel h3 { color: var(--ink); }
+  .channel p { font-size: 15.5px; line-height: 1.5; color: var(--ink-soft); }
+  .budget {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--signal);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- terms ---------- */
+
+  .terms {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 34px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  @media (max-width: 780px) {
+    .terms { grid-template-columns: 1fr; gap: 28px; padding: 26px; }
+  }
+
+  .price {
+    font-family: var(--display);
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .price span { font-size: 22px; font-weight: 500; color: var(--ink-faint); letter-spacing: 0.04em; }
+  .price-note { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
+
+  .terms-col { display: flex; flex-direction: column; gap: 14px; }
+
+  /* ---------- assumptions ---------- */
+
+  .note {
+    border-left: 2px solid var(--rule);
+    padding-left: 18px;
+    max-width: var(--measure);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .note p { font-size: 15px; color: var(--ink-faint); line-height: 1.55; }
+
+  footer {
+    margin-top: 72px;
+    border-top: 6px solid var(--olive);
+    padding-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 30px;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  footer .eyebrow { color: var(--olive); }
+
+  a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+  @media print {
+    body { background: #fff; }
+    section { break-inside: avoid; }
+  }
+</style>
+
+<div class="doc">
+
+  <header class="masthead">
+    <div class="filing">
+      <span class="unit">Insulation Commandos of Nashville</span>
+      <span class="eyebrow">Growth Proposal &middot; 90-Day Engagement</span>
+    </div>
+
+    <div class="title-block">
+      <h1>Nashville<br>Ground Game</h1>
+      <p class="subtitle">Own soundproofing. Then take the rest of the map.</p>
+    </div>
+
+    <div class="particulars">
+      <div>
+        <span class="eyebrow">Prepared for</span>
+        <span class="val">Justin Ebach<br>Owner, Nashville branch</span>
+      </div>
+      <div>
+        <span class="eyebrow">Prepared by</span>
+        <span class="val">Brock Douglas<br>brock@brockdouglas.net</span>
+      </div>
+      <div>
+        <span class="eyebrow">Date</span>
+        <span class="val">September 3, 2026</span>
+      </div>
+      <div>
+        <span class="eyebrow">Scope</span>
+        <span class="val">SEO + Google Ads + Meta<br>3-month minimum</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Situation</span>
+      <h2>You bought a business with a good name and almost no search footprint</h2>
+    </div>
+    <div class="prose">
+      <p class="lede">Eight months in, the Nashville branch is running on referrals, reviews, and whatever the franchise site happens to rank for. That's a fine start and a bad ceiling &mdash; because the demand is already there, being searched for every day, and it's going to somebody else.</p>
+      <p>Here's the honest read from what I could verify publicly before we've had access to your accounts. Google has ten pages indexed under <span style="font-family:var(--mono);font-size:0.92em;">insulationcommandos.com/nashville/</span>. That's the entire footprint for a metro of two million people. The pages that exist are decent &mdash; a noise reduction page, crawl space sealing, air sealing, cellulose, pest cleanup, testimonials, contact, incentives. What's missing is louder than what's there: <strong>no attic insulation page, no insulation removal page, no spray foam page, no duct cleaning page, and not a single page for Brentwood, Franklin, Hendersonville, Mt. Juliet, or Murfreesboro</strong> &mdash; the suburbs where the $8,000 jobs live.</p>
+      <p>The one place you do show up consistently is soundproofing. That is not a coincidence, and it's the whole strategy in this document. In Music City, the noise problem is the local problem. Nobody has claimed it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Verified</span>
+      <h2>What the public record shows today</h2>
+    </div>
+    <div class="findings">
+      <div class="finding">
+        <span class="stat-num">10</span>
+        <p>Pages indexed under the <span style="font-family:var(--mono);">/nashville/</span> folder &mdash; your entire organic surface area for the metro.</p>
+      </div>
+      <div class="finding">
+        <span class="stat-num">0</span>
+        <p>Suburb or neighborhood pages. Brentwood, Franklin, Hendersonville, Mt. Juliet and Murfreesboro searches have nothing of yours to land on.</p>
+      </div>
+      <div class="finding">
+        <span class="stat-num">2</span>
+        <p>Pages on the franchise domain competing for &ldquo;Nashville insulation&rdquo; &mdash; yours, and one the Clarksville branch published at <span style="font-family:var(--mono);">/clarksville/locations/nashville/</span>.</p>
+      </div>
+      <div class="finding">
+        <span class="stat-num">1</span>
+        <p>Service line where you have real traction. Soundproofing and noise reduction &mdash; the one category with no dominant local specialist.</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p>The soundproofing search results in Nashville are held by national suppliers, commercial acoustics firms serving studios and offices, and lead-aggregator directories &mdash; HomeAdvisor, Yelp, Thumbtack, Angi. There is no local residential contractor who has planted a flag on it. On the core insulation terms it's the opposite: Koala Insulation, iFoam, USA Insulation, IBP and the roofing companies have full page sets and years of head start.</p>
+      <p>That split tells you where to spend the first ninety days. <strong>Win the category nobody owns while you claw back into the ones everybody's fighting over.</strong></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Gaps</span>
+      <h2>Four things costing you jobs right now</h2>
+    </div>
+
+    <div class="gaps">
+      <div class="gap">
+        <span class="eyebrow">Gap 01<br>Domain</span>
+        <div class="gap-body">
+          <h3>You're a tenant on someone else's domain</h3>
+          <p>Your pages live in a subfolder of the franchisor's site. You don't control the template, the site speed, the internal linking, or what other franchisees publish &mdash; including the Clarksville location's Nashville page, which splits the signal Google uses to decide who ranks here.</p>
+          <p class="fix">Fix: treat <span style="font-family:inherit;">/nashville/</span> as its own site. Build a complete internal hub, request the Clarksville-Nashville page be redirected or de-targeted, and stand up owned assets you control outright &mdash; Google Business Profile, a Nashville-only landing environment for paid traffic, and review velocity that no franchisee can dilute.</p>
+        </div>
+      </div>
+
+      <div class="gap">
+        <span class="eyebrow">Gap 02<br>Coverage</span>
+        <div class="gap-body">
+          <h3>Your biggest money services have no page at all</h3>
+          <p>Attic insulation, insulation removal, blown-in, spray foam, and duct cleaning are the highest-volume searches in this trade. You perform every one of them. Google can't rank a service you haven't written a page for, so those searches go to Koala, iFoam and the roofers by default.</p>
+          <p class="fix">Fix: one page per service, written for Nashville housing stock &mdash; 1950s Green Hills ranches, East Nashville tall-skinnies, Williamson County new builds &mdash; not franchise boilerplate.</p>
+        </div>
+      </div>
+
+      <div class="gap">
+        <span class="eyebrow">Gap 03<br>Geography</span>
+        <div class="gap-body">
+          <h3>Nothing exists for the suburbs where the good jobs are</h3>
+          <p>A Brentwood homeowner searching &ldquo;crawl space encapsulation Brentwood TN&rdquo; sees competitors with a page built for that exact search. You have a citywide page and a map pin on Trousdale Drive. Encapsulation work in this market runs roughly $7,000&ndash;$15,000 a project; losing those searches is not a rounding error.</p>
+          <p class="fix">Fix: six to eight suburb pages with real local specifics, each tied to the matching service page and to Google Business Profile posts targeting that area.</p>
+        </div>
+      </div>
+
+      <div class="gap">
+        <span class="eyebrow">Gap 04<br>Spend</span>
+        <div class="gap-body">
+          <h3>You may be paying for leads and can't prove what they cost</h3>
+          <p>It looks like Local Services Ads are running, but nobody in the room could say what the monthly spend is, what a lead costs, or which of those leads closed. Meta isn't running at all &mdash; and Meta is where soundproofing demand gets created rather than captured: studio owners, short-term rental hosts, and parents of newborns don't search for acoustic insulation until someone shows them it exists.</p>
+          <p class="fix">Fix: audit and take over the LSA account in week one, stand up a tightly-targeted Google Search campaign, add Meta for soundproofing and STR-host demand generation, and put call tracking on every channel so we know what each lead actually costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The Wedge</span>
+      <h2>Own soundproofing in Music City</h2>
+    </div>
+    <div class="prose">
+      <p>Every insulation contractor in Nashville sells attic insulation. Almost none of them market soundproofing, and the ones who do are commercial acoustics companies quoting office buildings and studios, not homeowners. Meanwhile Nashville has the densest concentration of home studios in America, a short-term rental market with thin-walled units and noise complaints, and thirty thousand new residents a year moving into apartments and infill construction next to Broadway, Nissan Stadium, and I-440.</p>
+      <p>You already have a noise reduction page and you already rank on those terms. <strong>That's the beachhead.</strong> The plan turns one page into a cluster that owns the whole category, then uses the authority it builds to lift the core insulation pages alongside it.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38px;">#</th>
+            <th style="width:30%;">Target</th>
+            <th style="width:16%;">Status</th>
+            <th style="width:20%;">Intent</th>
+            <th>Asset to build</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank">01</td>
+            <td class="term">soundproofing nashville</td>
+            <td><span class="pill holding">Holding</span></td>
+            <td>Commercial</td>
+            <td>Rebuild the noise reduction page as the category hub; link every child page into it</td>
+          </tr>
+          <tr>
+            <td class="rank">02</td>
+            <td class="term">soundproof insulation / walls</td>
+            <td><span class="pill thin">Thin</span></td>
+            <td>Commercial</td>
+            <td>Dedicated wall soundproofing page &mdash; materials, decibel reduction, what it costs</td>
+          </tr>
+          <tr>
+            <td class="rank">03</td>
+            <td class="term">home studio soundproofing nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Commercial</td>
+            <td>The Music City page. Studio and rehearsal-room builds, with photos of real jobs</td>
+          </tr>
+          <tr>
+            <td class="rank">04</td>
+            <td class="term">soundproofing cost nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Research &rarr; buy</td>
+            <td>Transparent pricing page with real ranges &mdash; the highest-converting page type in this trade</td>
+          </tr>
+          <tr>
+            <td class="rank">05</td>
+            <td class="term">ceiling soundproofing / upstairs noise</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Problem-aware</td>
+            <td>Multi-story and condo noise page, aimed at townhome and STR owners</td>
+          </tr>
+          <tr>
+            <td class="rank">06</td>
+            <td class="term">attic insulation nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Commercial</td>
+            <td>Core money page. Currently ceded entirely to Koala, iFoam and IBP</td>
+          </tr>
+          <tr>
+            <td class="rank">07</td>
+            <td class="term">insulation removal nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Urgent</td>
+            <td>Removal and replacement page, tied to the existing pest-damage cleanup page</td>
+          </tr>
+          <tr>
+            <td class="rank">08</td>
+            <td class="term">spray foam insulation nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Commercial</td>
+            <td>Open vs. closed cell, board-foot pricing, where it's worth it in this climate</td>
+          </tr>
+          <tr>
+            <td class="rank">09</td>
+            <td class="term">crawl space encapsulation + suburb</td>
+            <td><span class="pill thin">Thin</span></td>
+            <td>High value</td>
+            <td>Suburb variants off the existing encapsulation page &mdash; the $7K&ndash;$15K searches</td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td class="term">air duct cleaning nashville</td>
+            <td><span class="pill missing">No page</span></td>
+            <td>Commercial</td>
+            <td>Service page plus the natural bundle offer with attic work</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p style="font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--ink-faint);">Status reflects public search results and your indexed page inventory as of September 2026. Exact positions, search volumes and competitor gaps are quantified in the week-one baseline audit and tracked weekly from there.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Plan</span>
+      <h2>Ninety days, three phases</h2>
+    </div>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-label">
+          <span class="phase-num">01</span>
+          <span class="phase-when">Month 1 &middot; Foundation</span>
+          <span class="phase-name">Take Inventory<br>&amp; Turn On Revenue</span>
+        </div>
+        <ul class="ticks">
+          <li>Full baseline audit: current rankings, indexed pages, technical issues, and exactly where you sit against Koala, iFoam, USA Insulation and IBP &mdash; delivered as a document you keep</li>
+          <li>LSA audit and takeover: real spend, real cost per lead, real close rate. Budget reallocated the same week if it's leaking</li>
+          <li>Google Business Profile overhaul &mdash; categories, services, photos, review request system, weekly posts</li>
+          <li>Call tracking and conversion tracking live across every channel, so month two is measured, not guessed</li>
+          <li>Google Ads Search live on high-intent terms with a Nashville-only landing page we control</li>
+          <li>Soundproofing hub page rebuilt; two core service pages published (attic insulation, insulation removal)</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="phase-num">02</span>
+          <span class="phase-when">Month 2 &middot; Expansion</span>
+          <span class="phase-name">Claim the<br>Category</span>
+        </div>
+        <ul class="ticks">
+          <li>Soundproofing cluster completed &mdash; studio, walls, ceilings, and the cost page</li>
+          <li>Remaining service pages published: spray foam, duct cleaning, blown-in</li>
+          <li>First four suburb pages live &mdash; Brentwood, Franklin, Hendersonville, Mt. Juliet</li>
+          <li>Meta campaigns launch: soundproofing demand generation to studio owners, STR hosts and new movers, plus retargeting everyone who hit a service page</li>
+          <li>Google Ads restructured on month-one conversion data; budget shifted to what actually books jobs</li>
+          <li>Franchisor request submitted on the Clarksville-Nashville page overlap</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="phase-num">03</span>
+          <span class="phase-when">Month 3 &middot; Compound</span>
+          <span class="phase-name">Authority<br>&amp; Proof</span>
+        </div>
+        <ul class="ticks">
+          <li>Remaining suburb pages plus internal linking pass across the full Nashville hub</li>
+          <li>Local authority push: citations, local press and partner links pointed at the Nashville pages specifically</li>
+          <li>Job-photo and review engine running &mdash; every completed job feeds content, GBP and social</li>
+          <li>Meta creative iteration on the winning angles from month two</li>
+          <li>Ninety-day performance review: rankings moved, leads by channel, cost per lead, cost per booked job &mdash; and the written plan for months four through twelve</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Channels</span>
+      <h2>How the three channels work together</h2>
+    </div>
+    <div class="prose">
+      <p>SEO is the asset &mdash; it compounds and you keep it. Paid is the faucet &mdash; it produces leads while the asset is being built. Meta is the multiplier &mdash; it creates demand for a service most people don't know they can buy, and it makes every other channel cheaper by keeping you in front of people who already visited.</p>
+    </div>
+
+    <div class="channels">
+      <div class="channel">
+        <h3>Search &amp; Local SEO</h3>
+        <p>Page build-out, technical fixes, Google Business Profile, reviews, local links. Everything above lives here. Slowest to start, and the only channel that's still working for you in year three.</p>
+        <span class="budget">No ad spend &mdash; included in management</span>
+      </div>
+      <div class="channel">
+        <h3>Google Ads &amp; LSA</h3>
+        <p>Search campaigns on buying-intent terms, plus a proper handle on the Local Services Ads that appear to already be running. This is where month-one revenue comes from while pages age in.</p>
+        <span class="budget">Recommended spend: $2,000&ndash;$3,500 / mo</span>
+      </div>
+      <div class="channel">
+        <h3>Meta</h3>
+        <p>Soundproofing offers to studio owners, short-term rental hosts and new homeowners; attic and encapsulation offers seasonally; retargeting across everything. Cheap traffic in a category with no competition on this channel.</p>
+        <span class="budget">Recommended spend: $600&ndash;$1,200 / mo</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p style="font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--ink-faint);">Ad spend is paid directly to Google and Meta on your own cards &mdash; it never passes through me. Start at the low end; we scale on measured cost per booked job, not on a hunch.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Measure</span>
+      <h2>What day ninety looks like</h2>
+    </div>
+    <div class="prose">
+      <p>I'd rather be judged on specifics than adjectives. By the end of month three you should have all of the following, and you can hold me to them:</p>
+    </div>
+    <ul class="ticks" style="max-width:var(--measure);">
+      <li><strong>Roughly 18&ndash;22 new pages live</strong> on the Nashville hub, covering every service you sell and every suburb worth serving</li>
+      <li><strong>A soundproofing cluster you own outright</strong> &mdash; the only residential contractor in Nashville marketing the category seriously</li>
+      <li><strong>Every lead attributed</strong> to a channel, with a real cost per lead and cost per booked job for LSA, Google Ads, Meta and organic</li>
+      <li><strong>Movement off page two</strong> on the core service terms &mdash; ninety days is enough to move rankings meaningfully in a local market, not enough to finish the job</li>
+      <li><strong>A working lead engine</strong> you'd keep running whether or not you keep me</li>
+    </ul>
+    <div class="prose">
+      <p>What ninety days is <em>not</em>: a finished SEO program. Local search compounds over six to twelve months. The three-month minimum exists because month one is mostly setup and the results start landing in months two and three &mdash; stopping at thirty days means paying for the setup and none of the return.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Terms</span>
+      <h2>Investment</h2>
+    </div>
+
+    <div class="terms">
+      <div class="terms-col">
+        <span class="eyebrow">Management fee</span>
+        <div class="price">$3,000<span> / month</span></div>
+        <p class="price-note">Three-month minimum, then month to month.<br>Ad spend billed separately by Google and Meta, direct to you.<br>No setup fee. No long-term contract after the initial term.</p>
+      </div>
+      <div class="terms-col">
+        <span class="eyebrow">Included every month</span>
+        <ul class="ticks">
+          <li>All SEO strategy, page writing and publishing</li>
+          <li>Google Ads and LSA build, management and optimization</li>
+          <li>Meta campaign build, creative and management</li>
+          <li>Google Business Profile management and review system</li>
+          <li>Call and conversion tracking, plus a monthly performance report</li>
+          <li>A working call with you every month, and direct access in between</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><strong>What I need from you:</strong> access to the Google Business Profile, the LSA and Google Ads accounts, and the Facebook page and ad account; whatever publishing access the franchisor allows on the Nashville pages; and job photos as they happen &mdash; before-and-afters from real Nashville attics and crawl spaces beat anything I can write.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Notes</span>
+      <h2>Assumptions this document rests on</h2>
+    </div>
+    <div class="note">
+      <p>Findings here come from public search results and your indexed page inventory as of September 3, 2026 &mdash; not from inside your accounts. Ranking positions, search volumes, current ad spend and lead costs get measured properly in the week-one baseline audit, and I'll send you that document whether or not we move forward.</p>
+      <p>Project value ranges cited for crawl space work reflect published Nashville-market pricing, not your book. Ad budget figures are recommendations, not commitments &mdash; you set them.</p>
+      <p>Page publishing depends on what the franchisor permits on the shared domain. If access is tighter than expected, the same content strategy runs on owned landing pages and Google Business Profile instead, and I'll flag that in week one rather than at day ninety.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Next</span>
+      <h2>Where we go from here</h2>
+    </div>
+    <div class="prose">
+      <p>Say the word and week one starts with the audit &mdash; the LSA numbers, the ranking baseline, and the competitor gap analysis. That's the piece that tells us whether we're building on a leaking bucket or a solid floor, and everything after it is informed by what it finds.</p>
+      <p>You've got the crews, the reviews, and a brand people remember. What's missing is the demand engine. Let's build it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="eyebrow">Brock Douglas &middot; brock@brockdouglas.net</span>
+    <span class="eyebrow">Insulation Commandos of Nashville &middot; Prepared September 3, 2026</span>
+  </footer>
+
+</div>
