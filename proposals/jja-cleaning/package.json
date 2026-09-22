@@ -1,0 +1,19 @@
+{
+  "name": "jja-cleaning-proposal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Website redesign concept for JJA Cleaning Service (Konversly proposal)",
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/build-images.mjs",
+    "fonts": "node scripts/copy-fonts.mjs",
+    "html": "node scripts/build-html.mjs",
+    "build": "npm run fonts && npm run images && npm run html",
+    "serve": "npx --yes serve site -l 4173",
+    "deploy": "bash scripts/deploy.sh"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.1.0",
+    "sharp": "^0.34.0"
+  }
+}
