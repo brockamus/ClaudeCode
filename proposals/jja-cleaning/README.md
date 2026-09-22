@@ -51,7 +51,7 @@ tag, the `X-Robots-Tag` header in `.htaccess`, and `robots.txt`.
 |---|---|---|
 | Brand | Generic B12 template colors | Palette and bubble-bucket mark from JJA's own flyer and logo |
 | Hero | Text list of services | Clear promise, two CTAs, trust points, drag-to-compare before/after |
-| Location | "Throughout the region" | Augusta & Wichita, KS named in copy, title, meta and schema |
+| Location | "Throughout the region" | Service-area section naming 16 Butler and Sedgwick county towns, echoed in the FAQ, meta and schema |
 | Services | 15 flat cards | 3 buyer-based groups (Home / Rentals & business / Haul-off & outdoor) |
 | Proof | 12 full-resolution images, about 43 MB in total | 3 interactive sliders + lazy gallery with lightbox, AVIF/WebP |
 | Conversion | One form at the bottom | Sticky mobile Call / Text / Quote bar, per-service quote buttons, text-first form |
@@ -70,7 +70,7 @@ tag, the `X-Robots-Tag` header in `.htaccess`, and `robots.txt`.
 ## Verify with the client before launch
 
 - **Business name:** the flyer and logo say "JJA Cleaning Services", the B12 site says "Service". The redesign uses "Services".
-- **Service area:** Augusta and Wichita come from their public listings. Confirm the towns listed in the schema.
+- **Service area:** confirmed from the 316 area code. The page lists 16 towns across Butler and Sedgwick counties.
 - **Social links:** the flyer lists @jjacleaning. The Facebook and Instagram URLs are assumed from that handle.
 - **Testimonials:** carried over from the current site. Replace them with verified Google reviews if possible.
 - **Credentials:** no "licensed" or "insured" claims were added. Add them only if the client can document them.
