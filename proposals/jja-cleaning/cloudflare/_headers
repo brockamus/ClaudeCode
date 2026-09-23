@@ -1,0 +1,136 @@
+/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/jja-cleaning/assets/img/*
+  Cache-Control: public, max-age=2592000
+
+/jja-cleaning/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/jja-cleaning/assets/css/*
+  Cache-Control: public, max-age=3600
+
+/jja-cleaning/assets/js/*
+  Cache-Control: public, max-age=3600
+
+/jja-cleaning/assets/img/apartment-1069.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/apartment-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/apartment-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/bathroom-1061.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/bathroom-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/bathroom-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/cabinet-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/cabinet-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/cabinet-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-after-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-after-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-after-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-before-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-before-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/drawers-before-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/garage-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/garage-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/garage-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchen-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchen-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchen-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchenDark-1061.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchenDark-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/kitchenDark-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/livingRoom-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/livingRoom-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/livingRoom-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/shop-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/shop-400.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/shop-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-after-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-after-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-after-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-before-1200.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-before-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/sink-before-800.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/toilet-after-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/toilet-after-718.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/toilet-before-480.avif
+  Content-Type: image/avif
+
+/jja-cleaning/assets/img/toilet-before-718.avif
+  Content-Type: image/avif

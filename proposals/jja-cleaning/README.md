@@ -8,9 +8,10 @@ Target preview URL: `https://proposals.konversly.com/jja-cleaning/`
 ## Layout
 
 ```
-site/            deployable static site; upload this folder as-is
+site/            the built site (served under /jja-cleaning/)
 src/index.html   page template ({{pic}} placeholders become <picture> tags)
-scripts/         build and deploy scripts
+cloudflare/      Pages-level _headers, _redirects, 404.html and robots.txt
+scripts/         image, HTML and dist build scripts
 ```
 
 ## Build
@@ -24,26 +25,34 @@ npm run serve     # preview at http://localhost:4173
 After editing only the copy, run `npm run html`. `site/` is committed, so a
 deploy doesn't require a build.
 
-## Deploy to proposals.konversly.com
+## Deploy (Cloudflare Pages)
 
-`proposals.konversly.com` is on Bluehost shared hosting. At build time it
-returned a redirect to `/404.html` and had no matching SSL certificate.
+Live at **https://proposals.konversly.com/jja-cleaning/**
 
-1. In cPanel, confirm the `proposals` subdomain exists and note its document root.
-2. Run AutoSSL (cPanel > SSL/TLS Status) so the subdomain gets a valid HTTPS cert.
-3. Upload `site/` into `<document root>/jja-cleaning/`, either with the cPanel
-   File Manager or with the deploy script:
+| Setting | Value |
+|---|---|
+| Cloudflare account | Brockcdouglas@gmail.com's Account (owns the konversly.com zone) |
+| Pages project | `konversly-proposals` (also at konversly-proposals.pages.dev) |
+| DNS | `proposals` CNAME to `konversly-proposals.pages.dev`, proxied |
+
+The project is shared by all proposals: each one is a folder, and the root
+redirects to konversly.com. The old wildcard DNS record still sends every other
+unlisted subdomain to Bluehost.
+
+To redeploy:
 
 ```bash
-export KONVERSLY_FTP_HOST=ftp.konversly.com
-export KONVERSLY_FTP_USER=...
-export KONVERSLY_FTP_PASS=...
-export KONVERSLY_FTP_ROOT=/public_html/proposals   # the subdomain's document root
-npm run deploy                                      # needs lftp
+npm run build                 # or just: npm run html (after copy edits)
+bash scripts/make-dist.sh     # assembles dist/ with _headers, _redirects, 404, robots
 ```
 
-The preview is deliberately kept out of search engines through a `noindex` meta
-tag, the `X-Robots-Tag` header in `.htaccess`, and `robots.txt`.
+Then upload `dist/` with `_tools/deploy.mjs` from the microsites repo, and
+create the deployment with the Cloudflare API. Steps 5 and 6 of
+`_tools/LAUNCH.md` in that repo cover both. `cloudflare/_headers` pins
+`image/avif`, because that deploy script's MIME map has no `.avif` entry.
+
+The preview stays out of search through a `noindex` meta tag, an
+`X-Robots-Tag` header, and `robots.txt`.
 
 ## What changed vs. the current B12 site
 
@@ -75,4 +84,4 @@ tag, the `X-Robots-Tag` header in `.htaccess`, and `robots.txt`.
 - **Testimonials:** carried over from the current site. Replace them with verified Google reviews if possible.
 - **Credentials:** no "licensed" or "insured" claims were added. Add them only if the client can document them.
 - **Team photos:** the current site has names only. Real headshots would strengthen the crew section.
-- **At launch:** remove the proposal ribbon, the `noindex` tags and `robots.txt`, and update the Open Graph URLs to the client's domain.
+- **At launch:** remove the proposal ribbon, the `noindex` tags, `robots.txt` and the `X-Robots-Tag` header, and update the Open Graph and schema URLs to the client's domain.

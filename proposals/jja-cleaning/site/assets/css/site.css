@@ -308,12 +308,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* FAQ */
 .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
-.faq details { border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
-.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 20px 22px; font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--navy-900); }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--blush-100); color: var(--berry-600); font-size: 1.375rem; font-weight: 600; transition: transform .2s ease; }
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq details p { padding: 0 22px 20px; color: var(--muted); }
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); padding: 22px 24px; }
+.faq-item h3 { font-size: 1.1875rem; color: var(--navy-900); }
+.faq-item p { margin-top: 8px; color: var(--muted); }
 
 /* Quote / contact */
 .contact-grid { display: grid; gap: clamp(28px, 4vw, 48px); }
