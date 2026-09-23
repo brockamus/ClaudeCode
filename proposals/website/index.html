@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Website Proposal | Konversly</title>
+  <meta name="description" content="Your new website, built to turn local searches into calls, plus hosting, automation and SEO plans to keep it working.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d0d0f">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Konversly brand tokens (visual system shared with tryadgenius.com) */
+    :root {
+      --bg: #0d0d0f;
+      --card: #171719;
+      --muted: #242427;
+      --fg: #eeecea;
+      --fg-muted: #a29d99;
+      --primary: #fe5828;
+      --primary-hover: #ff6d42;
+      --primary-soft: rgb(254 88 40 / 12%);
+      --on-primary: #fafafa;
+      --border: rgb(255 255 255 / 9%);
+      --border-strong: rgb(255 255 255 / 16%);
+      --ok: #05df72;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --h: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      --b: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --wrap: 1120px;
+      --gutter: clamp(16px, 4vw, 32px);
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f8f6f4; --card: #ffffff; --muted: #f2f0ec; --fg: #0f0f12; --fg-muted: #68625e;
+        --primary: #f7502a; --primary-hover: #e2431f; --primary-soft: rgb(247 80 42 / 10%);
+        --border: #e5e0dc; --border-strong: #d6cfc9; --ok: #00a544; color-scheme: light;
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #f8f6f4; --card: #ffffff; --muted: #f2f0ec; --fg: #0f0f12; --fg-muted: #68625e;
+      --primary: #f7502a; --primary-hover: #e2431f; --primary-soft: rgb(247 80 42 / 10%);
+      --border: #e5e0dc; --border-strong: #d6cfc9; --ok: #00a544; color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--b); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3 { font-family: var(--h); line-height: 1.1; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    a { color: var(--primary); }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
+    .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+    .section { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--border); }
+    .kicker { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); }
+    .section-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
+    .section-head h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); margin-top: 10px; }
+    .section-head p { margin-top: 12px; color: var(--fg-muted); font-size: 1.0625rem; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 10px; border: 1px solid transparent; font: 600 .9375rem/1 var(--b); text-decoration: none; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, transform .15s ease; }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--primary); color: var(--on-primary); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--on-primary); }
+    .btn-ghost { background: transparent; color: var(--fg); border-color: var(--border-strong); }
+    .btn-ghost:hover { background: var(--muted); color: var(--fg); }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Header */
+    header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    header.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+    .logo { font: 700 1.25rem/1 var(--h); letter-spacing: -0.02em; color: var(--fg); text-decoration: none; margin-right: auto; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo i { font-style: normal; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--primary); color: var(--on-primary); font: 800 1.125rem/1 var(--h); }
+    .tag { font-size: .8125rem; color: var(--fg-muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+    @media (max-width: 520px) { .tag { display: none; } }
+    .theme { background: none; border: 1px solid var(--border); color: var(--fg-muted); width: 36px; height: 36px; border-radius: 10px; cursor: pointer; display: grid; place-items: center; }
+    .theme:hover { color: var(--fg); background: var(--muted); }
+    .theme svg { width: 18px; height: 18px; }
+
+    /* Hero */
+    .hero { padding-block: clamp(48px, 8vw, 96px) clamp(48px, 7vw, 80px); position: relative; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 80% 0%, var(--primary-soft), transparent 70%); pointer-events: none; }
+    .hero .wrap { position: relative; }
+    .prepared { display: inline-flex; flex-wrap: wrap; gap: 6px 14px; font-size: .9375rem; color: var(--fg-muted); }
+    .prepared b { color: var(--fg); font-weight: 600; }
+    .hero h1 { font-size: clamp(2.25rem, 6vw, 4rem); margin-top: 18px; max-width: 900px; }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero-lede { margin-top: 18px; max-width: 640px; font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); color: var(--fg-muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .preview-card { margin-top: 36px; display: none; text-decoration: none; color: var(--fg); align-items: center; gap: 16px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); max-width: 640px; }
+    .preview-card.is-on { display: flex; }
+    .preview-card .dot { width: 44px; height: 44px; border-radius: 12px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; flex: none; }
+    .preview-card .dot svg { width: 22px; height: 22px; }
+    .preview-card div { flex: 1; min-width: 0; }
+    .preview-card b { display: block; font-family: var(--h); font-size: 1.0625rem; }
+    .preview-card span { display: block; color: var(--fg-muted); font-size: .875rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Build */
+    .build { display: grid; gap: 20px; }
+    @media (min-width: 900px) { .build { grid-template-columns: 1fr 1.25fr; align-items: start; } }
+    .price-card { padding: 28px; border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--border); }
+    .price-card .label { color: var(--fg-muted); font-weight: 500; }
+    .price { font: 700 clamp(2.75rem, 6vw, 3.5rem)/1 var(--h); letter-spacing: -0.03em; margin-top: 10px; }
+    .price small { font: 500 1rem var(--b); color: var(--fg-muted); letter-spacing: 0; }
+    .price-card p.note { margin-top: 12px; color: var(--fg-muted); font-size: .9375rem; }
+    .checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    @media (min-width: 600px) { .checks.two { grid-template-columns: 1fr 1fr; gap: 14px 24px; } }
+    .checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; }
+    .checks svg { width: 20px; height: 20px; color: var(--primary); margin-top: 2px; }
+    .checks b { display: block; font-weight: 600; }
+    .checks span { color: var(--fg-muted); font-size: .9375rem; }
+
+    /* Plans */
+    .plans { display: grid; gap: 16px; }
+    @media (min-width: 900px) { .plans { grid-template-columns: repeat(3, 1fr); } }
+    .plan { position: relative; display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--border); cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease; }
+    .plan:hover { border-color: var(--border-strong); }
+    .plan input { position: absolute; opacity: 0; pointer-events: none; }
+    .plan:has(input:checked) { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary), 0 20px 50px -24px var(--primary); }
+    .plan:has(input:focus-visible) { outline: 2px solid var(--primary); outline-offset: 3px; }
+    .plan .badge { position: absolute; top: -11px; left: 24px; background: var(--primary); color: var(--on-primary); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+    .plan h3 { font-size: 1.25rem; }
+    .plan .for { color: var(--fg-muted); font-size: .9375rem; margin-top: 6px; min-height: 3em; }
+    .plan .price { font-size: 2.5rem; margin-top: 18px; }
+    .plan .checks { margin-top: 20px; gap: 10px; }
+    .plan .checks li { font-size: .9375rem; }
+    .plan .everything { color: var(--fg); font-weight: 600; }
+    .plan .pick { margin-top: auto; padding-top: 22px; }
+    .plan .pick b { font-weight: 600; }
+    .plan .pick span { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 10px; border: 1px solid var(--border-strong); font-weight: 600; font-size: .9375rem; }
+    .plan:has(input:checked) .pick span { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+    .pick .on { display: none; }
+    .plan:has(input:checked) .pick .on { display: inline; }
+    .plan:has(input:checked) .pick .off { display: none; }
+    .no-plan { margin-top: 14px; font-size: .9375rem; color: var(--fg-muted); }
+    .no-plan label { cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+
+    /* Compare */
+    .compare-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: .9375rem; }
+    th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font: 600 .9375rem var(--h); }
+    thead th { background: var(--muted); }
+    thead th:not(:first-child), td:not(:first-child) { text-align: center; width: 18%; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td .y { color: var(--primary); font-weight: 700; }
+    td .n { color: var(--fg-muted); opacity: .6; }
+    tr.group td { font: 600 .8125rem var(--b); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-muted); background: color-mix(in srgb, var(--muted) 50%, transparent); }
+
+    /* Steps */
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+    @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .steps li { padding: 24px; border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--border); }
+    .steps li::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--primary-soft); color: var(--primary); font: 700 1.0625rem var(--h); }
+    .steps h3 { font-size: 1.125rem; margin-top: 14px; }
+    .steps p { margin-top: 6px; color: var(--fg-muted); font-size: .9375rem; }
+
+    /* FAQ + terms */
+    .two-col { display: grid; gap: 24px; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .qa { display: grid; gap: 12px; }
+    .qa div { padding: 20px 22px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); }
+    .qa h3 { font-size: 1.0625rem; }
+    .qa p { margin-top: 6px; color: var(--fg-muted); font-size: .9375rem; }
+
+    /* Accept */
+    .accept { display: grid; gap: 24px; padding: clamp(24px, 4vw, 40px); border-radius: 22px; background: var(--card); border: 1px solid var(--border-strong); position: relative; overflow: hidden; }
+    .accept::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px 240px at 100% 0%, var(--primary-soft), transparent 70%); pointer-events: none; }
+    .accept > * { position: relative; }
+    @media (min-width: 900px) { .accept { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+    .accept h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); }
+    .accept > div > p { margin-top: 10px; color: var(--fg-muted); }
+    .summary { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; background: var(--bg); }
+    .summary dl { margin: 0; display: grid; gap: 10px; }
+    .summary .row { display: flex; justify-content: space-between; gap: 16px; }
+    .summary dt { color: var(--fg-muted); }
+    .summary dd { margin: 0; font-weight: 600; text-align: right; }
+    .summary .total { border-top: 1px solid var(--border); padding-top: 12px; }
+    .summary .total dd { font: 700 1.375rem var(--h); }
+    .summary .btn { width: 100%; margin-top: 16px; }
+    .summary .alt { display: block; text-align: center; margin-top: 12px; font-size: .9375rem; color: var(--fg-muted); }
+    .summary .alt a { color: var(--fg); }
+    .fine { margin-top: 12px; font-size: .8125rem; color: var(--fg-muted); text-align: center; }
+
+    footer { border-top: 1px solid var(--border); padding-block: 32px 48px; color: var(--fg-muted); font-size: .875rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; }
+    footer a { color: var(--fg); text-decoration: none; }
+
+    @media print {
+      header.top, .theme, .hero-actions, .summary .btn, .summary .alt { display: none !important; }
+      body { background: #fff; color: #111; }
+      .section { break-inside: avoid; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+  </svg>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="https://konversly.com" rel="noopener"><i aria-hidden="true">K</i>Konversly</a>
+      <span class="tag">Website proposal</span>
+      <button class="theme" type="button" aria-label="Toggle light or dark theme" data-theme-toggle>
+        <svg aria-hidden="true"><use href="#sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap">
+        <p class="prepared">
+          <span>Prepared for <b data-fill="client">your business</b></span>
+          <span data-hide-if-empty="contact">Attn: <b data-fill="contact"></b></span>
+          <span><b data-fill="date"></b></span>
+        </p>
+        <h1 id="title">A website that turns local searches into <em>booked jobs.</em></h1>
+        <p class="hero-lede">We rebuild your site from the ground up: faster, clearer, and built around one goal, getting customers to call, text or request a quote. Then you choose how much of the growth work you want us to handle.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#plans">See the plans</a>
+          <a class="btn btn-ghost" href="#accept">Accept proposal</a>
+        </div>
+        <a class="preview-card" id="preview" href="#" rel="noopener" target="_blank">
+          <span class="dot"><svg aria-hidden="true"><use href="#globe"/></svg></span>
+          <div><b>Preview your new website</b><span data-fill="preview-url"></span></div>
+          <svg aria-hidden="true" width="18" height="18"><use href="#ext"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="build" aria-labelledby="build-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Step one</p>
+          <h2 id="build-title">Your new website</h2>
+          <p>One flat price for the design, build and launch. No templates, no page builders, nothing you have to maintain yourself.</p>
+        </div>
+        <div class="build">
+          <div class="price-card">
+            <p class="label">Website design &amp; build</p>
+            <p class="price"><span data-price="build"></span> <small>one-time</small></p>
+            <p class="note">Due when you approve this proposal. Your monthly plan starts on launch day, not before.</p>
+          </div>
+          <ul class="checks two">
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Custom, mobile-first design</b><span>Built in your brand colors, logo and voice, for the phones your customers use.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Click-to-call, text and quote form</b><span>Every section gives visitors a one-tap way to reach you.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Your real work, front and center</b><span>Your photos, optimized to load fast, including before-and-after sliders.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Local SEO foundations</b><span>Service areas, page titles and business schema, so Google knows what you do and where.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Fast by design</b><span>Lightweight code with no bloated page builder, so pages load in a blink on a phone signal.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#ck"/></svg><div><b>Launched on your domain</b><span>We connect your domain and SSL certificate and handle the move from your old site.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="plans" aria-labelledby="plans-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Step two</p>
+          <h2 id="plans-title">Choose your monthly plan</h2>
+          <p>Every website needs a home. Pick the level of support you want. You can move up or down later.</p>
+        </div>
+
+        <div class="plans" role="radiogroup" aria-label="Monthly plan">
+          <label class="plan">
+            <input type="radio" name="plan" value="hosting">
+            <h3>Hosting</h3>
+            <p class="for">Keep the site fast, secure and up to date.</p>
+            <p class="price"><span data-price="hosting"></span><small>/mo</small></p>
+            <ul class="checks">
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Hosting on a global edge network</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>SSL certificate and domain management</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Small text and photo updates each month</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Technical fixes and browser updates</span></li>
+            </ul>
+            <div class="pick"><span><b class="off">Choose this plan</b><b class="on">&#10003; Selected</b></span></div>
+          </label>
+
+          <label class="plan">
+            <span class="badge">Most popular</span>
+            <input type="radio" name="plan" value="automations" checked>
+            <h3>Hosting + Automations</h3>
+            <p class="for">Never lose a lead to a missed call or a slow reply.</p>
+            <p class="price"><span data-price="automations"></span><small>/mo</small></p>
+            <ul class="checks">
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span class="everything">Everything in Hosting, plus the Konversly CRM:</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Calls, texts, form leads and social messages in one inbox</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Missed-call text-back, sent automatically</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Instant replies and follow-up for new quote requests</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Automatic Google review requests after each job</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Online booking calendar and mobile app</span></li>
+            </ul>
+            <div class="pick"><span><b class="off">Choose this plan</b><b class="on">&#10003; Selected</b></span></div>
+          </label>
+
+          <label class="plan">
+            <input type="radio" name="plan" value="seo">
+            <h3>Growth + SEO</h3>
+            <p class="for">Climb the local rankings month after month.</p>
+            <p class="price"><span data-price="seo"></span><small>/mo</small></p>
+            <ul class="checks">
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span class="everything">Everything in Hosting + Automations, plus:</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Google Business Profile optimization and regular posts</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>New service and location pages every month</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Local directory listings and citation cleanup</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Review growth strategy</span></li>
+              <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Rank tracking and a monthly results report</span></li>
+            </ul>
+            <div class="pick"><span><b class="off">Choose this plan</b><b class="on">&#10003; Selected</b></span></div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="compare-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Side by side</p>
+          <h2 id="compare-title">Compare the plans</h2>
+        </div>
+        <div class="compare-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">What's included</th><th scope="col">Hosting</th><th scope="col">Hosting + Automations</th><th scope="col">Growth + SEO</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Monthly price</th><td><b data-price="hosting"></b></td><td><b data-price="automations"></b></td><td><b data-price="seo"></b></td></tr>
+              <tr class="group"><td colspan="4">Website</td></tr>
+              <tr><th scope="row">Fast, secure hosting with SSL</th><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Small monthly updates</th><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr class="group"><td colspan="4">Lead capture (Konversly CRM)</td></tr>
+              <tr><th scope="row">Unified inbox for calls, texts and forms</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Missed-call text-back</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Automated quote follow-up</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Review requests</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Booking calendar and mobile app</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr class="group"><td colspan="4">Ongoing SEO</td></tr>
+              <tr><th scope="row">Google Business Profile management</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">New service and location pages monthly</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Citations and directory listings</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+              <tr><th scope="row">Rank tracking and monthly report</th><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="n" aria-label="Not included">&mdash;</span></td><td><span class="y" aria-label="Included">&#10003;</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">What happens next</p>
+          <h2 id="how-title">From yes to live</h2>
+        </div>
+        <ol class="steps">
+          <li><h3>Approve and pick a plan</h3><p>Accept below and pay the one-time build fee. We confirm your details, photos and domain.</p></li>
+          <li><h3>Review and launch</h3><p>You review the finished site and request changes. Once you sign off, we launch it on your domain.</p></li>
+          <li><h3>Grow from day one</h3><p>Your plan starts at launch. Depending on your plan, leads flow into your CRM and SEO work begins.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Good to know</p>
+          <h2 id="faq-title">Questions and terms</h2>
+        </div>
+        <div class="two-col">
+          <div class="qa">
+            <div><h3>Do I own my website?</h3><p>Yes. Your domain, your content and your photos are yours.</p></div>
+            <div><h3>Do I need a domain name?</h3><p>If you already have one, we connect it. If not, we help you register one in your name.</p></div>
+            <div><h3>Can I change plans later?</h3><p>Yes. Move up or down between plans whenever your needs change.</p></div>
+          </div>
+          <div class="qa">
+            <div><h3>When do monthly payments start?</h3><p>On launch day. You never pay for a plan while your site is still being built.</p></div>
+            <div><h3>What counts as a small update?</h3><p>Things like new hours, a price change, fresh photos or a new testimonial. Bigger additions, like new pages, are quoted separately on the Hosting and Automations plans.</p></div>
+            <div><h3>Is there a long-term contract?</h3><p>No. Plans are billed monthly.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="accept" aria-labelledby="accept-title">
+      <div class="wrap">
+        <div class="accept">
+          <div>
+            <p class="kicker">Ready when you are</p>
+            <h2 id="accept-title">Accept this proposal</h2>
+            <p>Pick a plan above, then send your acceptance. We'll reply with your invoice and next steps.</p>
+          </div>
+          <div class="summary" aria-live="polite">
+            <dl>
+              <div class="row"><dt>Website build</dt><dd data-price="build"></dd></div>
+              <div class="row"><dt>Monthly plan</dt><dd id="sum-plan"></dd></div>
+              <div class="row total"><dt>Due today</dt><dd data-price="build"></dd></div>
+            </dl>
+            <a class="btn btn-primary" id="accept-btn" href="#">Accept and choose this plan</a>
+            <span class="alt">Questions first? <a id="question-link" href="#">Email us</a></span>
+          </div>
+        </div>
+        <p class="fine">Prices in USD. This proposal is valid for 30 days from the date above.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="https://konversly.com" rel="noopener" style="font-size:1rem"><i aria-hidden="true">K</i>Konversly</a>
+      <a href="mailto:support@konversly.com">support@konversly.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      // Pricing: edit here. Everything on the page reads from this block.
+      const PRICES = { build: 500, hosting: 49, automations: 97, seo: 297 };
+      const PLAN_NAMES = { hosting: 'Hosting', automations: 'Hosting + Automations', seo: 'Growth + SEO' };
+      const CONTACT_EMAIL = 'support@konversly.com';
+
+      // Personalize from the link: ?for=Business&contact=Name&site=/path/
+      const q = new URLSearchParams(location.search);
+      const clean = (v, max) => (v || '').replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, max);
+      const client = clean(q.get('for'), 80);
+      const contact = clean(q.get('contact'), 60);
+      const fmt = (n) => '$' + n.toLocaleString('en-US');
+      const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+      document.querySelectorAll('[data-price]').forEach((el) => { el.textContent = fmt(PRICES[el.dataset.price]); });
+      if (client) {
+        document.querySelectorAll('[data-fill="client"]').forEach((el) => { el.textContent = client; });
+        document.title = `Website Proposal for ${client} | Konversly`;
+      }
+      document.querySelectorAll('[data-fill="contact"]').forEach((el) => { el.textContent = contact; });
+      document.querySelectorAll('[data-hide-if-empty="contact"]').forEach((el) => { el.hidden = !contact; });
+      document.querySelectorAll('[data-fill="date"]').forEach((el) => { el.textContent = today; });
+
+      // Preview link: only same-site paths or https URLs on our proposals domain.
+      const site = q.get('site');
+      if (site) {
+        try {
+          const url = new URL(site, location.origin);
+          const ok = url.protocol === 'https:' && (url.origin === location.origin || url.hostname === 'proposals.konversly.com');
+          if (ok || url.origin === location.origin) {
+            const card = document.getElementById('preview');
+            card.href = url.href;
+            card.querySelector('[data-fill="preview-url"]').textContent = url.host + url.pathname;
+            card.classList.add('is-on');
+          }
+        } catch {}
+      }
+
+      // Plan selection drives the summary and the acceptance email.
+      const sumPlan = document.getElementById('sum-plan');
+      const acceptBtn = document.getElementById('accept-btn');
+      const questionLink = document.getElementById('question-link');
+      const who = client || 'our business';
+      const update = () => {
+        const v = document.querySelector('input[name="plan"]:checked')?.value || 'automations';
+        sumPlan.textContent = `${PLAN_NAMES[v]} · ${fmt(PRICES[v])}/mo`;
+        acceptBtn.textContent = `Accept with ${PLAN_NAMES[v]}`;
+        const subject = `Proposal accepted: ${who}`;
+        const body = [
+          `Hi, we'd like to move forward with the website proposal for ${who}.`,
+          '',
+          `Website build: ${fmt(PRICES.build)} one-time`,
+          `Monthly plan: ${PLAN_NAMES[v]} (${fmt(PRICES[v])}/mo, starting at launch)`,
+          '',
+          contact ? `Thanks,\n${contact}` : 'Thanks,',
+        ].join('\n');
+        acceptBtn.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        questionLink.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Question about the website proposal for ' + who)}`;
+      };
+      document.querySelectorAll('input[name="plan"]').forEach((r) => r.addEventListener('change', update));
+      const pre = q.get('plan');
+      if (pre && PLAN_NAMES[pre]) document.querySelector(`input[value="${pre}"]`).checked = true;
+      update();
+
+      // Theme toggle, remembered per visitor.
+      const root = document.documentElement;
+      const btn = document.querySelector('[data-theme-toggle]');
+      try { const t = localStorage.getItem('ag-theme'); if (t) root.dataset.theme = t; } catch {}
+      const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+      const paint = () => { btn.querySelector('use').setAttribute('href', isDark() ? '#sun' : '#moon'); };
+      btn.addEventListener('click', () => {
+        root.dataset.theme = isDark() ? 'light' : 'dark';
+        try { localStorage.setItem('ag-theme', root.dataset.theme); } catch {}
+        paint();
+      });
+      paint();
+    })();
+  </script>
+</body>
+</html>

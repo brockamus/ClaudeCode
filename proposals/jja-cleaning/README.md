@@ -10,7 +10,6 @@ Target preview URL: `https://proposals.konversly.com/jja-cleaning/`
 ```
 site/            the built site (served under /jja-cleaning/)
 src/index.html   page template ({{pic}} placeholders become <picture> tags)
-cloudflare/      Pages-level _headers, _redirects, 404.html and robots.txt
 scripts/         image, HTML and dist build scripts
 ```
 
@@ -36,19 +35,20 @@ Live at **https://proposals.konversly.com/jja-cleaning/**
 | DNS | `proposals` CNAME to `konversly-proposals.pages.dev`, proxied |
 
 The project is shared by all proposals: each one is a folder, and the root
-redirects to konversly.com. The old wildcard DNS record still sends every other
+redirects to konversly.com. Pages-level config (`_headers`, `_redirects`, 404,
+robots) lives in `proposals/_pages/`. The old wildcard DNS record still sends every other
 unlisted subdomain to Bluehost.
 
 To redeploy:
 
 ```bash
 npm run build                 # or just: npm run html (after copy edits)
-bash scripts/make-dist.sh     # assembles dist/ with _headers, _redirects, 404, robots
+bash ../make-dist.sh          # assembles proposals/dist/ for every proposal
 ```
 
 Then upload `dist/` with `_tools/deploy.mjs` from the microsites repo, and
 create the deployment with the Cloudflare API. Steps 5 and 6 of
-`_tools/LAUNCH.md` in that repo cover both. `cloudflare/_headers` pins
+`_tools/LAUNCH.md` in that repo cover both. `proposals/_pages/_headers` pins
 `image/avif`, because that deploy script's MIME map has no `.avif` entry.
 
 The preview stays out of search through a `noindex` meta tag, an
